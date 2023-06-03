@@ -1,0 +1,36 @@
++++
+[taxonomies]
+tags = ["ssh",]
+
++++
+
+understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
+the detailed implementation using rust: [russh](@/posts/ssh/russh.md).
+the technical details can be found at:[protocal](@/posts/ssh/ssh.md).
+
+# the symetrical encryption
+The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.
+
+Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.
+
+# the asymetrical encryption
+Asymmetric encryption is a type of encryption where two keys are used to encrypt and decrypt messages. One key is used to encrypt messages, and the other key is used to decrypt messages. The two keys are mathematically related to each other, but they are not the same. The public key is used to encrypt messages, and the private key is used to decrypt messages. The private key is kept secret, and the public key is distributed to anyone who needs to send you encrypted messages.
+
+# the ssh login process
+The ssh login process is as follows:
+1. stage 1, key exchange: the client and server decide a common shared secret key for further communication.
+The basis of this procedure for classic Diffie-Hellman are:
+  - Both parties agree on a large prime number, which will serve as a seed value.
+  - Both parties agree on an encryption generator (typically AES), which will be used to manipulate the values in a predefined way.
+  - Independently, each party comes up with another prime number which is kept secret from the other party. This number is used as the private key for this interaction (different from the private SSH key used for authentication).
+  - The generated private key, the encryption generator, and the shared prime number are used to generate a public key that is derived from the private key, but which can be shared with the other party.
+  - Both participants then exchange their generated public keys.
+  - The receiving entity uses their own private key, the other party’s public key, and the original shared prime number to compute a shared secret key. Although this is independently computed by each party, using opposite private and public keys, it will result in the same shared secret key.
+  - The shared secret is then used to encrypt all communication that follows.
+2. stage 2, authentication, all traffic will be encrypted after the key exchange: 
+  - the client sends a public key to the server.
+  - the server sends a challenge to the client using the public key of the client.
+  - the client decrypts the challenge using the private key of the client.
+  - the server compares the decrypted challenge with the challenge it sent to the client. if they are the same, the server can proceed to the next step.
+3. stage 3, communication:
+  - the client and the server can send regular message using the shared secret key.

@@ -1,0 +1,165 @@
++++
+[taxonomies]
+tags = ["ssh","rust"]
+
++++
+
+Server and client SSH asynchronous library, based on tokio/futures.
+- the crates.io of russh: [russh](https://crates.io/crates/russh)
+- the github of russh: [russh](https://github.com/warp-tech/russh)
+- the technical details can be found at:[protocal](@/posts/ssh/ssh.md)
+
+for ssh connection protocol, see [the ssh login](@/posts/ssh/ssh-login.md)
+
+# russh client example
+```rust 
+fn main(){
+    /// connect and exchange the key
+    let mut session = russh::client::connect(config, ("10.13.13.23", 22), sh).await?;
+    /// authenticate the user using the private key
+    if session.authenticate_publickey("sjq", Arc::new(key)).await? {
+        println!("authenticated");
+        let mut channel = session.channel_open_session().await?;
+        channel.request_shell(false).await?;
+        channel.exec(true, &b"/usr/bin/ls"[..]).await?;
+        while let Some(msg) = channel.wait().await {
+            println!("{:?}", msg);
+        }
+    }
+    Ok(())
+}
+```
+
+## step 1: connect and exchange the key
+first the client will send and receive the ssh-id
+```rust
+// russh/src/client/mod.rs
+
+ // Writing SSH id.
+    let mut write_buffer = SSHBuffer::new();
+    write_buffer.send_ssh_id(&config.as_ref().client_id);
+    stream
+        .write_all(&write_buffer.buffer)
+        .await
+        .map_err(crate::Error::from)?;
+
+    // Reading SSH id and allocating a session if correct.
+    let mut stream = SshRead::new(stream);
+    let sshid = stream.read_ssh_id().await?;
+```
+then the client will build some context for key exchange. first build a session which include the infomation for the key exchange.
+```rust
+pub struct Session {
+    common: CommonSession<Arc<Config>>,
+    receiver: Receiver<Msg>,
+    sender: UnboundedSender<Reply>,
+    channels: HashMap<ChannelId, UnboundedSender<ChannelMsg>>,
+    target_window_size: u32,
+    pending_reads: Vec<CryptoVec>,
+    pending_len: u32,
+    inbound_channel_sender: Sender<Msg>,
+    inbound_channel_receiver: Receiver<Msg>,
+}
+   let mut session = Session::new(
+        config.window_size,
+        CommonSession {
+            write_buffer,
+            kex: None,
+            auth_user: String::new(),
+            auth_attempts: 0,
+            auth_method: None, // Client only.
+            cipher: CipherPair {
+                local_to_remote: Box::new(clear::Key),
+                remote_to_local: Box::new(clear::Key),
+            },
+            encrypted: None,
+            config,
+            wants_reply: false,
+            disconnected: false,
+            buffer: CryptoVec::new(),
+        },
+        session_receiver,
+        session_sender,
+    );
+```
+
+then use `read_ssh_id(sshid)` to build the key exchange context
+```rust
+fn read_ssh_id(&mut self, sshid: &[u8]) -> Result<(), crate::Error> {
+        // self.read_buffer.bytes += sshid.bytes_read + 2;
+        let mut exchange = Exchange::new();
+        exchange.server_id.extend(sshid);
+        // Preparing the response
+        exchange
+            .client_id
+            .extend(self.common.config.client_id.as_kex_hash_bytes());
+        let mut kexinit = KexInit {
+            exchange,
+            algo: None,
+            sent: false,
+            session_id: None,
+        };
+        self.common.write_buffer.buffer.clear();
+        kexinit.client_write(
+            self.common.config.as_ref(),
+            &mut *self.common.cipher.local_to_remote,
+            &mut self.common.write_buffer,
+        )?;
+        self.common.kex = Some(Kex::Init(kexinit));
+        Ok(())
+    }
+```
+in `read_ssh_id`, `client_write` will write the key exchange message to the buffer, which include all acceptable algorithms for the key exchange.
+and it will setup the messages to send to the server first for the infomation about key exchange.
+
+ after build the session, the client will spawn a new task for run the session
+
+```rust
+    let join = tokio::spawn(session.run(stream, handler, Some(encrypted_signal)));
+```
+
+during runing the session, the client will read the server infomation using start_reading:
+```rust
+        let reading = start_reading(stream_read, buffer, opening_cipher);
+
+```
+this will read the server infomation about keys and exchange methods, then the client will select one and send the message to the server.
+after then, they start the exchange process and finally get the shared key for the encryption. all later messages will be encrypted.
+
+## step 2: authenticate the user using the private key
+
+after the key exchange, the client will send the message to authenticate the user.
+we can first read the key stored in out home directory:`~/.ssh/id_*`
+```rust
+// use the ssh_key create the parse the stored key
+let pubkeyfile = std::fs::read_to_string("/Users/sjq/.ssh/id_ed25519.pub")?;
+    let prikeyfile = std::fs::read_to_string("/Users/sjq/.ssh/id_ed25519")?;
+    let public_key = PublicKey::from_str(&pubkeyfile)?;
+    let private_key = PrivateKey::from_str(&prikeyfile)?;
+// parse the key as bytes stream
+    let data_pb = public_key
+        .key_data()
+        .ed25519()
+        .ok_or("no ed25519")?
+        .as_ref();
+    let data_pr = private_key
+        .key_data()
+        .ed25519()
+        .ok_or("no ed25519")?
+        .private
+        .as_ref();
+// create the keypair
+    let public_key = ed25519_dalek::PublicKey::from_bytes(data_pb)?;
+    let private_key = ed25519_dalek::SecretKey::from_bytes(data_pr)?;
+
+
+    let key = KeyPair::Ed25519(ed25519_dalek::Keypair {
+        secret: private_key,
+        public: public_key,
+    });
+```
+after build the key, we can use the key to try to authenticate the user.
+```rust
+if session.authenticate_publickey("sjq", Arc::new(key)).await? 
+```
+now the channel is open, we can use the channel to send the command to the server.
