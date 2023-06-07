@@ -30,6 +30,21 @@
                 {{ page.reading_time }} min
             {% endif %}
         {% endif %}
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="{{ config.base_url }}">
+                    Home
+                </a>
+            {% for section in page.ancestors %}
+                {% set s = get_section(path=section) %}
+                    <a href="{{ s.permalink | safe }}">
+                        {{ s.title }}/
+                    </a>
+            {% endfor %}
+            <a href="{{ page.permalink | safe }}">
+                {{ page.slug }}
+            </a>
+        </div>
         {% if page.taxonomies.tags %}
             <div class="tag-container">
                 Tags :&nbsp;
@@ -66,6 +81,7 @@
         <hr/>
     {% endif %}
     {% if page.toc %}
+        <h2>Table of Contents</h2>
         <ul>
         {% for h1 in page.toc %}
             <li>
@@ -83,5 +99,6 @@
         {% endfor %}
         </ul>
     {% endif %}
+    <hr/>
     {{ page.content | safe }}
 {% endblock content %}
