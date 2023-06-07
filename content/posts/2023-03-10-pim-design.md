@@ -53,11 +53,11 @@ the original discuss paper scan:
 
         - mat interleaving:
 
-        ![interleaving](/img/interleaving.png)
+        -  ![interleaving](/img/interleaving.png)
 - fulcrum design:
     - reuniting interleaved bits:
 
-    ![reuniting 1](/img/reuniting.png)
+    - ![reuniting 1](/img/reuniting.png)
 
 
     - the walkers:
@@ -104,7 +104,7 @@ umn length, and the values from the frontier array that should be
 multiplied in the column into a new array. Figure 10 shows the
 pseudo-code of this step.
 
-![packing](/img/packing.png)
+- ![packing](/img/packing.png)
 
 put the index, lengh and value into a new array.
 
@@ -115,7 +115,7 @@ the pseudo-code of this step. In this step, if a clean value is being
 updated, the clean value indicator and its row index will be sent to
 the Dispatcher.
 
-![localAccumulations](/img/local.png)
+- ![localAccumulations](/img/local.png)
 - step4: Dispatching:
 > In this step, the Dispatcher sends all the
 stored entries (index-value pairs) to their destination subarrays.
@@ -129,7 +129,7 @@ is appended to the corresponding array
 > This step processes the array containing the non-zero indexes to generate the frontier for the next iteration, initializes
 the output vector to clean indicators, and sends long-activating
 entries to the logic layer to be reduced and applied there. It also
-performs the apply operation (𝑓 𝑖𝑛𝑎𝑙𝑂𝑢𝑡𝑝𝑢𝑡 [:] = 𝑂𝑢𝑡𝑝𝑢𝑡 [:] + 𝛼𝑦 [:],
+performs the apply operation 𝑓 𝑖𝑛𝑎𝑙𝑂𝑢𝑡𝑝𝑢𝑡 [:] = 𝑂𝑢𝑡𝑝𝑢𝑡 [:] + 𝛼𝑦 [:],
 which is explained in Section 2.
 
 ## summary of the gearbox:

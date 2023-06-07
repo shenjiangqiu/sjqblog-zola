@@ -19,8 +19,8 @@ highlight_code = true
 # Put all your custom variables here
 sam_menu = [
     {text="posts", link = "/posts"},
-    {text="about", link = "/about"},
     {text="tags", link = "/tags"},
+    {text="about", link = "/about"},
     {text="github", link = "https://github.com/shenjiangqiu"},
 ]
 

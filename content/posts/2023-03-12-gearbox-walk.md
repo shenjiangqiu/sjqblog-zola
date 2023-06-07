@@ -10,17 +10,17 @@ the related papers:
 - Chopper: [paper](/pdf/CHOPPER-HPCA-23.pdf)
 
 the related posts:
-- [pim-design](@/posts/pim/pim-design.md)
+- [pim-design](@/posts/2023-03-10-pim-design.md)
 
 # walkthrough of inderect c,a,b
 - the original graph:
 
->  ![gearbox_walk_through](/img/gearbox_walk_through.png)
+- ![gearbox_walk_through](/img/gearbox_walk_through.png)
 
 ## explanation of the graph
 - instruction 1:
 
-> ![gearbox_walk_through_1](/img/ins1.png)
+- ![gearbox_walk_through_1](/img/ins1.png)
 
 
 

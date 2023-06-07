@@ -42,6 +42,15 @@
                 {% endfor %}
             </div>
         {% endif %}
+        {% if page.description %}
+        <div class = "description_container">
+            description:
+            <span class="description">
+                {{ page.description }}
+            </span>
+        </div>
+            
+        {% endif %}
         {% if page.taxonomies.authors %}
             <div class="tag-container">
                 Authors :&nbsp;

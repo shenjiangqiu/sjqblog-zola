@@ -22,7 +22,9 @@
                 {{ macros::format_date(date=page.date) }} -- 
             {% endif %}
             <a href="{{ page.permalink }}">{{ macros::title_or_last(component=page, offset=0) }}</a>
-   
+            {% if page.description %}
+                    <div class="description"><p>{{ page.description }}</p></div>
+            {% endif %}
         </li>    
     {% endfor %}
 </ul>
