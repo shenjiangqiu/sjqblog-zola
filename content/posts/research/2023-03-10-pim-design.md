@@ -1,8 +1,11 @@
 +++
-[taxonomies]
-tags = ["research", "pim","gearbox","fulcrum","spmv"]
 
+[taxonomies]
+authors = ["Jiangqiu Shen"]
+tags = ["research", "pim","gearbox","fulcrum","spmv"]
 +++
+
+
 the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.
 
 the related papers:

@@ -1,8 +1,11 @@
 +++
-[taxonomies]
-tags = ["research", "pim","gearbox","fulcrum","spmv"]
 
+[taxonomies]
+authors = ["Jiangqiu Shen"]
+tags = ["research", "pim","gearbox","fulcrum","spmv"]
 +++
+
+
 
 rethink the spmspm in memory, the backgrouds, challenges, and possible solutions.
 

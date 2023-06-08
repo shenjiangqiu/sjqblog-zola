@@ -1,7 +1,12 @@
 +++
+
+
 [taxonomies]
 tags = ["research", "pim","gearbox","fulcrum","spmv"]
+authors = ["Jiangqiu Shen"]
 +++
+
+
 the post illustrate the gearbox instructions of $$C[A[i]] += B[i]$$,
 
 the related papers:

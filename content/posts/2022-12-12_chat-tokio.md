@@ -1,8 +1,9 @@
-
 +++
 [taxonomies]
-tags = ["rust", "tokio","chatapp"]
+tags = ["rust", "tokio"]
+authors = ["Jiangqiu Shen"]
 +++
+
 go thought the tokio example `chat` and learn how to use tokio.
 
 # the source code of chat

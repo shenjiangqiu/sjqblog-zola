@@ -1,9 +1,13 @@
 +++
-description = "async in rust use a stackless manner and lazy execution, this post shares my understanding of async in Rust. this post includes: async trait, async/await, async block, why use `Pin<&mut Self>` instead of `&mut Self` in poll function?"
 
+
+description = "async in rust use a stackless manner and lazy execution, this post shares my understanding of async in Rust. this post includes: async trait, async/await, async block, why use `Pin<&mut Self>` instead of `&mut Self` in poll function?"
 [taxonomies]
 tags = ["rust", "async"]
+authors = ["Jiangqiu Shen"]
 +++
+
+
 
 async in rust.
 A good resource to learn: [the async book](https://rust-lang.github.io/async-book/)

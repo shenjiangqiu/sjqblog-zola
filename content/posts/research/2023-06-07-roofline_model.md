@@ -1,5 +1,12 @@
 +++
+[taxonomies]
+
+authors = ["Jiangqiu Shen"]
+
+
 +++
+
+
 The roofline model is a performance modeling technique used to analyze and optimize the performance of parallel computing systems. It gives a visual representation of the performance limitations of the system and helps identify potential opportunities for optimization.
 
 The model plots the performance in GFLOPs per second on the y-axis and the operational intensity in bytes per FLOP on the x-axis. The performance is limited by two factors: the peak performance of the processor and the memory bandwidth of the system. These two limitations are represented by two diagonal lines on the graph, which create a triangle called the "roofline".

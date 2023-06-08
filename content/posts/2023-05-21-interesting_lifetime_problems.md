@@ -1,7 +1,13 @@
 +++
+
+
 [taxonomies]
 tags = ["rust", "lifetime"]
+
+authors = ["Jiangqiu Shen"]
 +++
+
+
 
 the lifetime checker of rust is very strict, and it is not easy to handle complicate lifetime problems
 
