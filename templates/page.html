@@ -37,10 +37,11 @@
                 </a>
             {% for section in page.ancestors %}
                 {% set s = get_section(path=section) %}
-                    <a href="{{ s.permalink | safe }}">
-                        {{ s.title }}/
-                    </a>
+                <a href="{{ s.permalink | safe }}">
+                    {{ s.components | last }}/
+                </a>
             {% endfor %}
+            
             <a href="{{ page.permalink | safe }}">
                 {{ page.slug }}
             </a>
@@ -99,7 +100,6 @@
         {% endfor %}
         </ul>
         <hr/>
-
     {% endif %}
     {{ page.content | safe }}
 {% endblock content %}

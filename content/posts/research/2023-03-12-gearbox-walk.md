@@ -10,7 +10,7 @@ the related papers:
 - Chopper: [paper](/pdf/CHOPPER-HPCA-23.pdf)
 
 the related posts:
-- [pim-design](@/posts/2023-03-10-pim-design.md)
+- [pim-design](@/posts/research/2023-03-10-pim-design.md)
 
 # walkthrough of inderect c,a,b
 - the original graph:

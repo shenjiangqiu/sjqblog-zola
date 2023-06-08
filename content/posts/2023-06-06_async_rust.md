@@ -1,5 +1,5 @@
 +++
-description = "async in rust use a stackless manner and lazy execution, this post shares my understanding of async in Rust. this post includes: async trait, async/await, async block, why use Pin<&mut Self> instead of &mut Self in poll function?"
+description = "async in rust use a stackless manner and lazy execution, this post shares my understanding of async in Rust. this post includes: async trait, async/await, async block, why use `Pin<&mut Self>` instead of `&mut Self` in poll function?"
 
 [taxonomies]
 tags = ["rust", "async"]
@@ -9,6 +9,7 @@ async in rust.
 A good resource to learn: [the async book](https://rust-lang.github.io/async-book/)
 
 this post shares my understanding of async in Rust. 
+<!-- more -->
 ## async trait
 an async block in Rust is a type that implements the `Future`` trait. so what is a future?
 ```rust
@@ -28,7 +29,7 @@ So a future basically means a `function` that can be `polled` multiple times, an
 
 So when will the executor call it again? The executor will call it again when the future is ready to be polled again. So how does the executor know when the future is ready to be polled again? when the executor called the `poll`, it will pass a `waker` inside the `context` to the `Future`, and when the `Future` is ready to be polled again, it will call the `waker` to wake the executor: `waker.wake()`. So the executor will call the `poll` again.
 
-## async/await, async block
+## `async`/`await`, async block
 
 let's look at an async block: note that all code is handwritten, not compiled. ignore some syntax errors~~
 ```rust

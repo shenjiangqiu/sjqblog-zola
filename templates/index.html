@@ -14,19 +14,27 @@
         <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
 
         <title>Jiangqiu Shen's blog</title>
-
         {% block rss %}
         {% if config.generate_feed %}
             <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
         {% endif %}
         {% endblock rss %}
+
     </head>
     <body>
         {% block body %}
             <div class="section" id="splash">
+                
                 {% if config.extra.sam_menu %}
-                    
                     <h1>Jiangqiu Shen's Blog</h1>
+                    {% if config.generate_feed %}
+                    <div class="big-link">
+                        <a href="{{ get_url(path='rss.xml') }}" class="rss-link">
+                            RSS
+                        </a>
+                    </div>
+                        
+                    {% endif %}
                     {% for link in config.extra.sam_menu %}
                         <div class="big-link">
                             <a href="{{ link.link }}">

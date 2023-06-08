@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block htmltitle %}
+    {{ page.title }}
+{% endblock htmltitle %}
+
+{% block title %}
+    {{ page.title }}
+{% endblock title %}
+
+{% block content %}
+<h1>Recent Posts</h1>
+
+<ul>
+{% for post in archives|reverse|slice(end=10) %}
+  <li><a href="{{ post.permalink }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock content%}
