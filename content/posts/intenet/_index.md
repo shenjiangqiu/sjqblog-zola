@@ -1,6 +1,0 @@
-+++
-
-
-generate_feed = true
-+++
-

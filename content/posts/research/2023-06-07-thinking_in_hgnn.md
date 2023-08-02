@@ -9,8 +9,18 @@ authors = ["Jiangqiu Shen"]
 +++
 
 
-this post is about heterogeneous graph neural networks. related paper :[METANMP](/pdf/METANMP.pdf).
+this post is about heterogeneous graph neural networks. related paper :
+- [METANMP](/pdf/METANMP.pdf).
+- 
+related papers:
+- [openHGNN](https://github.com/BUPT-GAMMA/OpenHGNN) 
+- [Characterizing and UnderstandingHGNNs on GPUs](/pdf/cuhog.pdf)
+- [Heterogeneous Graph Attention Network](/pdf/HGAN.pdf)
+- [https://github.com/Jhy1993/HAN](https://github.com/Jhy1993/HAN)
+<!-- more -->
+
 ## Heterogeneous Graph Neural Networks
+
 a heterogeneous graph is a graph that has different types of nodes and edges. for example, a social network graph can be a heterogeneous graph, it has different types of nodes: user, post, comment, etc. and different types of edges: user-user, user-post, user-comment, etc.
 ## the Features of HGNN
 We summarize the characteristics of HGNNs as follows:
