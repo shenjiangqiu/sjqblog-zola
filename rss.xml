@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title></title>
-      <link>https://blog.thesjq.com</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://blog.thesjq.com/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/daily/prefill-generation/</link>
-          <guid>https://blog.thesjq.com/posts/daily/prefill-generation/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/prefill-generation/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/prefill-generation/</guid>
           <description>&lt;p&gt;This post shows how to simulate prefill and generation stage in NeuPIMs.&lt;&#x2F;p&gt;
 &lt;p&gt;current NeuPIMs only support generate 1 token.&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -35,8 +35,8 @@
 </title>
           <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/daily/soft-instinfer/</link>
-          <guid>https://blog.thesjq.com/posts/daily/soft-instinfer/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</guid>
           <description>&lt;h2 id=&quot;sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling&quot;&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;sofa.pdf&quot;&gt;SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h3&gt;
 &lt;ol&gt;
@@ -76,8 +76,8 @@
 </title>
           <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/gpt-todo/</link>
-          <guid>https://blog.thesjq.com/posts/research/gpt-todo/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gpt-todo/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gpt-todo/</guid>
           <description>&lt;p&gt;this post shows some todo list of research&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -89,8 +89,8 @@
 </title>
           <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/generative-accelerators/</link>
-          <guid>https://blog.thesjq.com/posts/research/generative-accelerators/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/generative-accelerators/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/generative-accelerators/</guid>
           <description>&lt;p&gt;this post summarizes the recent progress of GPT-3 and its accelerators.&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -102,8 +102,8 @@
 </title>
           <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/openroad-flow/</link>
-          <guid>https://blog.thesjq.com/posts/openroad-flow/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/openroad-flow/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/openroad-flow/</guid>
           <description>&lt;p&gt;this post contains the installation and usage tips of OpenRoad flow.&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -115,8 +115,8 @@
 </title>
           <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/books/intro-algo/</link>
-          <guid>https://blog.thesjq.com/posts/books/intro-algo/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/intro-algo/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/intro-algo/</guid>
           <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;introalgo.pdf&quot;&gt;link&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
@@ -131,8 +131,8 @@
 </title>
           <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/hetero-graph/</link>
-          <guid>https://blog.thesjq.com/posts/research/hetero-graph/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/hetero-graph/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/hetero-graph/</guid>
           <description>&lt;p&gt;this post introduce the heterogenous graph and its datasets.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;some datasets provided by pyG: &lt;a href=&quot;https:&#x2F;&#x2F;pytorch-geometric.readthedocs.io&#x2F;en&#x2F;latest&#x2F;modules&#x2F;datasets.html#heterogeneous-datasets&quot;&gt;link&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
@@ -148,8 +148,8 @@
 </title>
           <pubDate>Fri, 09 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/rust-tips/</link>
-          <guid>https://blog.thesjq.com/posts/rust-tips/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/rust-tips/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/rust-tips/</guid>
           <description>&lt;p&gt;this post contains some tips that I found useful when I was learning Rust.&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -161,8 +161,8 @@
 </title>
           <pubDate>Thu, 08 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/path/</link>
-          <guid>https://blog.thesjq.com/posts/research/path/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/path/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/path/</guid>
           <description>&lt;ul&gt;
 &lt;li&gt;this paper describes the meta path building in HGNN.&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;p992-sun.pdf&quot;&gt;the_paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
@@ -177,8 +177,8 @@
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/life/cmd-tools/</link>
-          <guid>https://blog.thesjq.com/posts/life/cmd-tools/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/cmd-tools/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/cmd-tools/</guid>
           <description>&lt;p&gt;this post include some interesting command line tools.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;bat&lt;&#x2F;em&gt; : a cat clone with syntax highlighting and git integration.&lt;&#x2F;li&gt;
@@ -206,8 +206,8 @@
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/life/github-action/</link>
-          <guid>https://blog.thesjq.com/posts/life/github-action/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/github-action/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/github-action/</guid>
           <description></description>
       </item>
       <item>
@@ -218,8 +218,8 @@
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/life/the-good-websites/</link>
-          <guid>https://blog.thesjq.com/posts/life/the-good-websites/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/the-good-websites/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/the-good-websites/</guid>
           <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;p.sda1.dev&#x2F;&quot;&gt;流浪图床&lt;&#x2F;a&gt; a image hosting service&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vercel.com&#x2F;templates&#x2F;next.js&#x2F;chatbot-ui&quot;&gt;chatgpt-webui&lt;&#x2F;a&gt; a chatbot ui&lt;&#x2F;li&gt;
@@ -240,8 +240,8 @@ the dgl is a graph library for deep learning, it support heterogeneous graph.&lt
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/linux-boot/</link>
-          <guid>https://blog.thesjq.com/posts/linux-boot/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/linux-boot/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/linux-boot/</guid>
           <description>&lt;h1 id=&quot;archlinux-boot-process&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#archlinux-boot-process&quot; aria-label=&quot;Anchor link for: archlinux-boot-process&quot;&gt;🐼&lt;&#x2F;a&gt;Archlinux boot process&lt;&#x2F;h1&gt;
 &lt;ul&gt;
 &lt;li&gt;referece: &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Arch_boot_process&quot;&gt;Archlinux boot process&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
@@ -256,8 +256,8 @@ the dgl is a graph library for deep learning, it support heterogeneous graph.&lt
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/roofline-model/</link>
-          <guid>https://blog.thesjq.com/posts/research/roofline-model/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/roofline-model/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/roofline-model/</guid>
           <description>&lt;p&gt;The roofline model is a performance modeling technique used to analyze and optimize the performance of parallel computing systems. It gives a visual representation of the performance limitations of the system and helps identify potential opportunities for optimization.&lt;&#x2F;p&gt;
 &lt;p&gt;The model plots the performance in GFLOPs per second on the y-axis and the operational intensity in bytes per FLOP on the x-axis. The performance is limited by two factors: the peak performance of the processor and the memory bandwidth of the system. These two limitations are represented by two diagonal lines on the graph, which create a triangle called the &quot;roofline&quot;.&lt;&#x2F;p&gt;
 &lt;p&gt;To optimize performance, application developers must find ways to increase operational intensity so that the code operates closer to or above the roofline. This can be achieved through techniques such as data reuse, loop tiling, and algorithmic optimization.&lt;&#x2F;p&gt;
@@ -272,8 +272,8 @@ the dgl is a graph library for deep learning, it support heterogeneous graph.&lt
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</link>
-          <guid>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/thinking-in-hgnn/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/thinking-in-hgnn/</guid>
           <description>&lt;p&gt;this post is about heterogeneous graph neural networks. related paper :&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;METANMP.pdf&quot;&gt;METANMP&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
@@ -296,8 +296,8 @@ the dgl is a graph library for deep learning, it support heterogeneous graph.&lt
 </title>
           <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/async-rust/</link>
-          <guid>https://blog.thesjq.com/posts/async-rust/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/async-rust/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/async-rust/</guid>
           <description>&lt;p&gt;async in rust.
 A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io&#x2F;async-book&#x2F;&quot;&gt;the async book&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;this post shares my understanding of async in Rust.&lt;&#x2F;p&gt;
@@ -311,8 +311,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/interesting-lifetime-problems/</link>
-          <guid>https://blog.thesjq.com/posts/interesting-lifetime-problems/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/interesting-lifetime-problems/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/interesting-lifetime-problems/</guid>
           <description>&lt;p&gt;the lifetime checker of rust is very strict, and it is not easy to handle complicate lifetime problems&lt;&#x2F;p&gt;
 &lt;p&gt;in this post, I will collect some interesting lifetime problems I encountered as long as my solutions.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-lifetime-of-when-capturing-a-variable-in-a-closure&quot; aria-label=&quot;Anchor link for: the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;🐼&lt;&#x2F;a&gt;the lifetime of when capturing a variable in a closure&lt;&#x2F;h1&gt;
@@ -326,8 +326,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/gearbox-walk/</link>
-          <guid>https://blog.thesjq.com/posts/research/gearbox-walk/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gearbox-walk/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gearbox-walk/</guid>
           <description>&lt;p&gt;the post illustrate the gearbox instructions of $$C[A[i]] += B[i]$$,&lt;&#x2F;p&gt;
 &lt;p&gt;the related papers:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -337,7 +337,7 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 &lt;&#x2F;ul&gt;
 &lt;p&gt;the related posts:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h1 id=&quot;walkthrough-of-inderect-c-a-b&quot;&gt;walkthrough of inderect c,a,b&lt;&#x2F;h1&gt;
 &lt;ul&gt;
@@ -369,8 +369,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/pim-design/</link>
-          <guid>https://blog.thesjq.com/posts/research/pim-design/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/pim-design/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/pim-design/</guid>
           <description>&lt;p&gt;the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.&lt;&#x2F;p&gt;
 &lt;p&gt;the related papers:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -659,8 +659,8 @@ which is explained in Section 2.&lt;&#x2F;p&gt;
 </title>
           <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/rethink-spmspm/</link>
-          <guid>https://blog.thesjq.com/posts/research/rethink-spmspm/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/rethink-spmspm/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/rethink-spmspm/</guid>
           <description>&lt;p&gt;rethink the spmspm in memory, the backgrouds, challenges, and possible solutions.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;background&quot;&gt;background&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;spmspm-workflow&quot;&gt;spmspm workflow&lt;&#x2F;h2&gt;
@@ -685,8 +685,8 @@ which is explained in Section 2.&lt;&#x2F;p&gt;
 </title>
           <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/chat-tokio/</link>
-          <guid>https://blog.thesjq.com/posts/chat-tokio/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/chat-tokio/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/chat-tokio/</guid>
           <description>&lt;p&gt;go thought the tokio example &lt;code&gt;chat&lt;&#x2F;code&gt; and learn how to use tokio.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-source-code-of-chat&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-source-code-of-chat&quot; aria-label=&quot;Anchor link for: the-source-code-of-chat&quot;&gt;🐼&lt;&#x2F;a&gt;the source code of chat&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#introduction&quot; aria-label=&quot;Anchor link for: introduction&quot;&gt;🐼&lt;&#x2F;a&gt;introduction&lt;&#x2F;h2&gt;
@@ -967,8 +967,8 @@ which is explained in Section 2.&lt;&#x2F;p&gt;
 </title>
           <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/tokio/</link>
-          <guid>https://blog.thesjq.com/posts/tokio/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/tokio/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/tokio/</guid>
           <description>&lt;h1 id=&quot;runtime-parts&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#runtime-parts&quot; aria-label=&quot;Anchor link for: runtime-parts&quot;&gt;🐼&lt;&#x2F;a&gt;runtime parts&lt;&#x2F;h1&gt;
 &lt;p&gt;there are three parts in the runtime.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;scheduler&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#scheduler&quot; aria-label=&quot;Anchor link for: scheduler&quot;&gt;🐼&lt;&#x2F;a&gt;scheduler&lt;&#x2F;h2&gt;
@@ -984,15 +984,15 @@ which is explained in Section 2.&lt;&#x2F;p&gt;
 </title>
           <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/russh/</link>
-          <guid>https://blog.thesjq.com/posts/russh/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/russh/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/russh/</guid>
           <description>&lt;p&gt;Server and client SSH asynchronous library, based on tokio&#x2F;futures.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;the crates.io of russh: &lt;a href=&quot;https:&#x2F;&#x2F;crates.io&#x2F;crates&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;li&gt;the github of russh: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;warp-tech&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;russh-client-example&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#russh-client-example&quot; aria-label=&quot;Anchor link for: russh-client-example&quot;&gt;🐼&lt;&#x2F;a&gt;russh client example&lt;&#x2F;h1&gt;
 &lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; connect and exchange the key
@@ -1140,11 +1140,11 @@ we can first read the key stored in out home directory:&lt;code&gt;~&#x2F;.ssh&#
 </title>
           <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/ssh-login/</link>
-          <guid>https://blog.thesjq.com/posts/ssh-login/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh-login/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh-login/</guid>
           <description>&lt;p&gt;understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
-the detailed implementation using rust: &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
-the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+the detailed implementation using rust: &lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
+the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-symetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-symetrical-encryption&quot; aria-label=&quot;Anchor link for: the-symetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the symetrical encryption&lt;&#x2F;h1&gt;
 &lt;p&gt;The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.&lt;&#x2F;p&gt;
 &lt;p&gt;Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.&lt;&#x2F;p&gt;
@@ -1190,8 +1190,8 @@ The basis of this procedure for classic Diffie-Hellman are:&lt;&#x2F;li&gt;
 </title>
           <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/ssh/</link>
-          <guid>https://blog.thesjq.com/posts/ssh/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh/</guid>
           <description>&lt;p&gt;there are several protocal RFCs for ssh,&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4251&quot;&gt;rfc 4251&lt;&#x2F;a&gt; is the main Architecture for ssh.&lt;&#x2F;li&gt;
@@ -1209,10 +1209,10 @@ The basis of this procedure for classic Diffie-Hellman are:&lt;&#x2F;li&gt;
 </title>
           <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/welcome/</link>
-          <guid>https://blog.thesjq.com/posts/welcome/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/welcome/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/welcome/</guid>
           <description>&lt;p&gt;Welcome! this blog is build with &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt;, a static site generator written in rust.&lt;&#x2F;p&gt;
-&lt;p&gt;Please check the subsections here for more posts!the subsections: &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;&quot;&gt;posts&lt;&#x2F;a&gt; ..&lt;&#x2F;p&gt;
+&lt;p&gt;Please check the subsections here for more posts!the subsections: &lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;&quot;&gt;posts&lt;&#x2F;a&gt; ..&lt;&#x2F;p&gt;
 </description>
       </item>
     </channel>

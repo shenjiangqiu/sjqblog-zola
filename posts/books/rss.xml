@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title></title>
-      <link>https://blog.thesjq.com/posts/books/</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://blog.thesjq.com/posts/books/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/posts/books/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/books/intro-algo/</link>
-          <guid>https://blog.thesjq.com/posts/books/intro-algo/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/intro-algo/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/intro-algo/</guid>
           <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;introalgo.pdf&quot;&gt;link&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;

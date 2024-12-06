@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://blog.thesjq.com/sitemap.xml
+Sitemap: https://shenjiangqiu.github.io/sjqblog-zola/sitemap.xml

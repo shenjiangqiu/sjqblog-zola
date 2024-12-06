@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - hgnn</title>
-      <link>https://blog.thesjq.com</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://blog.thesjq.com/tags/hgnn/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/hgnn/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/hetero-graph/</link>
-          <guid>https://blog.thesjq.com/posts/research/hetero-graph/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/hetero-graph/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/hetero-graph/</guid>
           <description>&lt;p&gt;this post introduce the heterogenous graph and its datasets.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;some datasets provided by pyG: &lt;a href=&quot;https:&#x2F;&#x2F;pytorch-geometric.readthedocs.io&#x2F;en&#x2F;latest&#x2F;modules&#x2F;datasets.html#heterogeneous-datasets&quot;&gt;link&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
@@ -33,8 +33,8 @@
 </title>
           <pubDate>Thu, 08 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/path/</link>
-          <guid>https://blog.thesjq.com/posts/research/path/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/path/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/path/</guid>
           <description>&lt;ul&gt;
 &lt;li&gt;this paper describes the meta path building in HGNN.&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;p992-sun.pdf&quot;&gt;the_paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
@@ -49,8 +49,8 @@
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</link>
-          <guid>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/thinking-in-hgnn/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/thinking-in-hgnn/</guid>
           <description>&lt;p&gt;this post is about heterogeneous graph neural networks. related paper :&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;METANMP.pdf&quot;&gt;METANMP&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;

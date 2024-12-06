@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - lifetime</title>
-      <link>https://blog.thesjq.com</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://blog.thesjq.com/tags/lifetime/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/lifetime/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/interesting-lifetime-problems/</link>
-          <guid>https://blog.thesjq.com/posts/interesting-lifetime-problems/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/interesting-lifetime-problems/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/interesting-lifetime-problems/</guid>
           <description>&lt;p&gt;the lifetime checker of rust is very strict, and it is not easy to handle complicate lifetime problems&lt;&#x2F;p&gt;
 &lt;p&gt;in this post, I will collect some interesting lifetime problems I encountered as long as my solutions.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-lifetime-of-when-capturing-a-variable-in-a-closure&quot; aria-label=&quot;Anchor link for: the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;🐼&lt;&#x2F;a&gt;the lifetime of when capturing a variable in a closure&lt;&#x2F;h1&gt;
