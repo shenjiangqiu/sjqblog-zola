@@ -7,3 +7,5 @@ serve:
     zola serve
 build:
     zola build
+create path:
+    ./create.sh {{path}}

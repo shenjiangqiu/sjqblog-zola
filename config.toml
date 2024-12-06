@@ -4,8 +4,8 @@ base_url = "https://blog.thesjq.com"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 default_language = "en"
-generate_feed = true
-feed_filename = "rss.xml"
+generate_feeds = true
+feed_filenames = ["rss.xml"]
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 theme = "sam"
