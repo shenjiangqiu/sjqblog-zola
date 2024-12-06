@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - gearbox</title>
+      <link>https://blog.thesjq.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/tags/gearbox/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    gearbox-walk
+</title>
+          <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/gearbox-walk/</link>
+          <guid>https://blog.thesjq.com/posts/research/gearbox-walk/</guid>
+          <description>&lt;p&gt;the post illustrate the gearbox instructions of $$C[A[i]] += B[i]$$,&lt;&#x2F;p&gt;
+&lt;p&gt;the related papers:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gearbox: &lt;a href=&quot;&#x2F;pdf&#x2F;Gearbox.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Fulcrum: &lt;a href=&quot;&#x2F;pdf&#x2F;Fulcrum_A_Simplified_Control_and_Access_Mechanism_Toward_Flexible_and_Practical_In-Situ_Accelerators.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Chopper: &lt;a href=&quot;&#x2F;pdf&#x2F;CHOPPER-HPCA-23.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;the related posts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;walkthrough-of-inderect-c-a-b&quot;&gt;walkthrough of inderect c,a,b&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the original graph:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;gearbox_walk_through.png&quot; alt=&quot;gearbox_walk_through&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;explanation-of-the-graph&quot;&gt;explanation of the graph&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;instruction 1:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;ins1.png&quot; alt=&quot;gearbox_walk_through_1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;walkthrough-of-spmv-local-update&quot;&gt;walkthrough of spmv local update&lt;&#x2F;h1&gt;
+&lt;h1 id=&quot;instruction-list&quot;&gt;instruction list&lt;&#x2F;h1&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    pim-design
+</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/pim-design/</link>
+          <guid>https://blog.thesjq.com/posts/research/pim-design/</guid>
+          <description>&lt;p&gt;the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.&lt;&#x2F;p&gt;
+&lt;p&gt;the related papers:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gearbox: &lt;a href=&quot;&#x2F;pdf&#x2F;Gearbox.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Fulcrum: &lt;a href=&quot;&#x2F;pdf&#x2F;Fulcrum_A_Simplified_Control_and_Access_Mechanism_Toward_Flexible_and_Practical_In-Situ_Accelerators.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Chopper: &lt;a href=&quot;&#x2F;pdf&#x2F;CHOPPER-HPCA-23.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;design:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;async remote task&lt;&#x2F;li&gt;
+&lt;li&gt;buffers and nocs&lt;&#x2F;li&gt;
+&lt;li&gt;traffic flow control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;the original discuss paper scan:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;1.jpg&quot;&gt;scans 1&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;2.jpg&quot;&gt;scans 2&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;3.jpg&quot;&gt;scans 3&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;4.jpg&quot;&gt;scans 4&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;5.jpg&quot;&gt;scans 5&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;subarray-architecture&quot;&gt;subarray architecture&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;from-fulcrum-paper&quot;&gt;from fulcrum paper:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;dram details:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;interleaving:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;subarray interleaving:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The second type of interleaving is subarray interleaving or
+open-bitline architecture . Since the size of a sense
+amplifier is larger than a cell , modern DRAM designs
+accommodate only as many as sense amplifiers in a row to
+sense half a row of cells. To sense the entire row of cells,
+each subarray has bitlines that connect two rows of sense
+amplifiers, one above and one below the subarray.&lt;&#x2F;p&gt;
+&lt;p&gt;As a side benefit, mat interleaving and subarray interleaving make the memory more robust against multiple-bit upset,
+where soft errors change the value of adjacent cells. &lt;strong&gt;In fact, when bits in a column are not physically close to each other, multiple-bit upset only changes one bit from a column and then error detection mechanisms (which can detect one error) can detect the error.&lt;&#x2F;strong&gt;
+Therefore, keeping the current interleaving and not changing the layout is desirable.
+However, with interleaving, row-wide computation on
+more than 4-bit values is impractical, as the result of an addition and multiplication in each 4 bits of the output depends
+on the values in other mats. With row-wide operations, the
+circuits for reuniting the interleaved bits impose a significant
+hardware overhead as many wires cross each other.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;mat interleaving:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;interleaving.png&quot; alt=&quot;interleaving&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;fulcrum design:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;reuniting interleaved bits:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;reuniting.png&quot; alt=&quot;reuniting 1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;the walkers:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Hence, we introduced
+column-selection latches where we store the one-hot-encoded
+value of a column and shift the value to access the next col-
+umn, without requiring one column decoder per Walker, per
+subarray, and per mat.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;the controller:
+&lt;ul&gt;
+&lt;li&gt;a 6-bit counter per Walker
+for detecting a fully-accessed Walker&lt;&#x2F;li&gt;
+&lt;li&gt;Each Walker has a 2-bit latch that determines to which Walker
+we should switch and rename when the Walker is fully ac-
+cessed (elaborated in Section 5.1.6),&lt;&#x2F;li&gt;
+&lt;li&gt;a 4-bit counter for counting
+the wait time for a new row to be read from the subarray and
+be stored in a Walker, or for a Walker to be written to the
+subarray,&lt;&#x2F;li&gt;
+&lt;li&gt;three 11-bit (11 = log 2 of the number of
+rows in each pair of subarrays (2048)) row counters which are
+initialized to the row address of the beginning of the data and
+will be compared against the end of the data in the subarray.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;gearbox-architechture&quot;&gt;gearbox architechture:&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;spmspv-walk-through&quot;&gt;SPMSPV walk through:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;step 1: FrontierDistribution:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In iterative applications, the frontier is generated in previous iterations and already resides in subarrays in which their
+corresponding columns reside, except for the output entries that
+correspond to long row&#x2F;columns, which reside in the logic layer. At
+the start of each iteration, we broadcast the entries residing in the
+logic layer to all subarrays and append them to the frontier array
+in each subarray.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;the frontier is generated by shared frontier in logic layer and the local frontier.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;step 2: offset packing:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step packs the column offset, col-
+umn length, and the values from the frontier array that should be
+multiplied in the column into a new array. Figure 10 shows the
+pseudo-code of this step.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;&#x2F;img&#x2F;packing.png&quot; alt=&quot;packing&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;put the index, lengh and value into a new array.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;step3: localAccumulations:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step multiplies each value of
+the frontier with its corresponding column. Figure 11 demonstrates
+the pseudo-code of this step. In this step, if a clean value is being
+updated, the clean value indicator and its row index will be sent to
+the Dispatcher.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;&#x2F;img&#x2F;local.png&quot; alt=&quot;localAccumulations&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;step4: Dispatching:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In this step, the Dispatcher sends all the
+stored entries (index-value pairs) to their destination subarrays.
+Here, the Dispatcher’s Walker acts as a buffer.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;step5: RemoteAccumulations:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In this step, the SPU sequentially processes index-value pairs received in the previous step and
+performs the accumulations. Also, in this step, if the value in the
+index-value pair is a clean-value indicator, the index of clean-value
+is appended to the corresponding array&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;step6: applying:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step processes the array containing the non-zero indexes to generate the frontier for the next iteration, initializes
+the output vector to clean indicators, and sends long-activating
+entries to the logic layer to be reduced and applied there. It also
+performs the apply operation 𝑓 𝑖𝑛𝑎𝑙𝑂𝑢𝑡𝑝𝑢𝑡 [:] = 𝑂𝑢𝑡𝑝𝑢𝑡 [:] + 𝛼𝑦 [:],
+which is explained in Section 2.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;summary-of-the-gearbox&quot;&gt;summary of the gearbox:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the frontier: $$F[0]$$ is the input index, $$F[1]$$ is the input value ,for each frontier, get the pack, $$P[0]$$ is the matrix b index, $$P[1]$$ is the matrix b len, $$P[2]$$ is the value of the frontier.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;local: for each value in P, the P[0] is used as offset to find the correct row, store F_value, len, offset in PE. go throught the row, for each element in the row CSC_pair[0] is row index, CSC_pair[1] is the value, Output[RowId] += F_value * Row_value.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;problems-of-the-gearbox&quot;&gt;problems of the gearbox:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;handle dense output write: not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;possible solution one: every time a random access arrived, use the decoder to generage a one-hot value and write the dense output&lt;&#x2F;li&gt;
+&lt;li&gt;possible solution two: from the current one-hot value, shift left or right to generate the next one-hot value, and write the dense output&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;handle package orgainzation in dispatcher: not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;during the dispatching stage, the dispatcher will send and receive the data. what&#x27;s the code in the pe to handle sending and receiving data simultaneously?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;icnt and tsv details(port, route): not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;the control flow mechanism?&lt;&#x2F;li&gt;
+&lt;li&gt;there are multiple subarrays sending and multiple subarrays receiving(80000), how the subarrays know that all other subarrays have finished sending and receiving?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;the-designe-of-async-spmspm-our-work&quot;&gt;the designe of async spmspm(our work)&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;motivation:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;the bottlenech for spmspm of each task is not banlance, if no async, each task&#x27;s time will be decided by the slowest subarray inside that task. when async is enabled, the time will be decide by slowest subarray with accumulated time.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;description-of-the-design&quot;&gt;description of the design:&lt;&#x2F;h2&gt;
+&lt;p&gt;to support async remote dispatcher, there are several challenges:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;when sending the remote traffic, all local subarray should be stoped because the dispatcher will be in sending mode and cannot serve the local traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;when receiving the remove traffic, the local subarray should be stoped because the dispatcher will be in receiving mode and cannot serve the local traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;when update the dense result, the local subarray ???&lt;&#x2F;li&gt;
+&lt;li&gt;we should send the remote traffic to a buffer for reducing interupts to the working subarray.&lt;&#x2F;li&gt;
+&lt;li&gt;when start to send the traffic to remote, there should be a flow-control mechanism to avoid the deadlock.&lt;&#x2F;li&gt;
+&lt;li&gt;the buffer management should be carefully designed to save space.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;designs&quot;&gt;designs:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;when local dispatcher find TODO number of traffic, it will start to send it to the buffer inside this die&lt;&#x2F;li&gt;
+&lt;li&gt;then the die buffer find TODO number of traffic for some destination, it will start to send it to the remote die&lt;&#x2F;li&gt;
+&lt;li&gt;when the remote die recieved enough traffic, it will send a signal of some bank, make the bank to become recieving mode. and send all traffic to the bank.&lt;&#x2F;li&gt;
+&lt;li&gt;before start sending eveything, the subarray, die buffer will need to acuire a lock first to ensure that there will be no deadlock in ring and the buffer will not be full.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-buffer-design&quot;&gt;the buffer design:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;todo: how to partition the buffer, the buffer should be worked as a queue, there are two choice:
+&lt;ul&gt;
+&lt;li&gt;store all traffic in one unified buffer, when the traffic is full, stop recieving traffic, scan the packages and decide which package are going to be send to the remote: problem: if only a part of the traffic will be able to send. how to fix the hole in the queue.&lt;&#x2F;li&gt;
+&lt;li&gt;store the traffic in several buffers, each buffer is a queue for a dedicated destination. problem: how to partition the space. if all traffic is of one channel, then the buffer will be underutilized.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;todo: when to trigger buffer sending. problem: if the buffer of the source die is full, the traffic may not able to be send because there are no enough space in the remote die. two choice: the remote die will send the final update as soon as possible. or there should be a communication mechanism between the source die and the remote die to ensure that the remote die will have enough space to store the traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;todo: how to manage the icnt traffic flow control: &lt;a href=&quot;http:&#x2F;&#x2F;utenti.dieei.unict.it&#x2F;users&#x2F;gascia&#x2F;COURSES&#x2F;sist_emb_14_15&#x2F;download&#x2F;SE22_noc_flow_control.pdf&quot;&gt;link&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-buffer-in-logic-die&quot;&gt;the buffer in logic die:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;partition the buffer:
+&lt;ul&gt;
+&lt;li&gt;the traffic coming from the source die will be forwarded to the target die, target bank, if we should partition the buffer into servral parts&quot;
+&lt;ul&gt;
+&lt;li&gt;per bank&lt;&#x2F;li&gt;
+&lt;li&gt;per die&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;do not partition the buffer, use the unified buffer&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;TODO, how to trigger sending&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-package-sending-design-of-source-subarray&quot;&gt;the package sending design of source subarray:&lt;&#x2F;h3&gt;
+&lt;p&gt;the dispatcher will send the traffic.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;problem&quot;&gt;problem:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;when the dispatcher is recieving traffic, there should be 3 types of traffic:
+&lt;ol&gt;
+&lt;li&gt;same bank&lt;&#x2F;li&gt;
+&lt;li&gt;different bank, same die&lt;&#x2F;li&gt;
+&lt;li&gt;different die&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;when handle the traffic, if simply send all traffic to the buffer. the size of the queue may be too large, because the type 1,2 not need to be there.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;todo-solution&quot;&gt;TODO solution:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO) solution1: when the dispatcher is full, directly send the traffic to the local bank, but send the traffic to the layer buffer for type 2,3&lt;&#x2F;li&gt;
+&lt;li&gt;(TODO) solution2: when the dispatcher is full, scan the packages, send signal to the banks that should receive the traffic, and make the banks ready. directly send type2 to bank, only send type3 to the buffer&lt;&#x2F;li&gt;
+&lt;li&gt;(TOOD) solution3: send all traffic to the buffer. only send the traffic when the buffer is triggered to send.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-package-update-design-of-destination-subarray&quot;&gt;the package update design of destination subarray:&lt;&#x2F;h3&gt;
+&lt;p&gt;the subarray will recieve the remote traffic.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;problem-1&quot;&gt;problem:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;when recieve the traffic, should the bank immediatly update the destination?
+&lt;ul&gt;
+&lt;li&gt;if yes, all subarray should be stoped and the walkers may need to be reset to be ready to write.&lt;&#x2F;li&gt;
+&lt;li&gt;if no, (TODO) seems no benifit because the subarray still need to stop.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;todo-solution-1&quot;&gt;TODO solution:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO), because the gearbox paper do not have details of dense write. so we do not know how to do it.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;miscs&quot;&gt;miscs:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO) how to handle and when to transfore the dense formate to sparse formate.&lt;&#x2F;li&gt;
+&lt;li&gt;(TODO) When perform the transfomation, the subarray should be stoped, and the walker should be reset to be ready to write.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    rethink-spmspm
+</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/rethink-spmspm/</link>
+          <guid>https://blog.thesjq.com/posts/research/rethink-spmspm/</guid>
+          <description>&lt;p&gt;rethink the spmspm in memory, the backgrouds, challenges, and possible solutions.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;background&quot;&gt;background&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;spmspm-workflow&quot;&gt;spmspm workflow&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;gamma&quot;&gt;Gamma:&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gamma performs SpMSpM&#x27;s computation using specialized processing elements with simple high-radix mergers, and performs many merges in parallel to achieve high throughput. Gamma uses a novel on-chip storage structure that combines features of both caches and explicitly managed buffers. Gamma uses simple processing elements (PEs) that linearly combine sparse input rows to produce each output row. Gamma&#x27;s processing elements are organized into a two-level hierarchy, with a small number of high-radix PEs at the top level and a larger number of low-radix PEs at the bottom level. The top-level PEs perform a small number of high-radix merges, while the bottom-level PEs perform many low-radix merges in parallel. Gamma&#x27;s on-chip storage structure is organized into a hierarchy of caches and explicitly managed buffers, with each level of the hierarchy storing a different subset of the input and output matrices (research.nvidia.com)
+(dl.acm.org)
+(people.csail.mit.edu)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;row-wise-algorithm&quot;&gt;row wise algorithm&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Gustavson algorithm is a row-wise algorithm for sparse matrix-matrix multiplication. In this algorithm, each nonzero value in a row is multiplied by the nonzero values corresponding to the column index. These values are summed and stored in a temporary row buffer based on their column indices (bing.com)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;gamma-details&quot;&gt;Gamma details&lt;&#x2F;h2&gt;
+</description>
+      </item>
+    </channel>
+</rss>

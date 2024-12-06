@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title></title>
+      <link>https://blog.thesjq.com/posts/life/</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/posts/life/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 07 Jun 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    cmd-tools
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/cmd-tools/</link>
+          <guid>https://blog.thesjq.com/posts/life/cmd-tools/</guid>
+          <description>&lt;p&gt;this post include some interesting command line tools.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bat&lt;&#x2F;em&gt; : a cat clone with syntax highlighting and git integration.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;fd&lt;&#x2F;em&gt; : a simple, fast and user-friendly alternative to find.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;exa&lt;&#x2F;em&gt; : a modern replacement for ls.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;ripgrep&lt;&#x2F;em&gt; : combines the usability of The Silver Searcher with the raw speed of grep.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;procs&lt;&#x2F;em&gt; : a modern replacement for ps written in Rust.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;dust&lt;&#x2F;em&gt; : a more intuitive version of du in rust.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;hyperfine&lt;&#x2F;em&gt; : a command-line benchmarking tool.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;bottom&lt;&#x2F;em&gt; : a cross-platform graphical process&#x2F;system monitor with a customizable interface and a multitude of features.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;bandwhich&lt;&#x2F;em&gt; : a CLI utility for displaying current network utilization by process, connection and remote IP&#x2F;hostname.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;zoxide&lt;&#x2F;em&gt; : a blazing fast replacement for your cd command, inspired by z.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;starship&lt;&#x2F;em&gt; : a minimal, blazing-fast, and infinitely customizable prompt for any shell.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;tokei&lt;&#x2F;em&gt; : a program that displays statistics about your code.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;just&lt;&#x2F;em&gt; : a handy way to save and run project-specific commands.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;skim&lt;&#x2F;em&gt; : a fuzzy finder in rust.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    github-action
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/github-action/</link>
+          <guid>https://blog.thesjq.com/posts/life/github-action/</guid>
+          <description></description>
+      </item>
+      <item>
+          <title>
+    
+    
+    the-good-websites
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/the-good-websites/</link>
+          <guid>https://blog.thesjq.com/posts/life/the-good-websites/</guid>
+          <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;p.sda1.dev&#x2F;&quot;&gt;流浪图床&lt;&#x2F;a&gt; a image hosting service&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vercel.com&#x2F;templates&#x2F;next.js&#x2F;chatbot-ui&quot;&gt;chatgpt-webui&lt;&#x2F;a&gt; a chatbot ui&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tera.netlify.app&#x2F;docs&#x2F;#built-in-filters&quot;&gt;tera&lt;&#x2F;a&gt; a template engine use in &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;templates&#x2F;pages-sections&#x2F;&quot;&gt;zola&lt;&#x2F;a&gt; and written in rust&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;templates&#x2F;pages-sections&#x2F;&quot;&gt;zola&lt;&#x2F;a&gt; a static site generator written in rust&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;emojihub.org&#x2F;&quot;&gt;https:&#x2F;&#x2F;emojihub.org&#x2F;&lt;&#x2F;a&gt; a emoji search engine&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;networkrepository.com&#x2F;networks.php&quot;&gt;networks repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.dgl.ai&#x2F;en&#x2F;0.8.x&#x2F;guide&#x2F;graph-heterogeneous.html&quot;&gt;dgl&lt;&#x2F;a&gt;
+the dgl is a graph library for deep learning, it support heterogeneous graph.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    Rust Tips
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Fri Jun  9, 2023
+
+        
+        
+            
+                &#183; 233 words
+            
+        
+        
+            
+            
+                &#183; 2 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/rust-tips/">
+                rust-tips
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/rust/">
+                            rust
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/rust-tips/#the-data-isolation-of-struct">the data isolation of struct</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>this post contains some tips that I found useful when I was learning Rust.</p>
+<span id="continue-reading"></span><h3 id="the-data-isolation-of-struct"><a class="zola-anchor" href="#the-data-isolation-of-struct" aria-label="Anchor link for: the-data-isolation-of-struct">🐼</a>the data isolation of struct</h3>
+<p>there is a post in reddit: <a href="https://www.reddit.com/r/rust/comments/1440094/problematic_pattern_ive_encountered_a_few_times/?utm_source=share&amp;utm_medium=web2x&amp;context=3">Problematic pattern I've encountered a few times now...</a>, first let's look at the code:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>Foo {
+</span><span>    </span><span style="color:#bf616a;">items</span><span>: Vec&lt;</span><span style="color:#b48ead;">u32</span><span>&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Foo {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">run_all</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>) {
+</span><span>        </span><span style="color:#b48ead;">for</span><span> item in &amp;</span><span style="color:#bf616a;">self</span><span>.items {
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">run_one</span><span>(item);
+</span><span>        }
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">run_one</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: &amp;</span><span style="color:#b48ead;">u32</span><span>) {
+</span><span>        </span><span style="color:#65737e;">// ...
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>the <code>self.run_one(item)</code> will take a reference of item as well as a &amp;mut self, which violates the rule: you can't have a mutable reference and a immutable reference at the same time.
+how to solve this problem? the problems is obvious: when can <code>run_one</code>, we have a <code>&amp;mut self</code> which could change the <code>self.items</code>, that might cause the <code>item</code> to be invalid. so we need to make sure that <code>run_one</code> will not change <code>self.items</code>. the solution is isolate the data that run_one might change. so we can change the code to:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>Foo {
+</span><span>    </span><span style="color:#bf616a;">state</span><span>: StuffToUpdate,
+</span><span>    </span><span style="color:#bf616a;">items</span><span>: Vec&lt;</span><span style="color:#b48ead;">u32</span><span>&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">struct </span><span>StuffToUpdate {
+</span><span>    </span><span style="color:#65737e;">/// ...
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Foo {
+</span><span>    </span><span style="color:#65737e;">// NOTE take by ownership!
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">run_all</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>)  {
+</span><span>        </span><span style="color:#65737e;">// EDIT: forgot to actually... loop.
+</span><span>        </span><span style="color:#b48ead;">for</span><span> item in &amp;</span><span style="color:#bf616a;">self</span><span>.items {
+</span><span>            state.</span><span style="color:#96b5b4;">run_one</span><span>(items);
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>StuffToUpdate {
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">run_one</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">item</span><span>: &amp;</span><span style="color:#b48ead;">u32</span><span>) {
+</span><span>        </span><span style="color:#65737e;">// ...
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>nice job, run_one will only change the state of StuffToUpdate, and we move run one to StuffToUpdate to make sure it cannot change the items.</p>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

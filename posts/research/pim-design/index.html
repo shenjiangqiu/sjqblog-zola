@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Fri Mar 10, 2023
+
+        
+        
+            
+                &#183; 1807 words
+            
+        
+        
+            
+            
+                &#183; 10 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/research/">
+                    research/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/research/pim-design/">
+                pim-design
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/research/">
+                            research
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/pim/">
+                            pim
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/gearbox/">
+                            gearbox
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/fulcrum/">
+                            fulcrum
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/spmv/">
+                            spmv
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/pim-design/#subarray-architecture">subarray architecture</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#from-fulcrum-paper">from fulcrum paper:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#gearbox-architechture">gearbox architechture:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#summary-of-the-gearbox">summary of the gearbox:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#problems-of-the-gearbox">problems of the gearbox:</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/pim-design/#the-designe-of-async-spmspm-our-work">the designe of async spmspm(our work)</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#motivation">motivation:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#description-of-the-design">description of the design:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#designs">designs:</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/pim-design/#miscs">miscs:</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.</p>
+<p>the related papers:</p>
+<ul>
+<li>Gearbox: <a href="/pdf/Gearbox.pdf">paper</a></li>
+<li>Fulcrum: <a href="/pdf/Fulcrum_A_Simplified_Control_and_Access_Mechanism_Toward_Flexible_and_Practical_In-Situ_Accelerators.pdf">paper</a></li>
+<li>Chopper: <a href="/pdf/CHOPPER-HPCA-23.pdf">paper</a></li>
+</ul>
+<p>design:</p>
+<ul>
+<li>async remote task</li>
+<li>buffers and nocs</li>
+<li>traffic flow control</li>
+</ul>
+<p>the original discuss paper scan:</p>
+<ul>
+<li><a href="/img/1.jpg">scans 1</a></li>
+<li><a href="/img/2.jpg">scans 2</a></li>
+<li><a href="/img/3.jpg">scans 3</a></li>
+<li><a href="/img/4.jpg">scans 4</a></li>
+<li><a href="/img/5.jpg">scans 5</a></li>
+</ul>
+<h1 id="subarray-architecture">subarray architecture</h1>
+<h2 id="from-fulcrum-paper">from fulcrum paper:</h2>
+<ul>
+<li>
+<p>dram details:</p>
+<ul>
+<li>
+<p>interleaving:</p>
+<ul>
+<li>subarray interleaving:</li>
+</ul>
+<p>The second type of interleaving is subarray interleaving or
+open-bitline architecture . Since the size of a sense
+amplifier is larger than a cell , modern DRAM designs
+accommodate only as many as sense amplifiers in a row to
+sense half a row of cells. To sense the entire row of cells,
+each subarray has bitlines that connect two rows of sense
+amplifiers, one above and one below the subarray.</p>
+<p>As a side benefit, mat interleaving and subarray interleaving make the memory more robust against multiple-bit upset,
+where soft errors change the value of adjacent cells. <strong>In fact, when bits in a column are not physically close to each other, multiple-bit upset only changes one bit from a column and then error detection mechanisms (which can detect one error) can detect the error.</strong>
+Therefore, keeping the current interleaving and not changing the layout is desirable.
+However, with interleaving, row-wide computation on
+more than 4-bit values is impractical, as the result of an addition and multiplication in each 4 bits of the output depends
+on the values in other mats. With row-wide operations, the
+circuits for reuniting the interleaved bits impose a significant
+hardware overhead as many wires cross each other.</p>
+<ul>
+<li>
+<p>mat interleaving:</p>
+</li>
+<li>
+<p><img src="/img/interleaving.png" alt="interleaving" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>fulcrum design:</p>
+<ul>
+<li>
+<p>reuniting interleaved bits:</p>
+</li>
+<li>
+<p><img src="/img/reuniting.png" alt="reuniting 1" /></p>
+</li>
+<li>
+<p>the walkers:</p>
+</li>
+</ul>
+<p>Hence, we introduced
+column-selection latches where we store the one-hot-encoded
+value of a column and shift the value to access the next col-
+umn, without requiring one column decoder per Walker, per
+subarray, and per mat.</p>
+<ul>
+<li>the controller:
+<ul>
+<li>a 6-bit counter per Walker
+for detecting a fully-accessed Walker</li>
+<li>Each Walker has a 2-bit latch that determines to which Walker
+we should switch and rename when the Walker is fully ac-
+cessed (elaborated in Section 5.1.6),</li>
+<li>a 4-bit counter for counting
+the wait time for a new row to be read from the subarray and
+be stored in a Walker, or for a Walker to be written to the
+subarray,</li>
+<li>three 11-bit (11 = log 2 of the number of
+rows in each pair of subarrays (2048)) row counters which are
+initialized to the row address of the beginning of the data and
+will be compared against the end of the data in the subarray.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="gearbox-architechture">gearbox architechture:</h2>
+<h3 id="spmspv-walk-through">SPMSPV walk through:</h3>
+<ul>
+<li>step 1: FrontierDistribution:</li>
+</ul>
+<blockquote>
+<p>In iterative applications, the frontier is generated in previous iterations and already resides in subarrays in which their
+corresponding columns reside, except for the output entries that
+correspond to long row/columns, which reside in the logic layer. At
+the start of each iteration, we broadcast the entries residing in the
+logic layer to all subarrays and append them to the frontier array
+in each subarray.</p>
+</blockquote>
+<p>the frontier is generated by shared frontier in logic layer and the local frontier.</p>
+<ul>
+<li>step 2: offset packing:</li>
+</ul>
+<blockquote>
+<p>This step packs the column offset, col-
+umn length, and the values from the frontier array that should be
+multiplied in the column into a new array. Figure 10 shows the
+pseudo-code of this step.</p>
+</blockquote>
+<ul>
+<li><img src="/img/packing.png" alt="packing" /></li>
+</ul>
+<p>put the index, lengh and value into a new array.</p>
+<ul>
+<li>step3: localAccumulations:</li>
+</ul>
+<blockquote>
+<p>This step multiplies each value of
+the frontier with its corresponding column. Figure 11 demonstrates
+the pseudo-code of this step. In this step, if a clean value is being
+updated, the clean value indicator and its row index will be sent to
+the Dispatcher.</p>
+</blockquote>
+<ul>
+<li><img src="/img/local.png" alt="localAccumulations" /></li>
+<li>step4: Dispatching:</li>
+</ul>
+<blockquote>
+<p>In this step, the Dispatcher sends all the
+stored entries (index-value pairs) to their destination subarrays.
+Here, the Dispatcher’s Walker acts as a buffer.</p>
+</blockquote>
+<ul>
+<li>step5: RemoteAccumulations:</li>
+</ul>
+<blockquote>
+<p>In this step, the SPU sequentially processes index-value pairs received in the previous step and
+performs the accumulations. Also, in this step, if the value in the
+index-value pair is a clean-value indicator, the index of clean-value
+is appended to the corresponding array</p>
+</blockquote>
+<ul>
+<li>step6: applying:</li>
+</ul>
+<blockquote>
+<p>This step processes the array containing the non-zero indexes to generate the frontier for the next iteration, initializes
+the output vector to clean indicators, and sends long-activating
+entries to the logic layer to be reduced and applied there. It also
+performs the apply operation 𝑓 𝑖𝑛𝑎𝑙𝑂𝑢𝑡𝑝𝑢𝑡 [:] = 𝑂𝑢𝑡𝑝𝑢𝑡 [:] + 𝛼𝑦 [:],
+which is explained in Section 2.</p>
+</blockquote>
+<h2 id="summary-of-the-gearbox">summary of the gearbox:</h2>
+<ul>
+<li>
+<p>the frontier: $$F[0]$$ is the input index, $$F[1]$$ is the input value ,for each frontier, get the pack, $$P[0]$$ is the matrix b index, $$P[1]$$ is the matrix b len, $$P[2]$$ is the value of the frontier.</p>
+</li>
+<li>
+<p>local: for each value in P, the P[0] is used as offset to find the correct row, store F_value, len, offset in PE. go throught the row, for each element in the row CSC_pair[0] is row index, CSC_pair[1] is the value, Output[RowId] += F_value * Row_value.</p>
+</li>
+</ul>
+<h2 id="problems-of-the-gearbox">problems of the gearbox:</h2>
+<ul>
+<li>handle dense output write: not mentioned in paper
+<ul>
+<li>possible solution one: every time a random access arrived, use the decoder to generage a one-hot value and write the dense output</li>
+<li>possible solution two: from the current one-hot value, shift left or right to generate the next one-hot value, and write the dense output</li>
+</ul>
+</li>
+<li>handle package orgainzation in dispatcher: not mentioned in paper
+<ul>
+<li>during the dispatching stage, the dispatcher will send and receive the data. what's the code in the pe to handle sending and receiving data simultaneously?</li>
+</ul>
+</li>
+<li>icnt and tsv details(port, route): not mentioned in paper
+<ul>
+<li>the control flow mechanism?</li>
+<li>there are multiple subarrays sending and multiple subarrays receiving(80000), how the subarrays know that all other subarrays have finished sending and receiving?</li>
+</ul>
+</li>
+</ul>
+<h1 id="the-designe-of-async-spmspm-our-work">the designe of async spmspm(our work)</h1>
+<h2 id="motivation">motivation:</h2>
+<ul>
+<li>the bottlenech for spmspm of each task is not banlance, if no async, each task's time will be decided by the slowest subarray inside that task. when async is enabled, the time will be decide by slowest subarray with accumulated time.</li>
+</ul>
+<h2 id="description-of-the-design">description of the design:</h2>
+<p>to support async remote dispatcher, there are several challenges:</p>
+<ul>
+<li>when sending the remote traffic, all local subarray should be stoped because the dispatcher will be in sending mode and cannot serve the local traffic.</li>
+<li>when receiving the remove traffic, the local subarray should be stoped because the dispatcher will be in receiving mode and cannot serve the local traffic.</li>
+<li>when update the dense result, the local subarray ???</li>
+<li>we should send the remote traffic to a buffer for reducing interupts to the working subarray.</li>
+<li>when start to send the traffic to remote, there should be a flow-control mechanism to avoid the deadlock.</li>
+<li>the buffer management should be carefully designed to save space.</li>
+</ul>
+<h2 id="designs">designs:</h2>
+<ul>
+<li>when local dispatcher find TODO number of traffic, it will start to send it to the buffer inside this die</li>
+<li>then the die buffer find TODO number of traffic for some destination, it will start to send it to the remote die</li>
+<li>when the remote die recieved enough traffic, it will send a signal of some bank, make the bank to become recieving mode. and send all traffic to the bank.</li>
+<li>before start sending eveything, the subarray, die buffer will need to acuire a lock first to ensure that there will be no deadlock in ring and the buffer will not be full.</li>
+</ul>
+<h3 id="the-buffer-design">the buffer design:</h3>
+<ul>
+<li>todo: how to partition the buffer, the buffer should be worked as a queue, there are two choice:
+<ul>
+<li>store all traffic in one unified buffer, when the traffic is full, stop recieving traffic, scan the packages and decide which package are going to be send to the remote: problem: if only a part of the traffic will be able to send. how to fix the hole in the queue.</li>
+<li>store the traffic in several buffers, each buffer is a queue for a dedicated destination. problem: how to partition the space. if all traffic is of one channel, then the buffer will be underutilized.</li>
+</ul>
+</li>
+<li>todo: when to trigger buffer sending. problem: if the buffer of the source die is full, the traffic may not able to be send because there are no enough space in the remote die. two choice: the remote die will send the final update as soon as possible. or there should be a communication mechanism between the source die and the remote die to ensure that the remote die will have enough space to store the traffic.</li>
+<li>todo: how to manage the icnt traffic flow control: <a href="http://utenti.dieei.unict.it/users/gascia/COURSES/sist_emb_14_15/download/SE22_noc_flow_control.pdf">link</a></li>
+</ul>
+<h3 id="the-buffer-in-logic-die">the buffer in logic die:</h3>
+<ul>
+<li>partition the buffer:
+<ul>
+<li>the traffic coming from the source die will be forwarded to the target die, target bank, if we should partition the buffer into servral parts"
+<ul>
+<li>per bank</li>
+<li>per die</li>
+</ul>
+</li>
+<li>do not partition the buffer, use the unified buffer</li>
+</ul>
+</li>
+<li>TODO, how to trigger sending</li>
+</ul>
+<h3 id="the-package-sending-design-of-source-subarray">the package sending design of source subarray:</h3>
+<p>the dispatcher will send the traffic.</p>
+<h4 id="problem">problem:</h4>
+<ul>
+<li>when the dispatcher is recieving traffic, there should be 3 types of traffic:
+<ol>
+<li>same bank</li>
+<li>different bank, same die</li>
+<li>different die</li>
+</ol>
+</li>
+<li>when handle the traffic, if simply send all traffic to the buffer. the size of the queue may be too large, because the type 1,2 not need to be there.</li>
+</ul>
+<h4 id="todo-solution">TODO solution:</h4>
+<ul>
+<li>(TODO) solution1: when the dispatcher is full, directly send the traffic to the local bank, but send the traffic to the layer buffer for type 2,3</li>
+<li>(TODO) solution2: when the dispatcher is full, scan the packages, send signal to the banks that should receive the traffic, and make the banks ready. directly send type2 to bank, only send type3 to the buffer</li>
+<li>(TOOD) solution3: send all traffic to the buffer. only send the traffic when the buffer is triggered to send.</li>
+</ul>
+<h3 id="the-package-update-design-of-destination-subarray">the package update design of destination subarray:</h3>
+<p>the subarray will recieve the remote traffic.</p>
+<h4 id="problem-1">problem:</h4>
+<ul>
+<li>when recieve the traffic, should the bank immediatly update the destination?
+<ul>
+<li>if yes, all subarray should be stoped and the walkers may need to be reset to be ready to write.</li>
+<li>if no, (TODO) seems no benifit because the subarray still need to stop.</li>
+</ul>
+</li>
+</ul>
+<h4 id="todo-solution-1">TODO solution:</h4>
+<ul>
+<li>(TODO), because the gearbox paper do not have details of dense write. so we do not know how to do it.</li>
+</ul>
+<h2 id="miscs">miscs:</h2>
+<ul>
+<li>(TODO) how to handle and when to transfore the dense formate to sparse formate.</li>
+<li>(TODO) When perform the transfomation, the subarray should be stoped, and the walker should be reset to be ready to write.</li>
+</ul>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

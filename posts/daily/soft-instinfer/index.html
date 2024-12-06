@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Thu Dec  5, 2024
+
+        
+        
+            
+                &#183; 185 words
+            
+        
+        
+            
+            
+                &#183; 1 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/daily/">
+                    daily/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/">
+                soft-instinfer
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/llm/">
+                            llm
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/pim/">
+                            pim
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/accelerator/">
+                            accelerator
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/#sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling">SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/#motivation">Motivation</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/#proposed-solution-sofa">Proposed Solution: SOFA</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/#flashattention">flashattention</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/daily/soft-instinfer/#instinfer">instinfer</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <h2 id="sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling"><a href="/pdf/sofa.pdf">SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling</a></h2>
+<h3 id="motivation">Motivation</h3>
+<ol>
+<li>
+<p>Bottlenecks in Transformers: As sequence lengths increase, the attention module becomes the dominant bottleneck in Transformer-based inference, surpassing the feed-forward network (FFN).</p>
+</li>
+<li>
+<p>Limitations of Existing Sparse Accelerators:</p>
+<ul>
+<li>Current accelerators struggle with the demands of high-throughput and large-scale token parallelism.</li>
+<li>They focus on stage-wise optimization, leading to inefficiencies in memory access and computation.</li>
+</ul>
+</li>
+</ol>
+<h3 id="proposed-solution-sofa">Proposed Solution: SOFA</h3>
+<p>SOFA addresses the above challenges using a cross-stage compute-memory optimized approach:</p>
+<ol>
+<li>Differential Leading Zero Summation (DLZS): A novel multiplier-free, log-based computation paradigm to predict sparsity efficiently, significantly reducing overhead during the pre-compute stage.</li>
+<li>Sphere-Search Aided Distributed Sorting (SADS): Divides sequences into sub-segments for lightweight sorting, minimizing comparisons and enabling fine-grained tiling.</li>
+<li>Sorted-Updating FlashAttention (SU-FA): Reduces the computational cost of softmax and attention updates by leveraging cross-stage tiling and distributed sorting information.</li>
+</ol>
+<h3 id="flashattention">flashattention</h3>
+<p><img src="/img/flashatt.png" alt="flashattention" />
+<img src="/img/falshatt_paper.png" alt="flashattention2" /></p>
+<ul>
+<li>in line5, it update the max of the scores of m_i</li>
+<li>in line7,</li>
+</ul>
+<h2 id="instinfer"><a href="/pdf/instinfer.pdf">instinfer</a></h2>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

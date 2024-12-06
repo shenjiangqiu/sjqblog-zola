@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Wed Jun  7, 2023
+
+        
+        
+            
+                &#183; 975 words
+            
+        
+        
+            
+            
+                &#183; 5 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/research/">
+                    research/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/">
+                thinking-in-hgnn
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/gnn/">
+                            gnn
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/graph/">
+                            graph
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/hgnn/">
+                            hgnn
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/machine-learning/">
+                            machine learning
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        <div class = "description_container">
+            description:
+            <span class="description">
+                Heterogeneous Graph Neural Networks
+            </span>
+        </div>
+            
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#heterogeneous-graph-neural-networks">Heterogeneous Graph Neural Networks</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#the-features-of-hgnn">the Features of HGNN</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#the-workflow-of-metanmp">the workflow of METANMP</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#3-1-metapath-instance-generation-via-cartesian">3.1 Metapath Instance Generation via Cartesian</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#3-2-relevant-metapath-instance-awareness">3.2 Relevant Metapath Instance Awareness</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#3-3-near-memory-processing">3.3 Near-Memory Processing</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/thinking-in-hgnn/#my-example-of-graph">my example of graph</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>this post is about heterogeneous graph neural networks. related paper :</p>
+<ul>
+<li><a href="/pdf/METANMP.pdf">METANMP</a>.</li>
+<li></li>
+</ul>
+<p>related papers:</p>
+<ul>
+<li><a href="https://github.com/BUPT-GAMMA/OpenHGNN">openHGNN</a></li>
+<li><a href="/pdf/cuhog.pdf">Characterizing and UnderstandingHGNNs on GPUs</a></li>
+<li><a href="/pdf/HGAN.pdf">Heterogeneous Graph Attention Network</a></li>
+<li><a href="https://github.com/Jhy1993/HAN">https://github.com/Jhy1993/HAN</a></li>
+</ul>
+<span id="continue-reading"></span><h2 id="heterogeneous-graph-neural-networks">Heterogeneous Graph Neural Networks</h2>
+<p>a heterogeneous graph is a graph that has different types of nodes and edges. for example, a social network graph can be a heterogeneous graph, it has different types of nodes: user, post, comment, etc. and different types of edges: user-user, user-post, user-comment, etc.</p>
+<h2 id="the-features-of-hgnn">the Features of HGNN</h2>
+<p>We summarize the characteristics of HGNNs as follows:</p>
+<ul>
+<li>Distinct Feature Dimensions. Different types of vertices and
+edges in a heterogeneous graph have different dimensions
+on their features.</li>
+<li>Metapath-based Aggregation. Traditional GNNs directly aggregate information based on the vertex’s neighbors, while
+HGNNs leverage metapath instances to aggregate richer
+structural and semantic information.</li>
+<li>Multi-level Aggregation. Traditional GNNs contain only one
+aggregation and one combination in each layer. HGNNs
+include structural (intra-metapath) and semantic aggregation
+(inter-metapath).</li>
+</ul>
+<h2 id="the-workflow-of-metanmp">the workflow of METANMP</h2>
+<p>it use <a href="https://blog.thesjq.com/posts/research/roofline-model/">roofline-model</a> to find the bottleneck of the model, and then optimize the bottleneck. We can see that both structural aggregation and semantic aggregation are memory bottlenecks, except for the feature projection being compute-intensive</p>
+<h3 id="3-1-metapath-instance-generation-via-cartesian">3.1 Metapath Instance Generation via Cartesian</h3>
+<h3 id="3-2-relevant-metapath-instance-awareness">3.2 Relevant Metapath Instance Awareness</h3>
+<ul>
+<li><img src="/img/reuse.png" alt="reuse" /></li>
+<li>Redundant Computation Elimination.</li>
+</ul>
+<p>When a vertex in the
+defined metapath has multiple type-matched neighbors, it scatters
+out multiple metapath instances that exist redundant computation
+among them. For example, ②-③ is sub-metapath instance for metapath A-B-A in Figure 6. The vertex ③ has three type-A neighbors,
+so it can generate three instances, all of which contain redundant
+computations for aggregating the vertices ② and ③. If we aggregate each instance independently, it is difficult to capture these
+redundant computations, requiring significant detection overhead.
+To efficiently eliminate redundant aggregation of these relevant
+instances, we use a simple yet effective relevant instance-aware approach where each instance can be naturally exploited for shareable
+computation during metapath instance generation. We inspect all
+dependencies (a dependency contains at least two vertices) starting
+from vertices of the first type in the metapath, and vertices on a dependency are aggregated directly. Once multiple sub-dependencies
+are scattered from a dependency, that is, multiple instances are
+generated. The previously aggregated result can be shared by these
+metapath instances. We further illustrate this with the example
+in Figure 6. At the beginning, we inspect all dependencies along
+the vertex ②. The vertex ③ is a path along the vertex ② out of
+the match type (③ and ② form a dependency), and we complete
+the vertex aggregation on them. When we then match vertex ③’s
+type-matched neighbor vertices along the metapath, we find that
+it has multiple type-matched neighbors, which results in multiple
+metapath instances and brings shareable aggregation computation
+opportunity. The result of previous aggregation is then shared to
+these metapath instances.</p>
+<ul>
+<li>Instance-driven Aggregation.</li>
+</ul>
+<p>Existing methods construct subgraphs to represent relevant metapath instances for each vertex
+by pre-processing. They ignore the information carried by the instance itself. The first vertex of each meta-path instance implicitly
+indicates which vertex they belong to. Therefore, instead of aggregating these related metapath instances using the gather-centered
+approach based on subgraphs, it is more efficient to drive the aggregation by metapath instance itself</p>
+<h3 id="3-3-near-memory-processing">3.3 Near-Memory Processing</h3>
+<h2 id="my-example-of-graph">my example of graph</h2>
+<ul>
+<li><img src="/img/nmp.png" alt="graph" /></li>
+</ul>
+<ol>
+<li>the graph:</li>
+</ol>
+<ul>
+<li><img src="/img/nmp-graph.png" alt="graph" /></li>
+<li>frist round it will generate these instance:</li>
+<li>(a1,a2) - b1 - (c1,c2) = (a1 - b1 - c1),(a1 - b1 - c2),(a2 - b1 - c1),(a2 - b1 - c2)</li>
+<li>(a3) - b2 - (c3)</li>
+<li>(a2) - b3 - (c2)</li>
+<li>there are total 6 instance, 3 in the frist dimm, 3 in the second dimm,marked as t1-t6</li>
+<li>t1 = (a1 - b1 - c1)</li>
+<li>t2 = (a1 - b1 - c2)</li>
+<li>t3 = (a2 - b1 - c1)</li>
+<li>t4 = (a2 - b1 - c2)</li>
+<li>t5 = (a3 - b2 - c3)</li>
+<li>t6 = (a2 - b3 - c2)</li>
+<li>when go to stage 2 there need some computation:</li>
+<li>the core vertex is now d1,d1,d3,</li>
+<li>(t1,t2,t3,t4,t6) - d1 - e1</li>
+<li>(t1,t3,t5) - d2 - e2</li>
+<li>(t1,t3,t5) - d3 - e3</li>
+</ul>
+<ol start="2">
+<li>the analysis
+<ol>
+<li>how to find the related t when make d as the core vertex?
+in this paper, this is not mentioned, we can assume a simple method: to create a vertual node named T and creat the vertual edge between T and D.</li>
+<li>so the question is: how and when to create the edge, and what infomation needed? we can create the edge when we create the instance. like when we create the instance t1 = (a1 - b1 -c1), we go through the edge list of all c1's neighbors, and add the instance address and the start vertex(a1) to the edge list. the address is used to load the data, the start vertex is used to decide which DIMM to load the data. ( it might be a overhead, because for each instance generated, we need to write all it's neighbor's edge list!!)</li>
+<li>the total number of aggregation times in this example:
+<ol>
+<li>stage 1: 6 instance, 2 + 1 +2 +1 +2 +2 = 10</li>
+<li>stage 2: 5 + 3 + 3 = 11</li>
+<li>total: 23</li>
+</ol>
+</li>
+<li>the total number of aggregation times whith no data reuse: the total number of instance = 11. each instance need 4 times aggregation, so the total number of aggregation times = 44</li>
+<li>total saved times = 44 - 23 = 21</li>
+<li>the optimal time should be: 23 for this graph.</li>
+</ol>
+</li>
+<li>the problems:
+<ol>
+<li>the edge list modification</li>
+<li>the inbanlance</li>
+<li>the inefficiency of the reuse the instance result
+when the struct contains duplicated path. like A B C B A (which is common). there are alot of duplicated instance and temp result.</li>
+</ol>
+</li>
+</ol>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

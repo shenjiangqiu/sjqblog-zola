@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - ssh</title>
+      <link>https://blog.thesjq.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/tags/ssh/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 11 Nov 2022 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    russh
+</title>
+          <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/russh/</link>
+          <guid>https://blog.thesjq.com/posts/russh/</guid>
+          <description>&lt;p&gt;Server and client SSH asynchronous library, based on tokio&#x2F;futures.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;the crates.io of russh: &lt;a href=&quot;https:&#x2F;&#x2F;crates.io&#x2F;crates&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the github of russh: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;warp-tech&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;russh-client-example&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#russh-client-example&quot; aria-label=&quot;Anchor link for: russh-client-example&quot;&gt;🐼&lt;&#x2F;a&gt;russh client example&lt;&#x2F;h1&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; connect and exchange the key
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; session = russh::client::connect(config, (&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;10.13.13.23&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;22&lt;&#x2F;span&gt;&lt;span&gt;), sh).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; authenticate the user using the private key
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;authenticate_publickey&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sjq&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, Arc::new(key)).await? {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;authenticated&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; channel = session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;channel_open_session&lt;&#x2F;span&gt;&lt;span&gt;().await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;request_shell&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exec&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;, &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;bin&#x2F;ls&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;[..]).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;while let &lt;&#x2F;span&gt;&lt;span&gt;Some(msg) = channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;wait&lt;&#x2F;span&gt;&lt;span&gt;().await {
+&lt;&#x2F;span&gt;&lt;span&gt;            println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, msg);
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    Ok(())
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;step-1-connect-and-exchange-the-key&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#step-1-connect-and-exchange-the-key&quot; aria-label=&quot;Anchor link for: step-1-connect-and-exchange-the-key&quot;&gt;🐼&lt;&#x2F;a&gt;step 1: connect and exchange the key&lt;&#x2F;h2&gt;
+&lt;p&gt;first the client will send and receive the ssh-id&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; russh&#x2F;src&#x2F;client&#x2F;mod.rs
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Writing SSH id.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; write_buffer = SSHBuffer::new();
+&lt;&#x2F;span&gt;&lt;span&gt;    write_buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;send_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;config.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;().client_id);
+&lt;&#x2F;span&gt;&lt;span&gt;    stream
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;write_all&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;write_buffer.buffer)
+&lt;&#x2F;span&gt;&lt;span&gt;        .await
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map_err&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;crate&lt;&#x2F;span&gt;&lt;span&gt;::Error::from)?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Reading SSH id and allocating a session if correct.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; stream = SshRead::new(stream);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; sshid = stream.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;read_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;().await?;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;then the client will build some context for key exchange. first build a session which include the infomation for the key exchange.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub struct &lt;&#x2F;span&gt;&lt;span&gt;Session {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;common&lt;&#x2F;span&gt;&lt;span&gt;: CommonSession&amp;lt;Arc&amp;lt;Config&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;receiver&lt;&#x2F;span&gt;&lt;span&gt;: Receiver&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sender&lt;&#x2F;span&gt;&lt;span&gt;: UnboundedSender&amp;lt;Reply&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;channels&lt;&#x2F;span&gt;&lt;span&gt;: HashMap&amp;lt;ChannelId, UnboundedSender&amp;lt;ChannelMsg&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;target_window_size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u32&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pending_reads&lt;&#x2F;span&gt;&lt;span&gt;: Vec&amp;lt;CryptoVec&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pending_len&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u32&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;inbound_channel_sender&lt;&#x2F;span&gt;&lt;span&gt;: Sender&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;inbound_channel_receiver&lt;&#x2F;span&gt;&lt;span&gt;: Receiver&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; session = Session::new(
+&lt;&#x2F;span&gt;&lt;span&gt;        config.window_size,
+&lt;&#x2F;span&gt;&lt;span&gt;        CommonSession {
+&lt;&#x2F;span&gt;&lt;span&gt;            write_buffer,
+&lt;&#x2F;span&gt;&lt;span&gt;            kex: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_user: String::new(),
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_attempts: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_method: None, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Client only.
+&lt;&#x2F;span&gt;&lt;span&gt;            cipher: CipherPair {
+&lt;&#x2F;span&gt;&lt;span&gt;                local_to_remote: Box::new(clear::Key),
+&lt;&#x2F;span&gt;&lt;span&gt;                remote_to_local: Box::new(clear::Key),
+&lt;&#x2F;span&gt;&lt;span&gt;            },
+&lt;&#x2F;span&gt;&lt;span&gt;            encrypted: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            config,
+&lt;&#x2F;span&gt;&lt;span&gt;            wants_reply: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            disconnected: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            buffer: CryptoVec::new(),
+&lt;&#x2F;span&gt;&lt;span&gt;        },
+&lt;&#x2F;span&gt;&lt;span&gt;        session_receiver,
+&lt;&#x2F;span&gt;&lt;span&gt;        session_sender,
+&lt;&#x2F;span&gt;&lt;span&gt;    );
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;then use &lt;code&gt;read_ssh_id(sshid)&lt;&#x2F;code&gt; to build the key exchange context&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;read_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sshid&lt;&#x2F;span&gt;&lt;span&gt;: &amp;amp;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u8&lt;&#x2F;span&gt;&lt;span&gt;]) -&amp;gt; Result&amp;lt;(), crate::Error&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; self.read_buffer.bytes += sshid.bytes_read + 2;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; exchange = Exchange::new();
+&lt;&#x2F;span&gt;&lt;span&gt;        exchange.server_id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;extend&lt;&#x2F;span&gt;&lt;span&gt;(sshid);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Preparing the response
+&lt;&#x2F;span&gt;&lt;span&gt;        exchange
+&lt;&#x2F;span&gt;&lt;span&gt;            .client_id
+&lt;&#x2F;span&gt;&lt;span&gt;            .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;extend&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.config.client_id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_kex_hash_bytes&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; kexinit = KexInit {
+&lt;&#x2F;span&gt;&lt;span&gt;            exchange,
+&lt;&#x2F;span&gt;&lt;span&gt;            algo: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            sent: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            session_id: None,
+&lt;&#x2F;span&gt;&lt;span&gt;        };
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.write_buffer.buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;clear&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;        kexinit.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;client_write&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.config.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;(),
+&lt;&#x2F;span&gt;&lt;span&gt;            &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.cipher.local_to_remote,
+&lt;&#x2F;span&gt;&lt;span&gt;            &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.write_buffer,
+&lt;&#x2F;span&gt;&lt;span&gt;        )?;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.kex = Some(Kex::Init(kexinit));
+&lt;&#x2F;span&gt;&lt;span&gt;        Ok(())
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;in &lt;code&gt;read_ssh_id&lt;&#x2F;code&gt;, &lt;code&gt;client_write&lt;&#x2F;code&gt; will write the key exchange message to the buffer, which include all acceptable algorithms for the key exchange.
+and it will setup the messages to send to the server first for the infomation about key exchange.&lt;&#x2F;p&gt;
+&lt;p&gt;after build the session, the client will spawn a new task for run the session&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; join = tokio::spawn(session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(stream, handler, Some(encrypted_signal)));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;during runing the session, the client will read the server infomation using start_reading:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; reading = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;start_reading&lt;&#x2F;span&gt;&lt;span&gt;(stream_read, buffer, opening_cipher);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this will read the server infomation about keys and exchange methods, then the client will select one and send the message to the server.
+after then, they start the exchange process and finally get the shared key for the encryption. all later messages will be encrypted.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-2-authenticate-the-user-using-the-private-key&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#step-2-authenticate-the-user-using-the-private-key&quot; aria-label=&quot;Anchor link for: step-2-authenticate-the-user-using-the-private-key&quot;&gt;🐼&lt;&#x2F;a&gt;step 2: authenticate the user using the private key&lt;&#x2F;h2&gt;
+&lt;p&gt;after the key exchange, the client will send the message to authenticate the user.
+we can first read the key stored in out home directory:&lt;code&gt;~&#x2F;.ssh&#x2F;id_*&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; use the ssh_key create the parse the stored key
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; pubkeyfile = std::fs::read_to_string(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;Users&#x2F;sjq&#x2F;.ssh&#x2F;id_ed25519.pub&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; prikeyfile = std::fs::read_to_string(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;Users&#x2F;sjq&#x2F;.ssh&#x2F;id_ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; public_key = PublicKey::from_str(&amp;amp;pubkeyfile)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; private_key = PrivateKey::from_str(&amp;amp;prikeyfile)?;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; parse the key as bytes stream
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data_pb = public_key
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;key_data&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ed25519&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ok_or&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;no ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data_pr = private_key
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;key_data&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ed25519&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ok_or&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;no ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?
+&lt;&#x2F;span&gt;&lt;span&gt;        .private
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; create the keypair
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; public_key = ed25519_dalek::PublicKey::from_bytes(data_pb)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; private_key = ed25519_dalek::SecretKey::from_bytes(data_pr)?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; key = KeyPair::Ed25519(ed25519_dalek::Keypair {
+&lt;&#x2F;span&gt;&lt;span&gt;        secret: private_key,
+&lt;&#x2F;span&gt;&lt;span&gt;        public: public_key,
+&lt;&#x2F;span&gt;&lt;span&gt;    });
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;after build the key, we can use the key to try to authenticate the user.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;authenticate_publickey&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sjq&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, Arc::new(key)).await? 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;now the channel is open, we can use the channel to send the command to the server.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    ssh-login
+</title>
+          <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/ssh-login/</link>
+          <guid>https://blog.thesjq.com/posts/ssh-login/</guid>
+          <description>&lt;p&gt;understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
+the detailed implementation using rust: &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
+the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-symetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-symetrical-encryption&quot; aria-label=&quot;Anchor link for: the-symetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the symetrical encryption&lt;&#x2F;h1&gt;
+&lt;p&gt;The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.&lt;&#x2F;p&gt;
+&lt;p&gt;Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-asymetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-asymetrical-encryption&quot; aria-label=&quot;Anchor link for: the-asymetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the asymetrical encryption&lt;&#x2F;h1&gt;
+&lt;p&gt;Asymmetric encryption is a type of encryption where two keys are used to encrypt and decrypt messages. One key is used to encrypt messages, and the other key is used to decrypt messages. The two keys are mathematically related to each other, but they are not the same. The public key is used to encrypt messages, and the private key is used to decrypt messages. The private key is kept secret, and the public key is distributed to anyone who needs to send you encrypted messages.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-ssh-login-process&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-ssh-login-process&quot; aria-label=&quot;Anchor link for: the-ssh-login-process&quot;&gt;🐼&lt;&#x2F;a&gt;the ssh login process&lt;&#x2F;h1&gt;
+&lt;p&gt;The ssh login process is as follows:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;stage 1, key exchange: the client and server decide a common shared secret key for further communication.
+The basis of this procedure for classic Diffie-Hellman are:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Both parties agree on a large prime number, which will serve as a seed value.&lt;&#x2F;li&gt;
+&lt;li&gt;Both parties agree on an encryption generator (typically AES), which will be used to manipulate the values in a predefined way.&lt;&#x2F;li&gt;
+&lt;li&gt;Independently, each party comes up with another prime number which is kept secret from the other party. This number is used as the private key for this interaction (different from the private SSH key used for authentication).&lt;&#x2F;li&gt;
+&lt;li&gt;The generated private key, the encryption generator, and the shared prime number are used to generate a public key that is derived from the private key, but which can be shared with the other party.&lt;&#x2F;li&gt;
+&lt;li&gt;Both participants then exchange their generated public keys.&lt;&#x2F;li&gt;
+&lt;li&gt;The receiving entity uses their own private key, the other party’s public key, and the original shared prime number to compute a shared secret key. Although this is independently computed by each party, using opposite private and public keys, it will result in the same shared secret key.&lt;&#x2F;li&gt;
+&lt;li&gt;The shared secret is then used to encrypt all communication that follows.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;stage 2, authentication, all traffic will be encrypted after the key exchange:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;the client sends a public key to the server.&lt;&#x2F;li&gt;
+&lt;li&gt;the server sends a challenge to the client using the public key of the client.&lt;&#x2F;li&gt;
+&lt;li&gt;the client decrypts the challenge using the private key of the client.&lt;&#x2F;li&gt;
+&lt;li&gt;the server compares the decrypted challenge with the challenge it sent to the client. if they are the same, the server can proceed to the next step.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;stage 3, communication:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;the client and the server can send regular message using the shared secret key.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    ssh
+</title>
+          <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/ssh/</link>
+          <guid>https://blog.thesjq.com/posts/ssh/</guid>
+          <description>&lt;p&gt;there are several protocal RFCs for ssh,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4251&quot;&gt;rfc 4251&lt;&#x2F;a&gt; is the main Architecture for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4252&quot;&gt;rfc 4253&lt;&#x2F;a&gt; is the Transport Layer RFC for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4253&quot;&gt;rfc 4252&lt;&#x2F;a&gt; is the Authentication RFC for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4254&quot;&gt;rfc 4254&lt;&#x2F;a&gt; is the Connection Protocal&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+    </channel>
+</rss>

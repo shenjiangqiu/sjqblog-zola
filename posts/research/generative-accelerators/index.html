@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Mon Aug 14, 2023
+
+        
+        
+            
+                &#183; 1086 words
+            
+        
+        
+            
+            
+                &#183; 6 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/research/">
+                    research/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/research/generative-accelerators/">
+                generative-accelerators
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/gpt/">
+                            GPT
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/transformers/">
+                            transformers
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/accelerators/">
+                            accelerators
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#the-papers-included">the papers included:</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#in-memory">in memory</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#benchmarks">Benchmarks</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#light2seq-paper">light2seq paper</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#s3-ncreasing-gpu-utilization-during-generative-inference-for-higher-throughput-paper">S3, ncreasing GPU Utilization during Generative Inference for Higher Throughput paper</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#h2o-high-throughput-hardware-for-large-scale-language-models-paper">H2O, High-throughput Hardware for Large-scale Language Models paper</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#specinferpaper">Specinferpaper</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#model-implementations">Model implementations</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#attation-is-all-you-need">Attation is all you need</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#the-multi-attantion-progress">the multi attantion progress:</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/research/generative-accelerators/#understand-the-ggml-code">Understand the GGML code</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>this post summarizes the recent progress of GPT-3 and its accelerators.</p>
+<span id="continue-reading"></span><h2 id="the-papers-included">the papers included:</h2>
+<ul>
+<li>
+<p>Att is all you need <a href="/pdf/attAllYouNeed.pdf">paper</a></p>
+</li>
+<li>
+<p>Orca, <a href="/pdf/osdi22-yu.pdf">paper</a></p>
+<ul>
+<li>important background:
+<ol>
+<li>current serving system cannot handle iterative model efficiently</li>
+<li>current model excute the request at the granularity of request</li>
+</ol>
+</li>
+<li>chanllenges:
+<ol>
+<li>Early finished and late joining for existing system</li>
+<li>batch forming: the iteration selection is not easy</li>
+</ol>
+</li>
+<li>summary:
+<ol>
+<li>schedule at the granularity of iteration!</li>
+<li>selective batch forming.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Fast Distributed Inference Serving for Large Language Models, <a href="/pdf/FastDist.pdf">paper</a></p>
+<ul>
+<li>important background:
+<ol>
+<li>the job completion time is important, so FCFS in orca is not good enough</li>
+</ol>
+</li>
+<li>summary:
+<ol>
+<li>decide to continue or preempt it with another job based on the output</li>
+<li>first into a high priority queue, if not complete, go to the low priority queue</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>DeepSpeed, <a href="/pdf/deepspeed.pdf">paper</a></p>
+<ul>
+<li>summary:
+a system for single GPU, multi-GPU, and massive gpu</li>
+</ul>
+</li>
+<li>
+<p>FlexGen High-throughput Generative Inference of Large Language Models with a Single GPU;   <a href="/pdf/flashgen.pdf">paper</a></p>
+<ul>
+<li>summary:
+<ul>
+<li>efficient offloading strategies on a single GPU machine.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>AttentionFlash, <a href="/pdf/FlashAtt.pdf">paper</a></p>
+<ul>
+<li>problem:
+<ul>
+<li>perviouse paper ignore the memory pattern: the fast on-chip sram and offchip memory</li>
+</ul>
+</li>
+<li>summary:
+<ul>
+<li>instead compute all attention, compute a block of attention to reduce the memory for backpropagation</li>
+<li>use softmax normalization factor to quickly recompute the attention instead of read them from HBM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>LightSeq2, <a href="/pdf/LightSeq2.pdf">paper</a></p>
+</li>
+<li>
+<p>FLAT.<a href="/pdf/Flat.pdf">paper</a></p>
+</li>
+<li>
+<p>Tabi: An Efficient Multi-Level Inference System for Large Language Models,</p>
+</li>
+<li>
+<p>H2O <a href="/pdf/H2O.pdf">paper</a></p>
+<ul>
+<li>
+<p>important background:</p>
+<ol>
+<li>the KV cache is too big</li>
+<li>the KV cache are sparse(only 5% of the key-value pairs are used)</li>
+</ol>
+</li>
+<li>
+<p>summary:</p>
+<ol>
+<li>Cannot remove H2(Heavy-hitter)</li>
+<li>use a gready algorithm in each decoding step to find out the H2</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Olive:<a href="/pdf/OliVe-%20Accelerating%20Large%20Language%20Models%20via%20Hardware-friendly%20Outlier-Victim%20Pair%20Quantization(ISCA23).pdf">paper</a></p>
+<ul>
+<li>important background:
+<ol>
+<li>the outliar is more important so need to use more bits to quantize it</li>
+<li>if to keep the outliar, the memory layout is influenced</li>
+</ol>
+</li>
+<li>summary:
+<ol>
+<li>victim some normal values adjacent to the outliar</li>
+<li>the pair are still aligned in the memory</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>TaskFusion:<a href="/pdf/TaskFusion-%20An%20Efficient%20Transfer%20Learning%20Architecture%20with%20Dual%20Delta%20Sparsity%20for%20Multi-Task%20Natural%20Language%20Processing(ISCA23).pdf">paper</a></p>
+</li>
+</ul>
+<h2 id="in-memory">in memory</h2>
+<ul>
+<li>TransPIM: A Memory-based Acceleration via Software-Hardware Co-Design for Transformer <a href="/pdf/TransPIM.pdf">paper</a></li>
+<li>Unleashing the Potential of PIM: Accelerating Large Batched Inference of Transformer-Based Generative Models <a href="/pdf/Unleashing.pdf">paper</a></li>
+<li>FACT <a href="/pdf/FACT.pdf">paper</a></li>
+<li>DFX <a href="/pdf/DFX.pdf">paper</a></li>
+</ul>
+<h2 id="benchmarks">Benchmarks</h2>
+<h3 id="light2seq-paper">light2seq <a href="/pdf/LightSeq2.pdf">paper</a></h3>
+<ul>
+<li>WMT14 for translation, model: Transformer, Fairseq with Apex optimization. Encoder + Decoder
+<ul>
+<li>link: <a href="https://huggingface.co/datasets/wmt14">link</a></li>
+<li>usage:<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>datasets </span><span style="color:#b48ead;">import </span><span>inspect_dataset, load_dataset_builder
+</span><span>
+</span><span style="color:#bf616a;">inspect_dataset</span><span>(&quot;</span><span style="color:#a3be8c;">wmt14</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">./datasets</span><span>&quot;)
+</span><span>
+</span><span style="color:#65737e;"># %%
+</span><span style="color:#b48ead;">import </span><span>datasets
+</span><span>
+</span><span>builder = </span><span style="color:#bf616a;">load_dataset_builder</span><span>(
+</span><span>    &quot;</span><span style="color:#a3be8c;">./datasets/wmt_utils.py</span><span>&quot;,
+</span><span>    </span><span style="color:#bf616a;">language_pair</span><span>=(&quot;</span><span style="color:#a3be8c;">fr</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">de</span><span>&quot;),
+</span><span>    </span><span style="color:#bf616a;">subsets</span><span>={
+</span><span>        datasets.Split.</span><span style="color:#bf616a;">TRAIN</span><span>: [&quot;</span><span style="color:#a3be8c;">commoncrawl_frde</span><span>&quot;],
+</span><span>        datasets.Split.</span><span style="color:#bf616a;">VALIDATION</span><span>: [&quot;</span><span style="color:#a3be8c;">euelections_dev2019</span><span>&quot;],
+</span><span>    },
+</span><span>)
+</span><span>builder.</span><span style="color:#bf616a;">download_and_prepare</span><span>()
+</span><span>ds = builder.</span><span style="color:#bf616a;">as_dataset</span><span>()
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li>CIFAR-10 for image classification, model: ViT, Only Encoder</li>
+<li>GLUE for text classification, model: Only Encoder</li>
+<li>WIKITEXT for language modeling, model: Only Decoder
+<ul>
+<li>link: <a href="https://huggingface.co/datasets/wikitext">link</a></li>
+<li>uasge:<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>    </span><span style="color:#b48ead;">from </span><span>datasets </span><span style="color:#b48ead;">import </span><span>load_dataset, Audio
+</span><span>
+</span><span>    dataset = </span><span style="color:#bf616a;">load_dataset</span><span>(&quot;</span><span style="color:#a3be8c;">wikitext</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">wikitext-2-v1</span><span>&quot;)
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="s3-ncreasing-gpu-utilization-during-generative-inference-for-higher-throughput-paper">S3, ncreasing GPU Utilization during Generative Inference for Higher Throughput <a href="/pdf/S3.pdf">paper</a></h3>
+<ul>
+<li>Alpaca
+<ul>
+<li>url: <a href="https://huggingface.co/datasets/vicgalle/alpaca-gpt4">link</a></li>
+<li>usage:<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>datasets </span><span style="color:#b48ead;">import </span><span>load_dataset
+</span><span>
+</span><span>dataset = </span><span style="color:#bf616a;">load_dataset</span><span>(&quot;</span><span style="color:#a3be8c;">vicgalle/alpaca-gpt4</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">alpaca</span><span>&quot;)
+</span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="h2o-high-throughput-hardware-for-large-scale-language-models-paper">H2O, High-throughput Hardware for Large-scale Language Models <a href="/pdf/H2O.pdf">paper</a></h3>
+<ul>
+<li>OPT,LLaMA,GPT-neoX-20B
+<ul>
+<li>COPA <a href="https://huggingface.co/datasets/pkavumba/balanced-copa">link</a></li>
+<li>MathQA <a href="https://huggingface.co/datasets/math_qa">link</a></li>
+<li>OpenBookQA <a href="https://huggingface.co/datasets/openbookqa">link</a></li>
+<li>PiQA <a href="https://huggingface.co/datasets/piqa">link</a></li>
+<li>RTE <a href="https://huggingface.co/datasets/glue/viewer/rte/train">glue</a>
+<ul>
+<li>example:<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>datasets </span><span style="color:#b48ead;">import </span><span>load_dataset
+</span><span>
+</span><span>dataset = </span><span style="color:#bf616a;">load_dataset</span><span>(&quot;</span><span style="color:#a3be8c;">glue</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">rte</span><span>&quot;)
+</span></code></pre>
+</li>
+</ul>
+</li>
+<li>Winogrande <a href="https://huggingface.co/datasets/winogrande">winogrande</a></li>
+<li>XSUM <a href="https://huggingface.co/datasets/xsum">xsum</a></li>
+<li>CNN/Daily Mail <a href="https://huggingface.co/datasets/cnn_dailymail">cnn_dailymail</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="specinferpaper">Specinfer<a href="/pdf/SpecInfer.pdf">paper</a></h3>
+<p>datasets: use the prompts/questions from these datasets to form our input prompts to simulate the real-world conversation trace</p>
+<ul>
+<li>Chatbot Instruction Prompts <a href="https://huggingface.co/datasets/alespalla/chatbot_instruction_prompts">link</a></li>
+<li>Chatgpt Prompts <a href="https://huggingface.co/datasets/MohamedRashad/ChatGPT-prompts">link</a></li>
+<li>WebQA</li>
+<li>Alpaca <a href="https://huggingface.co/datasets/vicgalle/alpaca-gpt4">link</a></li>
+<li>PiQA <a href="https://huggingface.co/datasets/piqa">link</a></li>
+</ul>
+<h2 id="model-implementations">Model implementations</h2>
+<ul>
+<li>Llama:
+<ul>
+<li>official <a href="https://github.com/facebookresearch/llama/blob/main/llama/generation.py">link</a></li>
+</ul>
+</li>
+<li>OPT
+<ul>
+<li>official <a href="https://github.com/facebookresearch/metaseq/tree/main/projects/OPT">link</a></li>
+</ul>
+</li>
+<li>GPT-Neox
+<ul>
+<li>official <a href="https://github.com/EleutherAI/gpt-neox">link</a></li>
+</ul>
+</li>
+<li>GPT-2
+<ul>
+<li>openai <a href="https://github.com/openai/gpt-2">link</a></li>
+</ul>
+</li>
+<li>Transformer
+<ul>
+<li>official <a href="https://github.com/hyunwoongko/transformer">link</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="attation-is-all-you-need">Attation is all you need</h2>
+<h3 id="the-multi-attantion-progress">the multi attantion progress:</h3>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span>    x = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">attention</span><span>(</span><span style="color:#bf616a;">q</span><span>=x, </span><span style="color:#bf616a;">k</span><span>=x, </span><span style="color:#bf616a;">v</span><span>=x, </span><span style="color:#bf616a;">mask</span><span>=src_mask)
+</span><span style="color:#65737e;"># in attention:
+</span><span>    </span><span style="color:#65737e;"># 1. dot product with weight matrices
+</span><span>    q, k, v = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">w_q</span><span>(q), </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">w_k</span><span>(k), </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">w_v</span><span>(v)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># 2. split tensor by number of heads
+</span><span>    </span><span style="color:#65737e;">#    :param tensor: [batch_size, length, d_model]
+</span><span>    </span><span style="color:#65737e;">#     :return: [batch_size, head, length, d_tensor]
+</span><span>    q, k, v = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">split</span><span>(q), </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">split</span><span>(k), </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">split</span><span>(v)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># 3. do scale dot product to compute similarity
+</span><span>    out, attention = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">attention</span><span>(q, k, v, </span><span style="color:#bf616a;">mask</span><span>=mask)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># 4. concat and pass to linear layer
+</span><span>    out = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">concat</span><span>(out)
+</span><span>    out = </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#bf616a;">w_concat</span><span>(out)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># 5. visualize attention map
+</span><span>    </span><span style="color:#65737e;"># TODO : we should implement visualization
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return </span><span>out
+</span><span>
+</span></code></pre>
+<h2 id="understand-the-ggml-code">Understand the GGML code</h2>
+<ul>
+<li>
+<p>read the code in ggml.c ggml.h, context.h, write some test code, understand the memory layout, memory allocation and management of tensor, data, and ggml_object. read the build flow of a model, understand the compute graph and the execute plan.</p>
+</li>
+<li>
+<p>the model evaluate process:</p>
+<ol>
+<li>get the compute sequence(define the model)</li>
+<li>get the compute graph(define the compute sequence)</li>
+<li>put the compute graph into the Plan to execute.</li>
+</ol>
+</li>
+<li>
+<p>the tensor in GGML</p>
+<ul>
+<li>some important field:
+<ol>
+<li>ne,nb: define the data dimension in element(ne) and bytes(nb), while nb present the data stride in that dimension.</li>
+<li>data: the data pointer</li>
+<li>src: a vector of sources of this tensor</li>
+<li>op: the operation that generate this tensor, from the src</li>
+</ol>
+</li>
+<li>the compute logic:
+<ol>
+<li>when in build-graph stage, the data are empty, only src and op are defined.</li>
+<li>in execute stage, all tensor will be calculate from their src and op.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>my change in GGML:</p>
+<ol>
+<li>add a new OP: OP print, and it's a unary-inplace OP, which will just create a view on the src and print the data and dimension.</li>
+<li>add a new stats in Contex: recorded tensor, it will save the tensor into a map and later, it can save all recorded tensor into a file.</li>
+<li>add a new OP; OP recored. it will mark the tensor as recorded and save it into the context.</li>
+</ol>
+</li>
+</ul>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

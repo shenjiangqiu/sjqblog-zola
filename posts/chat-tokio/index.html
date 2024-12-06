@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Mon Dec 12, 2022
+
+        
+        
+            
+                &#183; 1141 words
+            
+        
+        
+            
+            
+                &#183; 6 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/chat-tokio/">
+                chat-tokio
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/rust/">
+                            rust
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/tokio/">
+                            tokio
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/chat-tokio/#the-source-code-of-chat">the source code of chat</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/chat-tokio/#introduction">introduction</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/chat-tokio/#code">code</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/chat-tokio/#the-framed-type">the Framed type</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/chat-tokio/#definition">definition</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>go thought the tokio example <code>chat</code> and learn how to use tokio.</p>
+<h1 id="the-source-code-of-chat"><a class="zola-anchor" href="#the-source-code-of-chat" aria-label="Anchor link for: the-source-code-of-chat">🐼</a>the source code of chat</h1>
+<h2 id="introduction"><a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">🐼</a>introduction</h2>
+<p>the code will create a tcp server, and the client can connect to the server and send message to the server. the server will broadcast the message to all the clients.</p>
+<h2 id="code"><a class="zola-anchor" href="#code" aria-label="Anchor link for: code">🐼</a>code</h2>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">//! A chat server that broadcasts a message to all connections.
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! This example is explicitly more verbose than it has to be. This is to
+</span><span style="color:#65737e;">//! illustrate more concepts.
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! A chat server for telnet clients. After a telnet client connects, the first
+</span><span style="color:#65737e;">//! line should contain the client&#39;s name. After that, all lines sent by a
+</span><span style="color:#65737e;">//! client are broadcasted to all other connected clients.
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! Because the client is telnet, lines are delimited by &quot;\r\n&quot;.
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! You can test this out by running:
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//!     cargo run --example chat
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! And then in another terminal run:
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//!     telnet localhost 6142
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! You can run the `telnet` command in any number of additional windows.
+</span><span style="color:#65737e;">//!
+</span><span style="color:#65737e;">//! You can run the second command in multiple windows and then chat between the
+</span><span style="color:#65737e;">//! two, seeing the messages from the other client as they&#39;re received. For all
+</span><span style="color:#65737e;">//! connected clients they&#39;ll all join the same room and see everyone else&#39;s
+</span><span style="color:#65737e;">//! messages.
+</span><span>
+</span><span>#![</span><span style="color:#bf616a;">warn</span><span>(rust_2018_idioms)]
+</span><span>
+</span><span style="color:#b48ead;">use </span><span>tokio::net::{TcpListener, TcpStream};
+</span><span style="color:#b48ead;">use </span><span>tokio::sync::{mpsc, Mutex};
+</span><span style="color:#b48ead;">use </span><span>tokio_stream::StreamExt;
+</span><span style="color:#b48ead;">use </span><span>tokio_util::codec::{Framed, LinesCodec};
+</span><span>
+</span><span style="color:#b48ead;">use </span><span>futures::SinkExt;
+</span><span style="color:#b48ead;">use </span><span>std::collections::HashMap;
+</span><span style="color:#b48ead;">use </span><span>std::env;
+</span><span style="color:#b48ead;">use </span><span>std::error::Error;
+</span><span style="color:#b48ead;">use </span><span>std::io;
+</span><span style="color:#b48ead;">use </span><span>std::net::SocketAddr;
+</span><span style="color:#b48ead;">use </span><span>std::sync::Arc;
+</span><span>
+</span><span>#[</span><span style="color:#bf616a;">tokio</span><span>::</span><span style="color:#bf616a;">main</span><span>]
+</span><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
+</span><span>    </span><span style="color:#b48ead;">use </span><span>tracing_subscriber::{fmt::format::FmtSpan, EnvFilter};
+</span><span>    </span><span style="color:#65737e;">// Configure a `tracing` subscriber that logs traces emitted by the chat
+</span><span>    </span><span style="color:#65737e;">// server.
+</span><span>    tracing_subscriber::fmt()
+</span><span>        </span><span style="color:#65737e;">// Filter what traces are displayed based on the RUST_LOG environment
+</span><span>        </span><span style="color:#65737e;">// variable.
+</span><span>        </span><span style="color:#65737e;">//
+</span><span>        </span><span style="color:#65737e;">// Traces emitted by the example code will always be displayed. You
+</span><span>        </span><span style="color:#65737e;">// can set `RUST_LOG=tokio=trace` to enable additional traces emitted by
+</span><span>        </span><span style="color:#65737e;">// Tokio itself.
+</span><span>        .</span><span style="color:#96b5b4;">with_env_filter</span><span>(EnvFilter::from_default_env().</span><span style="color:#96b5b4;">add_directive</span><span>(&quot;</span><span style="color:#a3be8c;">chat=info</span><span>&quot;.</span><span style="color:#96b5b4;">parse</span><span>()?))
+</span><span>        </span><span style="color:#65737e;">// Log events when `tracing` spans are created, entered, exited, or
+</span><span>        </span><span style="color:#65737e;">// closed. When Tokio&#39;s internal tracing support is enabled (as
+</span><span>        </span><span style="color:#65737e;">// described above), this can be used to track the lifecycle of spawned
+</span><span>        </span><span style="color:#65737e;">// tasks on the Tokio runtime.
+</span><span>        .</span><span style="color:#96b5b4;">with_span_events</span><span>(FmtSpan::</span><span style="color:#d08770;">FULL</span><span>)
+</span><span>        </span><span style="color:#65737e;">// Set this subscriber as the default, to collect all traces emitted by
+</span><span>        </span><span style="color:#65737e;">// the program.
+</span><span>        .</span><span style="color:#96b5b4;">init</span><span>();
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Create the shared state. This is how all the peers communicate.
+</span><span>    </span><span style="color:#65737e;">//
+</span><span>    </span><span style="color:#65737e;">// The server task will hold a handle to this. For every new client, the
+</span><span>    </span><span style="color:#65737e;">// `state` handle is cloned and passed into the task that processes the
+</span><span>    </span><span style="color:#65737e;">// client connection.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> state = Arc::new(Mutex::new(Shared::new()));
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> addr = env::args()
+</span><span>        .</span><span style="color:#96b5b4;">nth</span><span>(</span><span style="color:#d08770;">1</span><span>)
+</span><span>        .</span><span style="color:#96b5b4;">unwrap_or_else</span><span>(|| &quot;</span><span style="color:#a3be8c;">127.0.0.1:6142</span><span>&quot;.</span><span style="color:#96b5b4;">to_string</span><span>());
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Bind a TCP listener to the socket address.
+</span><span>    </span><span style="color:#65737e;">//
+</span><span>    </span><span style="color:#65737e;">// Note that this is the Tokio TcpListener, which is fully async.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> listener = TcpListener::bind(&amp;addr).await?;
+</span><span>
+</span><span>    tracing::info!(&quot;</span><span style="color:#a3be8c;">server running on {}</span><span>&quot;, addr);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">loop </span><span>{
+</span><span>        </span><span style="color:#65737e;">// Asynchronously wait for an inbound TcpStream.
+</span><span>        </span><span style="color:#b48ead;">let </span><span>(stream, addr) = listener.</span><span style="color:#96b5b4;">accept</span><span>().await?;
+</span><span>
+</span><span>        </span><span style="color:#65737e;">// Clone a handle to the `Shared` state for the new connection.
+</span><span>        </span><span style="color:#b48ead;">let</span><span> state = Arc::clone(&amp;state);
+</span><span>
+</span><span>        </span><span style="color:#65737e;">// Spawn our handler to be run asynchronously.
+</span><span>        tokio::spawn(async </span><span style="color:#b48ead;">move </span><span>{
+</span><span>            tracing::debug!(&quot;</span><span style="color:#a3be8c;">accepted connection</span><span>&quot;);
+</span><span>            </span><span style="color:#b48ead;">if let </span><span>Err(e) = </span><span style="color:#96b5b4;">process</span><span>(state, stream, addr).await {
+</span><span>                tracing::info!(&quot;</span><span style="color:#a3be8c;">an error occurred; error = {:?}</span><span>&quot;, e);
+</span><span>            }
+</span><span>        });
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/// Shorthand for the transmit half of the message channel.
+</span><span style="color:#b48ead;">type </span><span>Tx = mpsc::UnboundedSender&lt;String&gt;;
+</span><span>
+</span><span style="color:#65737e;">/// Shorthand for the receive half of the message channel.
+</span><span style="color:#b48ead;">type </span><span>Rx = mpsc::UnboundedReceiver&lt;String&gt;;
+</span><span>
+</span><span style="color:#65737e;">/// Data that is shared between all peers in the chat server.
+</span><span style="color:#65737e;">///
+</span><span style="color:#65737e;">/// This is the set of `Tx` handles for all connected clients. Whenever a
+</span><span style="color:#65737e;">/// message is received from a client, it is broadcasted to all peers by
+</span><span style="color:#65737e;">/// iterating over the `peers` entries and sending a copy of the message on each
+</span><span style="color:#65737e;">/// `Tx`.
+</span><span style="color:#b48ead;">struct </span><span>Shared {
+</span><span>    </span><span style="color:#bf616a;">peers</span><span>: HashMap&lt;SocketAddr, Tx&gt;,
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/// The state for each connected client.
+</span><span style="color:#b48ead;">struct </span><span>Peer {
+</span><span>    </span><span style="color:#65737e;">/// The TCP socket wrapped with the `Lines` codec, defined below.
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// This handles sending and receiving data on the socket. When using
+</span><span>    </span><span style="color:#65737e;">/// `Lines`, we can work at the line level instead of having to manage the
+</span><span>    </span><span style="color:#65737e;">/// raw byte operations.
+</span><span>    </span><span style="color:#bf616a;">lines</span><span>: Framed&lt;TcpStream, LinesCodec&gt;,
+</span><span>
+</span><span>    </span><span style="color:#65737e;">/// Receive half of the message channel.
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// This is used to receive messages from peers. When a message is received
+</span><span>    </span><span style="color:#65737e;">/// off of this `Rx`, it will be written to the socket.
+</span><span>    </span><span style="color:#bf616a;">rx</span><span>: Rx,
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Shared {
+</span><span>    </span><span style="color:#65737e;">/// Create a new, empty, instance of `Shared`.
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>() -&gt; </span><span style="color:#b48ead;">Self </span><span>{
+</span><span>        Shared {
+</span><span>            peers: HashMap::new(),
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">/// Send a `LineCodec` encoded message to every peer, except
+</span><span>    </span><span style="color:#65737e;">/// for the sender.
+</span><span>    async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">broadcast</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">sender</span><span>: SocketAddr, </span><span style="color:#bf616a;">message</span><span>: &amp;</span><span style="color:#b48ead;">str</span><span>) {
+</span><span>        </span><span style="color:#b48ead;">for</span><span> peer in </span><span style="color:#bf616a;">self</span><span>.peers.</span><span style="color:#96b5b4;">iter_mut</span><span>() {
+</span><span>            </span><span style="color:#b48ead;">if </span><span>*peer.</span><span style="color:#d08770;">0 </span><span>!= sender {
+</span><span>                </span><span style="color:#b48ead;">let </span><span>_ = peer.</span><span style="color:#d08770;">1.</span><span style="color:#96b5b4;">send</span><span>(message.</span><span style="color:#96b5b4;">into</span><span>());
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">impl </span><span>Peer {
+</span><span>    </span><span style="color:#65737e;">/// Create a new instance of `Peer`.
+</span><span>    async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">new</span><span>(
+</span><span>        </span><span style="color:#bf616a;">state</span><span>: Arc&lt;Mutex&lt;Shared&gt;&gt;,
+</span><span>        </span><span style="color:#bf616a;">lines</span><span>: Framed&lt;TcpStream, LinesCodec&gt;,
+</span><span>    ) -&gt; io::Result&lt;Peer&gt; {
+</span><span>        </span><span style="color:#65737e;">// Get the client socket address
+</span><span>        </span><span style="color:#b48ead;">let</span><span> addr = lines.</span><span style="color:#96b5b4;">get_ref</span><span>().</span><span style="color:#96b5b4;">peer_addr</span><span>()?;
+</span><span>
+</span><span>        </span><span style="color:#65737e;">// Create a channel for this peer
+</span><span>        </span><span style="color:#b48ead;">let </span><span>(tx, rx) = mpsc::unbounded_channel();
+</span><span>
+</span><span>        </span><span style="color:#65737e;">// Add an entry for this `Peer` in the shared state map.
+</span><span>        state.</span><span style="color:#96b5b4;">lock</span><span>().await.peers.</span><span style="color:#96b5b4;">insert</span><span>(addr, tx);
+</span><span>
+</span><span>        Ok(Peer { lines, rx })
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/// Process an individual chat client
+</span><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">process</span><span>(
+</span><span>    </span><span style="color:#bf616a;">state</span><span>: Arc&lt;Mutex&lt;Shared&gt;&gt;,
+</span><span>    </span><span style="color:#bf616a;">stream</span><span>: TcpStream,
+</span><span>    </span><span style="color:#bf616a;">addr</span><span>: SocketAddr,
+</span><span>) -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> lines = Framed::new(stream, LinesCodec::new());
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Send a prompt to the client to enter their username.
+</span><span>    lines.</span><span style="color:#96b5b4;">send</span><span>(&quot;</span><span style="color:#a3be8c;">Please enter your username:</span><span>&quot;).await?;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Read the first line from the `LineCodec` stream to get the username.
+</span><span>    </span><span style="color:#b48ead;">let</span><span> username = </span><span style="color:#b48ead;">match</span><span> lines.</span><span style="color:#96b5b4;">next</span><span>().await {
+</span><span>        Some(Ok(line)) =&gt; line,
+</span><span>        </span><span style="color:#65737e;">// We didn&#39;t get a line so we return early here.
+</span><span>        _ =&gt; {
+</span><span>            tracing::error!(&quot;</span><span style="color:#a3be8c;">Failed to get username from {}. Client disconnected.</span><span>&quot;, addr);
+</span><span>            </span><span style="color:#b48ead;">return </span><span>Ok(());
+</span><span>        }
+</span><span>    };
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Register our peer with state which internally sets up some channels.
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> peer = Peer::new(state.</span><span style="color:#96b5b4;">clone</span><span>(), lines).await?;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// A client has connected, let&#39;s let everyone know.
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> state = state.</span><span style="color:#96b5b4;">lock</span><span>().await;
+</span><span>        </span><span style="color:#b48ead;">let</span><span> msg = format!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> has joined the chat</span><span>&quot;, username);
+</span><span>        tracing::info!(&quot;</span><span style="color:#a3be8c;">{}</span><span>&quot;, msg);
+</span><span>        state.</span><span style="color:#96b5b4;">broadcast</span><span>(addr, &amp;msg).await;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Process incoming messages until our stream is exhausted by a disconnect.
+</span><span>    </span><span style="color:#b48ead;">loop </span><span>{
+</span><span>        tokio::select! {
+</span><span>            </span><span style="color:#65737e;">// A message was received from a peer. Send it to the current user.
+</span><span>            Some(msg) = peer.rx.</span><span style="color:#96b5b4;">recv</span><span>() =&gt; {
+</span><span>                peer.lines.</span><span style="color:#96b5b4;">send</span><span>(&amp;msg).await?;
+</span><span>            }
+</span><span>            result = peer.lines.</span><span style="color:#96b5b4;">next</span><span>() =&gt; </span><span style="color:#b48ead;">match</span><span> result {
+</span><span>                </span><span style="color:#65737e;">// A message was received from the current user, we should
+</span><span>                </span><span style="color:#65737e;">// broadcast this message to the other users.
+</span><span>                Some(Ok(msg)) =&gt; {
+</span><span>                    </span><span style="color:#b48ead;">let mut</span><span> state = state.</span><span style="color:#96b5b4;">lock</span><span>().await;
+</span><span>                    </span><span style="color:#b48ead;">let</span><span> msg = format!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">{}</span><span>&quot;, username, msg);
+</span><span>
+</span><span>                    state.</span><span style="color:#96b5b4;">broadcast</span><span>(addr, &amp;msg).await;
+</span><span>                }
+</span><span>                </span><span style="color:#65737e;">// An error occurred.
+</span><span>                Some(Err(e)) =&gt; {
+</span><span>                    tracing::error!(
+</span><span>                        &quot;</span><span style="color:#a3be8c;">an error occurred while processing messages for {}; error = {:?}</span><span>&quot;,
+</span><span>                        username,
+</span><span>                        e
+</span><span>                    );
+</span><span>                }
+</span><span>                </span><span style="color:#65737e;">// The stream has been exhausted.
+</span><span>                None =&gt; </span><span style="color:#b48ead;">break</span><span>,
+</span><span>            },
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// If this section is reached it means that the client was disconnected!
+</span><span>    </span><span style="color:#65737e;">// Let&#39;s let everyone still connected know about it.
+</span><span>    {
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> state = state.</span><span style="color:#96b5b4;">lock</span><span>().await;
+</span><span>        state.peers.</span><span style="color:#96b5b4;">remove</span><span>(&amp;addr);
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">let</span><span> msg = format!(&quot;</span><span style="color:#d08770;">{}</span><span style="color:#a3be8c;"> has left the chat</span><span>&quot;, username);
+</span><span>        tracing::info!(&quot;</span><span style="color:#a3be8c;">{}</span><span>&quot;, msg);
+</span><span>        state.</span><span style="color:#96b5b4;">broadcast</span><span>(addr, &amp;msg).await;
+</span><span>    }
+</span><span>
+</span><span>    Ok(())
+</span><span>}
+</span><span>
+</span></code></pre>
+<h1 id="the-framed-type"><a class="zola-anchor" href="#the-framed-type" aria-label="Anchor link for: the-framed-type">🐼</a>the Framed type</h1>
+<h2 id="definition"><a class="zola-anchor" href="#definition" aria-label="Anchor link for: definition">🐼</a>definition</h2>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>pin_project! {
+</span><span>    </span><span style="color:#65737e;">/// A unified [`Stream`] and [`Sink`] interface to an underlying I/O object, using
+</span><span>    </span><span style="color:#65737e;">/// the `Encoder` and `Decoder` traits to encode and decode frames.
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// You can create a `Framed` instance by using the [`Decoder::framed`] adapter, or
+</span><span>    </span><span style="color:#65737e;">/// by using the `new` function seen below.
+</span><span>    </span><span style="color:#65737e;">///
+</span><span>    </span><span style="color:#65737e;">/// [`Stream`]: futures_core::Stream
+</span><span>    </span><span style="color:#65737e;">/// [`Sink`]: futures_sink::Sink
+</span><span>    </span><span style="color:#65737e;">/// [`AsyncRead`]: tokio::io::AsyncRead
+</span><span>    </span><span style="color:#65737e;">/// [`Decoder::framed`]: crate::codec::Decoder::framed()
+</span><span>    </span><span style="color:#b48ead;">pub struct </span><span>Framed&lt;T, U&gt; {
+</span><span>        #[</span><span style="color:#bf616a;">pin</span><span>]
+</span><span>        </span><span style="color:#bf616a;">inner</span><span>: FramedImpl&lt;T, U, RWFrames&gt;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>pin_project:</p>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

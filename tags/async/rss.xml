@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - async</title>
+      <link>https://blog.thesjq.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/tags/async/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 06 Jun 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    async-rust
+</title>
+          <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/async-rust/</link>
+          <guid>https://blog.thesjq.com/posts/async-rust/</guid>
+          <description>&lt;p&gt;async in rust.
+A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io&#x2F;async-book&#x2F;&quot;&gt;the async book&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;this post shares my understanding of async in Rust.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

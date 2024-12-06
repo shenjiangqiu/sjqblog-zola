@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - transformers</title>
+      <link>https://blog.thesjq.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/tags/transformers/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    gpt-todo
+</title>
+          <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/gpt-todo/</link>
+          <guid>https://blog.thesjq.com/posts/research/gpt-todo/</guid>
+          <description>&lt;p&gt;this post shows some todo list of research&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    generative-accelerators
+</title>
+          <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/generative-accelerators/</link>
+          <guid>https://blog.thesjq.com/posts/research/generative-accelerators/</guid>
+          <description>&lt;p&gt;this post summarizes the recent progress of GPT-3 and its accelerators.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

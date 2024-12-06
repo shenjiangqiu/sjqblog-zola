@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Thu Nov 10, 2022
+
+        
+        
+            
+                &#183; 507 words
+            
+        
+        
+            
+            
+                &#183; 3 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/ssh-login/">
+                ssh-login
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/ssh/">
+                            ssh
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/ssh-login/#the-symetrical-encryption">the symetrical encryption</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/ssh-login/#the-asymetrical-encryption">the asymetrical encryption</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/ssh-login/#the-ssh-login-process">the ssh login process</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
+the detailed implementation using rust: <a href="https://blog.thesjq.com/posts/russh/">russh</a>.
+the technical details can be found at:<a href="https://blog.thesjq.com/posts/ssh/">protocal</a>.</p>
+<h1 id="the-symetrical-encryption"><a class="zola-anchor" href="#the-symetrical-encryption" aria-label="Anchor link for: the-symetrical-encryption">🐼</a>the symetrical encryption</h1>
+<p>The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.</p>
+<p>Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.</p>
+<h1 id="the-asymetrical-encryption"><a class="zola-anchor" href="#the-asymetrical-encryption" aria-label="Anchor link for: the-asymetrical-encryption">🐼</a>the asymetrical encryption</h1>
+<p>Asymmetric encryption is a type of encryption where two keys are used to encrypt and decrypt messages. One key is used to encrypt messages, and the other key is used to decrypt messages. The two keys are mathematically related to each other, but they are not the same. The public key is used to encrypt messages, and the private key is used to decrypt messages. The private key is kept secret, and the public key is distributed to anyone who needs to send you encrypted messages.</p>
+<h1 id="the-ssh-login-process"><a class="zola-anchor" href="#the-ssh-login-process" aria-label="Anchor link for: the-ssh-login-process">🐼</a>the ssh login process</h1>
+<p>The ssh login process is as follows:</p>
+<ol>
+<li>stage 1, key exchange: the client and server decide a common shared secret key for further communication.
+The basis of this procedure for classic Diffie-Hellman are:</li>
+</ol>
+<ul>
+<li>Both parties agree on a large prime number, which will serve as a seed value.</li>
+<li>Both parties agree on an encryption generator (typically AES), which will be used to manipulate the values in a predefined way.</li>
+<li>Independently, each party comes up with another prime number which is kept secret from the other party. This number is used as the private key for this interaction (different from the private SSH key used for authentication).</li>
+<li>The generated private key, the encryption generator, and the shared prime number are used to generate a public key that is derived from the private key, but which can be shared with the other party.</li>
+<li>Both participants then exchange their generated public keys.</li>
+<li>The receiving entity uses their own private key, the other party’s public key, and the original shared prime number to compute a shared secret key. Although this is independently computed by each party, using opposite private and public keys, it will result in the same shared secret key.</li>
+<li>The shared secret is then used to encrypt all communication that follows.</li>
+</ul>
+<ol start="2">
+<li>stage 2, authentication, all traffic will be encrypted after the key exchange:</li>
+</ol>
+<ul>
+<li>the client sends a public key to the server.</li>
+<li>the server sends a challenge to the client using the public key of the client.</li>
+<li>the client decrypts the challenge using the private key of the client.</li>
+<li>the server compares the decrypted challenge with the challenge it sent to the client. if they are the same, the server can proceed to the next step.</li>
+</ul>
+<ol start="3">
+<li>stage 3, communication:</li>
+</ol>
+<ul>
+<li>the client and the server can send regular message using the shared secret key.</li>
+</ul>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

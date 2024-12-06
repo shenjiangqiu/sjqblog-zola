@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Fri Nov 11, 2022
+
+        
+        
+            
+                &#183; 631 words
+            
+        
+        
+            
+            
+                &#183; 4 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/russh/">
+                russh
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/ssh/">
+                            ssh
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/rust/">
+                            rust
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/russh/#russh-client-example">russh client example</a>
+                
+                    <ul>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/russh/#step-1-connect-and-exchange-the-key">step 1: connect and exchange the key</a>
+                            </li>
+                        
+                            <li>
+                                <a href="https://blog.thesjq.com/posts/russh/#step-2-authenticate-the-user-using-the-private-key">step 2: authenticate the user using the private key</a>
+                            </li>
+                        
+                    </ul>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>Server and client SSH asynchronous library, based on tokio/futures.</p>
+<ul>
+<li>the crates.io of russh: <a href="https://crates.io/crates/russh">russh</a></li>
+<li>the github of russh: <a href="https://github.com/warp-tech/russh">russh</a></li>
+<li>the technical details can be found at:<a href="https://blog.thesjq.com/posts/ssh/">protocal</a></li>
+</ul>
+<p>for ssh connection protocol, see <a href="https://blog.thesjq.com/posts/ssh-login/">the ssh login</a></p>
+<h1 id="russh-client-example"><a class="zola-anchor" href="#russh-client-example" aria-label="Anchor link for: russh-client-example">🐼</a>russh client example</h1>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">main</span><span>(){
+</span><span>    </span><span style="color:#65737e;">/// connect and exchange the key
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> session = russh::client::connect(config, (&quot;</span><span style="color:#a3be8c;">10.13.13.23</span><span>&quot;, </span><span style="color:#d08770;">22</span><span>), sh).await?;
+</span><span>    </span><span style="color:#65737e;">/// authenticate the user using the private key
+</span><span>    </span><span style="color:#b48ead;">if</span><span> session.</span><span style="color:#96b5b4;">authenticate_publickey</span><span>(&quot;</span><span style="color:#a3be8c;">sjq</span><span>&quot;, Arc::new(key)).await? {
+</span><span>        println!(&quot;</span><span style="color:#a3be8c;">authenticated</span><span>&quot;);
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> channel = session.</span><span style="color:#96b5b4;">channel_open_session</span><span>().await?;
+</span><span>        channel.</span><span style="color:#96b5b4;">request_shell</span><span>(</span><span style="color:#d08770;">false</span><span>).await?;
+</span><span>        channel.</span><span style="color:#96b5b4;">exec</span><span>(</span><span style="color:#d08770;">true</span><span>, &amp;</span><span style="color:#b48ead;">b</span><span>&quot;</span><span style="color:#a3be8c;">/usr/bin/ls</span><span>&quot;[..]).await?;
+</span><span>        </span><span style="color:#b48ead;">while let </span><span>Some(msg) = channel.</span><span style="color:#96b5b4;">wait</span><span>().await {
+</span><span>            println!(&quot;</span><span style="color:#d08770;">{:?}</span><span>&quot;, msg);
+</span><span>        }
+</span><span>    }
+</span><span>    Ok(())
+</span><span>}
+</span></code></pre>
+<h2 id="step-1-connect-and-exchange-the-key"><a class="zola-anchor" href="#step-1-connect-and-exchange-the-key" aria-label="Anchor link for: step-1-connect-and-exchange-the-key">🐼</a>step 1: connect and exchange the key</h2>
+<p>first the client will send and receive the ssh-id</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">// russh/src/client/mod.rs
+</span><span>
+</span><span> </span><span style="color:#65737e;">// Writing SSH id.
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> write_buffer = SSHBuffer::new();
+</span><span>    write_buffer.</span><span style="color:#96b5b4;">send_ssh_id</span><span>(&amp;config.</span><span style="color:#96b5b4;">as_ref</span><span>().client_id);
+</span><span>    stream
+</span><span>        .</span><span style="color:#96b5b4;">write_all</span><span>(&amp;write_buffer.buffer)
+</span><span>        .await
+</span><span>        .</span><span style="color:#96b5b4;">map_err</span><span>(</span><span style="color:#b48ead;">crate</span><span>::Error::from)?;
+</span><span>
+</span><span>    </span><span style="color:#65737e;">// Reading SSH id and allocating a session if correct.
+</span><span>    </span><span style="color:#b48ead;">let mut</span><span> stream = SshRead::new(stream);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> sshid = stream.</span><span style="color:#96b5b4;">read_ssh_id</span><span>().await?;
+</span></code></pre>
+<p>then the client will build some context for key exchange. first build a session which include the infomation for the key exchange.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub struct </span><span>Session {
+</span><span>    </span><span style="color:#bf616a;">common</span><span>: CommonSession&lt;Arc&lt;Config&gt;&gt;,
+</span><span>    </span><span style="color:#bf616a;">receiver</span><span>: Receiver&lt;Msg&gt;,
+</span><span>    </span><span style="color:#bf616a;">sender</span><span>: UnboundedSender&lt;Reply&gt;,
+</span><span>    </span><span style="color:#bf616a;">channels</span><span>: HashMap&lt;ChannelId, UnboundedSender&lt;ChannelMsg&gt;&gt;,
+</span><span>    </span><span style="color:#bf616a;">target_window_size</span><span>: </span><span style="color:#b48ead;">u32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">pending_reads</span><span>: Vec&lt;CryptoVec&gt;,
+</span><span>    </span><span style="color:#bf616a;">pending_len</span><span>: </span><span style="color:#b48ead;">u32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">inbound_channel_sender</span><span>: Sender&lt;Msg&gt;,
+</span><span>    </span><span style="color:#bf616a;">inbound_channel_receiver</span><span>: Receiver&lt;Msg&gt;,
+</span><span>}
+</span><span>   </span><span style="color:#b48ead;">let mut</span><span> session = Session::new(
+</span><span>        config.window_size,
+</span><span>        CommonSession {
+</span><span>            write_buffer,
+</span><span>            kex: None,
+</span><span>            auth_user: String::new(),
+</span><span>            auth_attempts: </span><span style="color:#d08770;">0</span><span>,
+</span><span>            auth_method: None, </span><span style="color:#65737e;">// Client only.
+</span><span>            cipher: CipherPair {
+</span><span>                local_to_remote: Box::new(clear::Key),
+</span><span>                remote_to_local: Box::new(clear::Key),
+</span><span>            },
+</span><span>            encrypted: None,
+</span><span>            config,
+</span><span>            wants_reply: </span><span style="color:#d08770;">false</span><span>,
+</span><span>            disconnected: </span><span style="color:#d08770;">false</span><span>,
+</span><span>            buffer: CryptoVec::new(),
+</span><span>        },
+</span><span>        session_receiver,
+</span><span>        session_sender,
+</span><span>    );
+</span></code></pre>
+<p>then use <code>read_ssh_id(sshid)</code> to build the key exchange context</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">read_ssh_id</span><span>(&amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>, </span><span style="color:#bf616a;">sshid</span><span>: &amp;[</span><span style="color:#b48ead;">u8</span><span>]) -&gt; Result&lt;(), crate::Error&gt; {
+</span><span>        </span><span style="color:#65737e;">// self.read_buffer.bytes += sshid.bytes_read + 2;
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> exchange = Exchange::new();
+</span><span>        exchange.server_id.</span><span style="color:#96b5b4;">extend</span><span>(sshid);
+</span><span>        </span><span style="color:#65737e;">// Preparing the response
+</span><span>        exchange
+</span><span>            .client_id
+</span><span>            .</span><span style="color:#96b5b4;">extend</span><span>(</span><span style="color:#bf616a;">self</span><span>.common.config.client_id.</span><span style="color:#96b5b4;">as_kex_hash_bytes</span><span>());
+</span><span>        </span><span style="color:#b48ead;">let mut</span><span> kexinit = KexInit {
+</span><span>            exchange,
+</span><span>            algo: None,
+</span><span>            sent: </span><span style="color:#d08770;">false</span><span>,
+</span><span>            session_id: None,
+</span><span>        };
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.common.write_buffer.buffer.</span><span style="color:#96b5b4;">clear</span><span>();
+</span><span>        kexinit.</span><span style="color:#96b5b4;">client_write</span><span>(
+</span><span>            </span><span style="color:#bf616a;">self</span><span>.common.config.</span><span style="color:#96b5b4;">as_ref</span><span>(),
+</span><span>            &amp;</span><span style="color:#b48ead;">mut </span><span>*</span><span style="color:#bf616a;">self</span><span>.common.cipher.local_to_remote,
+</span><span>            &amp;</span><span style="color:#b48ead;">mut </span><span style="color:#bf616a;">self</span><span>.common.write_buffer,
+</span><span>        )?;
+</span><span>        </span><span style="color:#bf616a;">self</span><span>.common.kex = Some(Kex::Init(kexinit));
+</span><span>        Ok(())
+</span><span>    }
+</span></code></pre>
+<p>in <code>read_ssh_id</code>, <code>client_write</code> will write the key exchange message to the buffer, which include all acceptable algorithms for the key exchange.
+and it will setup the messages to send to the server first for the infomation about key exchange.</p>
+<p>after build the session, the client will spawn a new task for run the session</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>    </span><span style="color:#b48ead;">let</span><span> join = tokio::spawn(session.</span><span style="color:#96b5b4;">run</span><span>(stream, handler, Some(encrypted_signal)));
+</span></code></pre>
+<p>during runing the session, the client will read the server infomation using start_reading:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span>        </span><span style="color:#b48ead;">let</span><span> reading = </span><span style="color:#96b5b4;">start_reading</span><span>(stream_read, buffer, opening_cipher);
+</span><span>
+</span></code></pre>
+<p>this will read the server infomation about keys and exchange methods, then the client will select one and send the message to the server.
+after then, they start the exchange process and finally get the shared key for the encryption. all later messages will be encrypted.</p>
+<h2 id="step-2-authenticate-the-user-using-the-private-key"><a class="zola-anchor" href="#step-2-authenticate-the-user-using-the-private-key" aria-label="Anchor link for: step-2-authenticate-the-user-using-the-private-key">🐼</a>step 2: authenticate the user using the private key</h2>
+<p>after the key exchange, the client will send the message to authenticate the user.
+we can first read the key stored in out home directory:<code>~/.ssh/id_*</code></p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#65737e;">// use the ssh_key create the parse the stored key
+</span><span style="color:#b48ead;">let</span><span> pubkeyfile = std::fs::read_to_string(&quot;</span><span style="color:#a3be8c;">/Users/sjq/.ssh/id_ed25519.pub</span><span>&quot;)?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> prikeyfile = std::fs::read_to_string(&quot;</span><span style="color:#a3be8c;">/Users/sjq/.ssh/id_ed25519</span><span>&quot;)?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> public_key = PublicKey::from_str(&amp;pubkeyfile)?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> private_key = PrivateKey::from_str(&amp;prikeyfile)?;
+</span><span style="color:#65737e;">// parse the key as bytes stream
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data_pb = public_key
+</span><span>        .</span><span style="color:#96b5b4;">key_data</span><span>()
+</span><span>        .</span><span style="color:#96b5b4;">ed25519</span><span>()
+</span><span>        .</span><span style="color:#96b5b4;">ok_or</span><span>(&quot;</span><span style="color:#a3be8c;">no ed25519</span><span>&quot;)?
+</span><span>        .</span><span style="color:#96b5b4;">as_ref</span><span>();
+</span><span>    </span><span style="color:#b48ead;">let</span><span> data_pr = private_key
+</span><span>        .</span><span style="color:#96b5b4;">key_data</span><span>()
+</span><span>        .</span><span style="color:#96b5b4;">ed25519</span><span>()
+</span><span>        .</span><span style="color:#96b5b4;">ok_or</span><span>(&quot;</span><span style="color:#a3be8c;">no ed25519</span><span>&quot;)?
+</span><span>        .private
+</span><span>        .</span><span style="color:#96b5b4;">as_ref</span><span>();
+</span><span style="color:#65737e;">// create the keypair
+</span><span>    </span><span style="color:#b48ead;">let</span><span> public_key = ed25519_dalek::PublicKey::from_bytes(data_pb)?;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> private_key = ed25519_dalek::SecretKey::from_bytes(data_pr)?;
+</span><span>
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> key = KeyPair::Ed25519(ed25519_dalek::Keypair {
+</span><span>        secret: private_key,
+</span><span>        public: public_key,
+</span><span>    });
+</span></code></pre>
+<p>after build the key, we can use the key to try to authenticate the user.</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">if</span><span> session.</span><span style="color:#96b5b4;">authenticate_publickey</span><span>(&quot;</span><span style="color:#a3be8c;">sjq</span><span>&quot;, Arc::new(key)).await? 
+</span></code></pre>
+<p>now the channel is open, we can use the channel to send the command to the server.</p>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

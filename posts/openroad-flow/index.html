@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    OpenRoad script flow
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Wed Aug  2, 2023
+
+        
+        
+            
+                &#183; 98 words
+            
+        
+        
+            
+            
+                &#183; 1 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/openroad-flow/">
+                openroad-flow
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/openroad/">
+                            openroad
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/openroad-flow/#installation">installation</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>this post contains the installation and usage tips of OpenRoad flow.</p>
+<span id="continue-reading"></span><h2 id="installation"><a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🐼</a>installation</h2>
+<ol>
+<li>clone the repo</li>
+</ol>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">git</span><span> clone</span><span style="color:#bf616a;"> --recursive</span><span> https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git
+</span></code></pre>
+<ol start="2">
+<li>build the docker image</li>
+</ol>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#96b5b4;">cd</span><span> OpenROAD-flow-scripts
+</span><span style="color:#bf616a;">./build_openroad.sh --os</span><span>=ubuntu22.04
+</span></code></pre>
+<ol start="3">
+<li>run the docker image</li>
+</ol>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">docker</span><span> run</span><span style="color:#bf616a;"> --rm -it -u</span><span> 1000:1000</span><span style="color:#bf616a;"> -v </span><span>$(</span><span style="color:#bf616a;">pwd</span><span>)/flow:/OpenROAD-flow-scripts/flow openroad/flow-ubuntu22.04-builder
+</span></code></pre>
+<p>here is a justfile for help:</p>
+<pre data-lang="justfile" style="background-color:#2b303b;color:#c0c5ce;" class="language-justfile "><code class="language-justfile" data-lang="justfile"><span>run-docker:
+</span><span>    docker run --rm -it -u 1000:1000 -v $(pwd)/flow:/OpenROAD-flow-scripts/flow openroad/flow-ubuntu22.04-builder
+</span><span>build-docker:
+</span><span>    ./build_openroad.sh --os=ubuntu22.04
+</span></code></pre>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

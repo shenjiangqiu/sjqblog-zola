@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+
+        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
+        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+
+        <title>Jiangqiu Shen's blog</title>
+        
+        
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+        
+        
+
+    </head>
+    <body>
+        
+    <div class="wrap">
+        <div class="section" id="title">
+            
+    
+
+        </div>
+        <div class="section" id="sections">
+            
+        </div>
+        <div class="section" id="content">
+            
+    
+        
+            
+    
+    Tue Jun  6, 2023
+
+        
+        
+            
+                &#183; 948 words
+            
+        
+        
+            
+            
+                &#183; 5 min
+            
+        
+        <div class = "parent">
+            Path :&nbsp;
+                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                    Home
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/">
+                    /
+                </a>
+            
+                
+                <a href="https://blog.thesjq.com/posts/">
+                    posts/
+                </a>
+            
+            
+            <a href="https://blog.thesjq.com/posts/async-rust/">
+                async-rust
+            </a>
+        </div>
+        
+            <div class="tag-container">
+                Tags :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/rust/">
+                            rust
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/tags/async/">
+                            async
+                        </a>
+                    </span>
+                
+            </div>
+        
+        
+        <div class = "description_container">
+            description:
+            <span class="description">
+                async in rust use a stackless manner and lazy execution, this post shares my understanding of async in Rust. this post includes: async trait, async&#x2F;await, async block, why use `Pin&lt;&amp;mut Self&gt;` instead of `&amp;mut Self` in poll function?
+            </span>
+        </div>
+            
+        
+        
+            <div class="tag-container">
+                Authors :&nbsp;
+                
+                    <span class="tag">
+                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                            Jiangqiu Shen
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    
+    
+        <h2>Table of Contents</h2>
+        <ul>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/async-rust/#async-trait">async trait</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/async-rust/#async-await-async-block">async&#x2F;await, async block</a>
+                
+            </li>
+        
+            <li>
+                <a href="https://blog.thesjq.com/posts/async-rust/#why-use-pin-mut-self-instead-of-mut-self-in-poll-function">why use Pin&lt;&amp;mut Self&gt; instead of &amp;mut Self in poll function?</a>
+                
+            </li>
+        
+        </ul>
+        <hr/>
+    
+    <p>async in rust.
+A good resource to learn: <a href="https://rust-lang.github.io/async-book/">the async book</a></p>
+<p>this post shares my understanding of async in Rust.</p>
+<span id="continue-reading"></span><h2 id="async-trait"><a class="zola-anchor" href="#async-trait" aria-label="Anchor link for: async-trait">🐼</a>async trait</h2>
+<p>an async block in Rust is a type that implements the `Future`` trait. so what is a future?</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub trait </span><span>Future {
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Output;
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">poll</span><span>(</span><span style="color:#bf616a;">self</span><span>: Pin&lt;&amp;</span><span style="color:#b48ead;">mut Self</span><span>&gt;, </span><span style="color:#bf616a;">cx</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>Context&lt;&#39;_&gt;) -&gt; Poll&lt;</span><span style="color:#b48ead;">Self::</span><span>Output&gt;;
+</span><span>}
+</span></code></pre>
+<p>So a future can be <code>polled</code> and return a <code>Poll</code> type. <code>Poll</code> is an enum type:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">pub enum </span><span>Poll&lt;T&gt; {
+</span><span>    Ready(T),
+</span><span>    Pending,
+</span><span>}
+</span></code></pre>
+<p>So a future basically means a <code>function</code> that can be <code>polled</code> multiple times, and It can say that <em><strong>I'm ready</strong></em> or <em><strong>I'm not ready</strong></em>. If it's ready, it will return a <code>Ready</code> with the result, otherwise, it will return a <code>Pending</code> and the executor will call it again later.</p>
+<p>So when will the executor call it again? The executor will call it again when the future is ready to be polled again. So how does the executor know when the future is ready to be polled again? when the executor called the <code>poll</code>, it will pass a <code>waker</code> inside the <code>context</code> to the <code>Future</code>, and when the <code>Future</code> is ready to be polled again, it will call the <code>waker</code> to wake the executor: <code>waker.wake()</code>. So the executor will call the <code>poll</code> again.</p>
+<h2 id="async-await-async-block"><a class="zola-anchor" href="#async-await-async-block" aria-label="Anchor link for: async-await-async-block">🐼</a><code>async</code>/<code>await</code>, async block</h2>
+<p>let's look at an async block: note that all code is handwritten, not compiled. ignore some syntax errors~~</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> addr=some_addr;
+</span><span style="color:#b48ead;">let</span><span> my_task = async {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> addr:Addr = </span><span style="color:#96b5b4;">process_addr</span><span>(addr);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> a = </span><span style="color:#96b5b4;">receive_some_http_request</span><span>(addr).await;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> a = </span><span style="color:#96b5b4;">process_http_request</span><span>(a);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> b = </span><span style="color:#96b5b4;">fetch_some_data_from_db</span><span>(a).await;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> c = </span><span style="color:#96b5b4;">process_db_data</span><span>(b);
+</span><span>    </span><span style="color:#b48ead;">let</span><span> c = </span><span style="color:#96b5b4;">do_some_database_operation</span><span>(b).await;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">let</span><span> d = </span><span style="color:#96b5b4;">process_db_result</span><span>(c);
+</span><span>    d
+</span><span>};
+</span><span>
+</span></code></pre>
+<p>the rust compiler will compile the <code>my_task</code> to a state machine that implements the `Future`` trait. we can assume that it looks like this(ignore the syntax errors~~):</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>MyTask{
+</span><span>    </span><span style="color:#bf616a;">addr</span><span>:Addr,
+</span><span>    </span><span style="color:#bf616a;">process_addr</span><span>:impl Fn(Addr)-&gt;Addr,
+</span><span>    </span><span style="color:#bf616a;">http_request_future</span><span>:impl Fn(Addr)-&gt; impl Future&lt;Output=HttpRequest&gt;,
+</span><span>    </span><span style="color:#bf616a;">process_http_request</span><span>:impl Fn(HttpRequest)-&gt;HttpRequest,
+</span><span>    </span><span style="color:#bf616a;">db_future</span><span>:impl Fn(HttpRequest)-&gt; impl Future&lt;Output=DbData&gt;,
+</span><span>    </span><span style="color:#bf616a;">process_db_data</span><span>:impl Fn(DbData)-&gt;DbData,
+</span><span>    </span><span style="color:#bf616a;">db_operation_future</span><span>:impl Fn(DbData)-&gt; impl Future&lt;Output=DbResult&gt;,
+</span><span>    </span><span style="color:#bf616a;">process_db_result</span><span>:impl Fn(DbResult)-&gt;DbResult,
+</span><span>    </span><span style="color:#bf616a;">stage</span><span>:MyTaskStage,
+</span><span>}
+</span><span style="color:#b48ead;">enum </span><span>MyTaskStage{
+</span><span>    stage_1_before_http_request,
+</span><span>    stage_2_before_db_operation,
+</span><span>    stage_3_before_db_result,
+</span><span>    stage_4_before_return,
+</span><span>}
+</span><span style="color:#b48ead;">impl </span><span>Future </span><span style="color:#b48ead;">for </span><span>MyTask{
+</span><span>    </span><span style="color:#b48ead;">type </span><span>Output=DbResult;
+</span><span>    </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">poll</span><span>(</span><span style="color:#bf616a;">self</span><span>: Pin&lt;&amp;</span><span style="color:#b48ead;">mut Self</span><span>&gt;, </span><span style="color:#bf616a;">cx</span><span>: &amp;</span><span style="color:#b48ead;">mut </span><span>Context&lt;&#39;_&gt;) -&gt; Poll&lt;</span><span style="color:#b48ead;">Self::</span><span>Output&gt;{
+</span><span>        </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.stage{
+</span><span>            MyTaskStage::stage_1_before_http_request=&gt;{
+</span><span>                </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">http_request_future</span><span>(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">process_addr</span><span>(</span><span style="color:#bf616a;">self</span><span>.addr)).</span><span style="color:#96b5b4;">poll</span><span>(cx){
+</span><span>                    Poll::Ready(http_request)=&gt;{
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.stage=MyTaskStage::stage_2_before_db_operation;
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">poll</span><span>(cx)
+</span><span>                    }
+</span><span>                    Poll::Pending=&gt;{
+</span><span>                        Poll::Pending
+</span><span>                    }
+</span><span>                }
+</span><span>            }
+</span><span>            MyTaskStage::stage_2_before_db_operation=&gt;{
+</span><span>                </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">db_future</span><span>(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">process_http_request</span><span>(http_request)).</span><span style="color:#96b5b4;">poll</span><span>(cx){
+</span><span>                    Poll::Ready(db_data)=&gt;{
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.stage=MyTaskStage::stage_3_before_db_result;
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">poll</span><span>(cx)
+</span><span>                    }
+</span><span>                    Poll::Pending=&gt;{
+</span><span>                        Poll::Pending
+</span><span>                    }
+</span><span>                }
+</span><span>            }
+</span><span>            MyTaskStage::stage_3_before_db_result=&gt;{
+</span><span>                </span><span style="color:#b48ead;">match </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">db_operation_future</span><span>(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">process_db_data</span><span>(db_data)).</span><span style="color:#96b5b4;">poll</span><span>(cx){
+</span><span>                    Poll::Ready(db_result)=&gt;{
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.stage=MyTaskStage::stage_4_before_return;
+</span><span>                        </span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">poll</span><span>(cx)
+</span><span>                    }
+</span><span>                    Poll::Pending=&gt;{
+</span><span>                        Poll::Pending
+</span><span>                    }
+</span><span>                }
+</span><span>            }
+</span><span>            MyTaskStage::stage_4_before_return=&gt;{
+</span><span>                Poll::Ready(</span><span style="color:#bf616a;">self</span><span>.</span><span style="color:#96b5b4;">process_db_result</span><span>(db_result))
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>we can see that, the async block is equivalent to a state machine, and the <code>Future</code> trait is the interface of the state machine. the <code>poll</code> function is the <code>state transition</code> function of the state machine. the <code>waker</code> is the <code>state transition</code> trigger of the state machine.</p>
+<p>when the executor first calls the <code>poll</code> function, the state machine will start from the first state, and when the state machine is ready to be polled again, it will call the <code>waker</code> to wake the executor, and the executor will call the <code>poll</code> function again, and the state machine will continue to run.</p>
+<h2 id="why-use-pin-mut-self-instead-of-mut-self-in-poll-function"><a class="zola-anchor" href="#why-use-pin-mut-self-instead-of-mut-self-in-poll-function" aria-label="Anchor link for: why-use-pin-mut-self-instead-of-mut-self-in-poll-function">🐼</a>why use <code>Pin&lt;&amp;mut Self&gt;</code> instead of <code>&amp;mut Self</code> in <code>poll</code> function?</h2>
+<p>before talking about this question, let's talk about <code>Pin</code> first. if we have a mutable reference, we can easily move the value that the reference point by mem::swawp. most time that's ok, but when the struct is self-referenced, it will cause problems. for example(note: this code is not compiled in safe rust, just ignore the syntax errors):</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">struct </span><span>MyStruct{
+</span><span>    </span><span style="color:#bf616a;">a</span><span>:</span><span style="color:#b48ead;">u32</span><span>,
+</span><span>    </span><span style="color:#bf616a;">b</span><span>:&amp;</span><span style="color:#b48ead;">&#39;self u32</span><span>,
+</span><span>}
+</span><span style="color:#65737e;">/// ignore the syntax errors.
+</span><span style="color:#b48ead;">let mut</span><span> my_struct_1=MyStruct{a:</span><span style="color:#d08770;">1</span><span>,b:&amp;my_struct.a};
+</span><span style="color:#b48ead;">let mut</span><span> my_struct_2=MyStruct{a:</span><span style="color:#d08770;">2</span><span>,b:&amp;my_struct.a};
+</span><span>mem::swap(&amp;</span><span style="color:#b48ead;">mut</span><span> my_struct_1,&amp;</span><span style="color:#b48ead;">mut</span><span> my_struct_2);
+</span><span style="color:#65737e;">// now the error happens, my_struct_1.b point to my_struct_2.a, but my_struct_2.a is 2, not 1.
+</span><span>assert_eq!(my_struct_1.a,</span><span style="color:#d08770;">2</span><span>);
+</span><span>assert_eq!(my_struct_2.a,</span><span style="color:#d08770;">1</span><span>);
+</span></code></pre>
+<p>usually, we cannot have a struct that contains self-reference, but in the async block, the self-reference struct is common, for example:</p>
+<pre data-lang="rust" style="background-color:#2b303b;color:#c0c5ce;" class="language-rust "><code class="language-rust" data-lang="rust"><span style="color:#b48ead;">let</span><span> async_block = async {
+</span><span>    </span><span style="color:#b48ead;">let</span><span> a = </span><span style="color:#d08770;">100</span><span>;
+</span><span>    </span><span style="color:#b48ead;">let</span><span> c = </span><span style="color:#96b5b4;">some_future</span><span>(&amp;a).await;
+</span><span>    c
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">/// it might compiled to something like this:
+</span><span style="color:#b48ead;">struct </span><span>SomeFuture&lt;</span><span style="color:#b48ead;">&#39;a</span><span>&gt;{</span><span style="color:#bf616a;">a</span><span>:&amp;</span><span style="color:#b48ead;">&#39;a u32</span><span>};
+</span><span style="color:#b48ead;">struct </span><span>AsyncBlock{
+</span><span>    </span><span style="color:#bf616a;">a</span><span>:</span><span style="color:#b48ead;">u32</span><span>,
+</span><span>    </span><span style="color:#65737e;">// the `some_future` state is self-referenced. it will contains a reference to `self.a`.
+</span><span>    </span><span style="color:#bf616a;">some_future</span><span>:impl Fn(&amp;</span><span style="color:#b48ead;">u32</span><span>)-&gt;SomeFuture&lt;</span><span style="color:#b48ead;">&#39;self</span><span>&gt;,
+</span><span>}
+</span></code></pre>
+<p>the above future might stop at the <code>some_future</code> state, and the <code>some_future</code> state is self-referenced. so if we use <code>&amp;mut self</code> in the <code>poll</code> function, we can easily cause the self-reference problem. so the rust compiler uses <code>Pin</code> to solve this problem. <code>Pin</code> is a pointer that can't be moved, so we can use <code>Pin&lt;&amp;mut Self&gt;</code> instead of <code>&amp;mut Self</code> to avoid the self-reference problem.</p>
+<p>extra: what if <code>Pin&lt;&amp;mut T&gt;</code> and <code>T</code> are not self-referenced? In this case, we should be ok to use <code>&amp;mut T</code>, but the rust compiler use <code>Pin&lt;&amp;mut T&gt;</code> to make the code more general. Do we have a way to get a <code>&amp;mut T</code>? The answer is yes, we can use <code>Pin::get_mut</code> to get a <code>&amp;mut T</code> from a <code>Pin&lt;&amp;mut T&gt;</code> if the T is <code>UnPin</code>. The future trait does not know the exact type of the future, so it needs to use <code>Pin&lt;&amp;mut Self&gt;</code> to make the code more general. but in our implementation of the future trait, we can use <code>Pin::get_mut</code> to get a <code>&amp;mut T</code> if the T is <code>UnPin</code>.
+read <code>pin</code> to learn more about <code>Pin</code>. <a href="https://doc.rust-lang.org/std/pin/index.html">pin</a>;</p>
+
+
+        </div>
+        
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;tags">tags</a>
+                    &#183;
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    &#183;
+                
+                    <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                home
+            </a>
+        </p>
+    </div>
+
+        
+    
+
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - Jiangqiu Shen</title>
+      <link>https://blog.thesjq.com</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.thesjq.com/authors/jiangqiu-shen/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>
+    
+    
+    prefill-generation
+</title>
+          <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/daily/prefill-generation/</link>
+          <guid>https://blog.thesjq.com/posts/daily/prefill-generation/</guid>
+          <description>&lt;p&gt;This post shows how to simulate prefill and generation stage in NeuPIMs.&lt;&#x2F;p&gt;
+&lt;p&gt;current NeuPIMs only support generate 1 token.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;the orca mode: when to prefill and when to generate.&lt;&#x2F;li&gt;
+&lt;li&gt;when new reqeust arrived, can the current generation stage cover the prefill stage?&lt;&#x2F;li&gt;
+&lt;li&gt;how to simulate different seq len efficiently?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    soft-instinfer
+</title>
+          <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/daily/soft-instinfer/</link>
+          <guid>https://blog.thesjq.com/posts/daily/soft-instinfer/</guid>
+          <description>&lt;h2 id=&quot;sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling&quot;&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;sofa.pdf&quot;&gt;SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Bottlenecks in Transformers: As sequence lengths increase, the attention module becomes the dominant bottleneck in Transformer-based inference, surpassing the feed-forward network (FFN).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Limitations of Existing Sparse Accelerators:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Current accelerators struggle with the demands of high-throughput and large-scale token parallelism.&lt;&#x2F;li&gt;
+&lt;li&gt;They focus on stage-wise optimization, leading to inefficiencies in memory access and computation.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;proposed-solution-sofa&quot;&gt;Proposed Solution: SOFA&lt;&#x2F;h3&gt;
+&lt;p&gt;SOFA addresses the above challenges using a cross-stage compute-memory optimized approach:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Differential Leading Zero Summation (DLZS): A novel multiplier-free, log-based computation paradigm to predict sparsity efficiently, significantly reducing overhead during the pre-compute stage.&lt;&#x2F;li&gt;
+&lt;li&gt;Sphere-Search Aided Distributed Sorting (SADS): Divides sequences into sub-segments for lightweight sorting, minimizing comparisons and enabling fine-grained tiling.&lt;&#x2F;li&gt;
+&lt;li&gt;Sorted-Updating FlashAttention (SU-FA): Reduces the computational cost of softmax and attention updates by leveraging cross-stage tiling and distributed sorting information.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;flashattention&quot;&gt;flashattention&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;flashatt.png&quot; alt=&quot;flashattention&quot; &#x2F;&gt;
+&lt;img src=&quot;&#x2F;img&#x2F;falshatt_paper.png&quot; alt=&quot;flashattention2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;in line5, it update the max of the scores of m_i&lt;&#x2F;li&gt;
+&lt;li&gt;in line7,&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;instinfer&quot;&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;instinfer.pdf&quot;&gt;instinfer&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    gpt-todo
+</title>
+          <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/gpt-todo/</link>
+          <guid>https://blog.thesjq.com/posts/research/gpt-todo/</guid>
+          <description>&lt;p&gt;this post shows some todo list of research&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    generative-accelerators
+</title>
+          <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/generative-accelerators/</link>
+          <guid>https://blog.thesjq.com/posts/research/generative-accelerators/</guid>
+          <description>&lt;p&gt;this post summarizes the recent progress of GPT-3 and its accelerators.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    OpenRoad script flow
+</title>
+          <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/openroad-flow/</link>
+          <guid>https://blog.thesjq.com/posts/openroad-flow/</guid>
+          <description>&lt;p&gt;this post contains the installation and usage tips of OpenRoad flow.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    intro-algo
+</title>
+          <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/books/intro-algo/</link>
+          <guid>https://blog.thesjq.com/posts/books/intro-algo/</guid>
+          <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;introalgo.pdf&quot;&gt;link&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;this book includes all the concepts of algorithms.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    hetero-graph
+</title>
+          <pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/hetero-graph/</link>
+          <guid>https://blog.thesjq.com/posts/research/hetero-graph/</guid>
+          <description>&lt;p&gt;this post introduce the heterogenous graph and its datasets.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;some datasets provided by pyG: &lt;a href=&quot;https:&#x2F;&#x2F;pytorch-geometric.readthedocs.io&#x2F;en&#x2F;latest&#x2F;modules&#x2F;datasets.html#heterogeneous-datasets&quot;&gt;link&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;the tutorial: &lt;a href=&quot;https:&#x2F;&#x2F;pytorch-geometric.readthedocs.io&#x2F;en&#x2F;latest&#x2F;tutorial&#x2F;heterogeneous.html&quot;&gt;pyg&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    Rust Tips
+</title>
+          <pubDate>Fri, 09 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/rust-tips/</link>
+          <guid>https://blog.thesjq.com/posts/rust-tips/</guid>
+          <description>&lt;p&gt;this post contains some tips that I found useful when I was learning Rust.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    path
+</title>
+          <pubDate>Thu, 08 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/path/</link>
+          <guid>https://blog.thesjq.com/posts/research/path/</guid>
+          <description>&lt;ul&gt;
+&lt;li&gt;this paper describes the meta path building in HGNN.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;p992-sun.pdf&quot;&gt;the_paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    cmd-tools
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/cmd-tools/</link>
+          <guid>https://blog.thesjq.com/posts/life/cmd-tools/</guid>
+          <description>&lt;p&gt;this post include some interesting command line tools.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bat&lt;&#x2F;em&gt; : a cat clone with syntax highlighting and git integration.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;fd&lt;&#x2F;em&gt; : a simple, fast and user-friendly alternative to find.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;exa&lt;&#x2F;em&gt; : a modern replacement for ls.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;ripgrep&lt;&#x2F;em&gt; : combines the usability of The Silver Searcher with the raw speed of grep.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;procs&lt;&#x2F;em&gt; : a modern replacement for ps written in Rust.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;dust&lt;&#x2F;em&gt; : a more intuitive version of du in rust.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;hyperfine&lt;&#x2F;em&gt; : a command-line benchmarking tool.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;bottom&lt;&#x2F;em&gt; : a cross-platform graphical process&#x2F;system monitor with a customizable interface and a multitude of features.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;bandwhich&lt;&#x2F;em&gt; : a CLI utility for displaying current network utilization by process, connection and remote IP&#x2F;hostname.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;zoxide&lt;&#x2F;em&gt; : a blazing fast replacement for your cd command, inspired by z.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;starship&lt;&#x2F;em&gt; : a minimal, blazing-fast, and infinitely customizable prompt for any shell.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;tokei&lt;&#x2F;em&gt; : a program that displays statistics about your code.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;just&lt;&#x2F;em&gt; : a handy way to save and run project-specific commands.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;em&gt;skim&lt;&#x2F;em&gt; : a fuzzy finder in rust.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    github-action
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/github-action/</link>
+          <guid>https://blog.thesjq.com/posts/life/github-action/</guid>
+          <description></description>
+      </item>
+      <item>
+          <title>
+    
+    
+    the-good-websites
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/life/the-good-websites/</link>
+          <guid>https://blog.thesjq.com/posts/life/the-good-websites/</guid>
+          <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;p.sda1.dev&#x2F;&quot;&gt;流浪图床&lt;&#x2F;a&gt; a image hosting service&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vercel.com&#x2F;templates&#x2F;next.js&#x2F;chatbot-ui&quot;&gt;chatgpt-webui&lt;&#x2F;a&gt; a chatbot ui&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tera.netlify.app&#x2F;docs&#x2F;#built-in-filters&quot;&gt;tera&lt;&#x2F;a&gt; a template engine use in &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;templates&#x2F;pages-sections&#x2F;&quot;&gt;zola&lt;&#x2F;a&gt; and written in rust&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;templates&#x2F;pages-sections&#x2F;&quot;&gt;zola&lt;&#x2F;a&gt; a static site generator written in rust&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;emojihub.org&#x2F;&quot;&gt;https:&#x2F;&#x2F;emojihub.org&#x2F;&lt;&#x2F;a&gt; a emoji search engine&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;networkrepository.com&#x2F;networks.php&quot;&gt;networks repo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.dgl.ai&#x2F;en&#x2F;0.8.x&#x2F;guide&#x2F;graph-heterogeneous.html&quot;&gt;dgl&lt;&#x2F;a&gt;
+the dgl is a graph library for deep learning, it support heterogeneous graph.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    linux-boot
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/linux-boot/</link>
+          <guid>https://blog.thesjq.com/posts/linux-boot/</guid>
+          <description>&lt;h1 id=&quot;archlinux-boot-process&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#archlinux-boot-process&quot; aria-label=&quot;Anchor link for: archlinux-boot-process&quot;&gt;🐼&lt;&#x2F;a&gt;Archlinux boot process&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;referece: &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Arch_boot_process&quot;&gt;Archlinux boot process&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    roofline-model
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/roofline-model/</link>
+          <guid>https://blog.thesjq.com/posts/research/roofline-model/</guid>
+          <description>&lt;p&gt;The roofline model is a performance modeling technique used to analyze and optimize the performance of parallel computing systems. It gives a visual representation of the performance limitations of the system and helps identify potential opportunities for optimization.&lt;&#x2F;p&gt;
+&lt;p&gt;The model plots the performance in GFLOPs per second on the y-axis and the operational intensity in bytes per FLOP on the x-axis. The performance is limited by two factors: the peak performance of the processor and the memory bandwidth of the system. These two limitations are represented by two diagonal lines on the graph, which create a triangle called the &quot;roofline&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;To optimize performance, application developers must find ways to increase operational intensity so that the code operates closer to or above the roofline. This can be achieved through techniques such as data reuse, loop tiling, and algorithmic optimization.&lt;&#x2F;p&gt;
+&lt;p&gt;Overall, the roofline model is a useful tool for understanding the performance characteristics of a system and developing strategies to optimize it.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    thinking-in-hgnn
+</title>
+          <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</link>
+          <guid>https://blog.thesjq.com/posts/research/thinking-in-hgnn/</guid>
+          <description>&lt;p&gt;this post is about heterogeneous graph neural networks. related paper :&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;METANMP.pdf&quot;&gt;METANMP&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;related papers:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;BUPT-GAMMA&#x2F;OpenHGNN&quot;&gt;openHGNN&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;cuhog.pdf&quot;&gt;Characterizing and UnderstandingHGNNs on GPUs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;HGAN.pdf&quot;&gt;Heterogeneous Graph Attention Network&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Jhy1993&#x2F;HAN&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;Jhy1993&#x2F;HAN&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    async-rust
+</title>
+          <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/async-rust/</link>
+          <guid>https://blog.thesjq.com/posts/async-rust/</guid>
+          <description>&lt;p&gt;async in rust.
+A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io&#x2F;async-book&#x2F;&quot;&gt;the async book&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;this post shares my understanding of async in Rust.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    interesting-lifetime-problems
+</title>
+          <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/interesting-lifetime-problems/</link>
+          <guid>https://blog.thesjq.com/posts/interesting-lifetime-problems/</guid>
+          <description>&lt;p&gt;the lifetime checker of rust is very strict, and it is not easy to handle complicate lifetime problems&lt;&#x2F;p&gt;
+&lt;p&gt;in this post, I will collect some interesting lifetime problems I encountered as long as my solutions.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-lifetime-of-when-capturing-a-variable-in-a-closure&quot; aria-label=&quot;Anchor link for: the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;🐼&lt;&#x2F;a&gt;the lifetime of when capturing a variable in a closure&lt;&#x2F;h1&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    gearbox-walk
+</title>
+          <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/gearbox-walk/</link>
+          <guid>https://blog.thesjq.com/posts/research/gearbox-walk/</guid>
+          <description>&lt;p&gt;the post illustrate the gearbox instructions of $$C[A[i]] += B[i]$$,&lt;&#x2F;p&gt;
+&lt;p&gt;the related papers:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gearbox: &lt;a href=&quot;&#x2F;pdf&#x2F;Gearbox.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Fulcrum: &lt;a href=&quot;&#x2F;pdf&#x2F;Fulcrum_A_Simplified_Control_and_Access_Mechanism_Toward_Flexible_and_Practical_In-Situ_Accelerators.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Chopper: &lt;a href=&quot;&#x2F;pdf&#x2F;CHOPPER-HPCA-23.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;the related posts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;walkthrough-of-inderect-c-a-b&quot;&gt;walkthrough of inderect c,a,b&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the original graph:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;gearbox_walk_through.png&quot; alt=&quot;gearbox_walk_through&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;explanation-of-the-graph&quot;&gt;explanation of the graph&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;instruction 1:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;ins1.png&quot; alt=&quot;gearbox_walk_through_1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;walkthrough-of-spmv-local-update&quot;&gt;walkthrough of spmv local update&lt;&#x2F;h1&gt;
+&lt;h1 id=&quot;instruction-list&quot;&gt;instruction list&lt;&#x2F;h1&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    pim-design
+</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/pim-design/</link>
+          <guid>https://blog.thesjq.com/posts/research/pim-design/</guid>
+          <description>&lt;p&gt;the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.&lt;&#x2F;p&gt;
+&lt;p&gt;the related papers:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gearbox: &lt;a href=&quot;&#x2F;pdf&#x2F;Gearbox.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Fulcrum: &lt;a href=&quot;&#x2F;pdf&#x2F;Fulcrum_A_Simplified_Control_and_Access_Mechanism_Toward_Flexible_and_Practical_In-Situ_Accelerators.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Chopper: &lt;a href=&quot;&#x2F;pdf&#x2F;CHOPPER-HPCA-23.pdf&quot;&gt;paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;design:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;async remote task&lt;&#x2F;li&gt;
+&lt;li&gt;buffers and nocs&lt;&#x2F;li&gt;
+&lt;li&gt;traffic flow control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;the original discuss paper scan:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;1.jpg&quot;&gt;scans 1&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;2.jpg&quot;&gt;scans 2&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;3.jpg&quot;&gt;scans 3&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;4.jpg&quot;&gt;scans 4&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;&#x2F;img&#x2F;5.jpg&quot;&gt;scans 5&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;subarray-architecture&quot;&gt;subarray architecture&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;from-fulcrum-paper&quot;&gt;from fulcrum paper:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;dram details:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;interleaving:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;subarray interleaving:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The second type of interleaving is subarray interleaving or
+open-bitline architecture . Since the size of a sense
+amplifier is larger than a cell , modern DRAM designs
+accommodate only as many as sense amplifiers in a row to
+sense half a row of cells. To sense the entire row of cells,
+each subarray has bitlines that connect two rows of sense
+amplifiers, one above and one below the subarray.&lt;&#x2F;p&gt;
+&lt;p&gt;As a side benefit, mat interleaving and subarray interleaving make the memory more robust against multiple-bit upset,
+where soft errors change the value of adjacent cells. &lt;strong&gt;In fact, when bits in a column are not physically close to each other, multiple-bit upset only changes one bit from a column and then error detection mechanisms (which can detect one error) can detect the error.&lt;&#x2F;strong&gt;
+Therefore, keeping the current interleaving and not changing the layout is desirable.
+However, with interleaving, row-wide computation on
+more than 4-bit values is impractical, as the result of an addition and multiplication in each 4 bits of the output depends
+on the values in other mats. With row-wide operations, the
+circuits for reuniting the interleaved bits impose a significant
+hardware overhead as many wires cross each other.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;mat interleaving:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;interleaving.png&quot; alt=&quot;interleaving&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;fulcrum design:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;reuniting interleaved bits:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;reuniting.png&quot; alt=&quot;reuniting 1&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;the walkers:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Hence, we introduced
+column-selection latches where we store the one-hot-encoded
+value of a column and shift the value to access the next col-
+umn, without requiring one column decoder per Walker, per
+subarray, and per mat.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;the controller:
+&lt;ul&gt;
+&lt;li&gt;a 6-bit counter per Walker
+for detecting a fully-accessed Walker&lt;&#x2F;li&gt;
+&lt;li&gt;Each Walker has a 2-bit latch that determines to which Walker
+we should switch and rename when the Walker is fully ac-
+cessed (elaborated in Section 5.1.6),&lt;&#x2F;li&gt;
+&lt;li&gt;a 4-bit counter for counting
+the wait time for a new row to be read from the subarray and
+be stored in a Walker, or for a Walker to be written to the
+subarray,&lt;&#x2F;li&gt;
+&lt;li&gt;three 11-bit (11 = log 2 of the number of
+rows in each pair of subarrays (2048)) row counters which are
+initialized to the row address of the beginning of the data and
+will be compared against the end of the data in the subarray.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;gearbox-architechture&quot;&gt;gearbox architechture:&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;spmspv-walk-through&quot;&gt;SPMSPV walk through:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;step 1: FrontierDistribution:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In iterative applications, the frontier is generated in previous iterations and already resides in subarrays in which their
+corresponding columns reside, except for the output entries that
+correspond to long row&#x2F;columns, which reside in the logic layer. At
+the start of each iteration, we broadcast the entries residing in the
+logic layer to all subarrays and append them to the frontier array
+in each subarray.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;the frontier is generated by shared frontier in logic layer and the local frontier.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;step 2: offset packing:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step packs the column offset, col-
+umn length, and the values from the frontier array that should be
+multiplied in the column into a new array. Figure 10 shows the
+pseudo-code of this step.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;&#x2F;img&#x2F;packing.png&quot; alt=&quot;packing&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;put the index, lengh and value into a new array.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;step3: localAccumulations:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step multiplies each value of
+the frontier with its corresponding column. Figure 11 demonstrates
+the pseudo-code of this step. In this step, if a clean value is being
+updated, the clean value indicator and its row index will be sent to
+the Dispatcher.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&quot;&#x2F;img&#x2F;local.png&quot; alt=&quot;localAccumulations&quot; &#x2F;&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;step4: Dispatching:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In this step, the Dispatcher sends all the
+stored entries (index-value pairs) to their destination subarrays.
+Here, the Dispatcher’s Walker acts as a buffer.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;step5: RemoteAccumulations:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In this step, the SPU sequentially processes index-value pairs received in the previous step and
+performs the accumulations. Also, in this step, if the value in the
+index-value pair is a clean-value indicator, the index of clean-value
+is appended to the corresponding array&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;step6: applying:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This step processes the array containing the non-zero indexes to generate the frontier for the next iteration, initializes
+the output vector to clean indicators, and sends long-activating
+entries to the logic layer to be reduced and applied there. It also
+performs the apply operation 𝑓 𝑖𝑛𝑎𝑙𝑂𝑢𝑡𝑝𝑢𝑡 [:] = 𝑂𝑢𝑡𝑝𝑢𝑡 [:] + 𝛼𝑦 [:],
+which is explained in Section 2.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;summary-of-the-gearbox&quot;&gt;summary of the gearbox:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the frontier: $$F[0]$$ is the input index, $$F[1]$$ is the input value ,for each frontier, get the pack, $$P[0]$$ is the matrix b index, $$P[1]$$ is the matrix b len, $$P[2]$$ is the value of the frontier.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;local: for each value in P, the P[0] is used as offset to find the correct row, store F_value, len, offset in PE. go throught the row, for each element in the row CSC_pair[0] is row index, CSC_pair[1] is the value, Output[RowId] += F_value * Row_value.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;problems-of-the-gearbox&quot;&gt;problems of the gearbox:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;handle dense output write: not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;possible solution one: every time a random access arrived, use the decoder to generage a one-hot value and write the dense output&lt;&#x2F;li&gt;
+&lt;li&gt;possible solution two: from the current one-hot value, shift left or right to generate the next one-hot value, and write the dense output&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;handle package orgainzation in dispatcher: not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;during the dispatching stage, the dispatcher will send and receive the data. what&#x27;s the code in the pe to handle sending and receiving data simultaneously?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;icnt and tsv details(port, route): not mentioned in paper
+&lt;ul&gt;
+&lt;li&gt;the control flow mechanism?&lt;&#x2F;li&gt;
+&lt;li&gt;there are multiple subarrays sending and multiple subarrays receiving(80000), how the subarrays know that all other subarrays have finished sending and receiving?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;the-designe-of-async-spmspm-our-work&quot;&gt;the designe of async spmspm(our work)&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;motivation:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;the bottlenech for spmspm of each task is not banlance, if no async, each task&#x27;s time will be decided by the slowest subarray inside that task. when async is enabled, the time will be decide by slowest subarray with accumulated time.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;description-of-the-design&quot;&gt;description of the design:&lt;&#x2F;h2&gt;
+&lt;p&gt;to support async remote dispatcher, there are several challenges:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;when sending the remote traffic, all local subarray should be stoped because the dispatcher will be in sending mode and cannot serve the local traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;when receiving the remove traffic, the local subarray should be stoped because the dispatcher will be in receiving mode and cannot serve the local traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;when update the dense result, the local subarray ???&lt;&#x2F;li&gt;
+&lt;li&gt;we should send the remote traffic to a buffer for reducing interupts to the working subarray.&lt;&#x2F;li&gt;
+&lt;li&gt;when start to send the traffic to remote, there should be a flow-control mechanism to avoid the deadlock.&lt;&#x2F;li&gt;
+&lt;li&gt;the buffer management should be carefully designed to save space.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;designs&quot;&gt;designs:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;when local dispatcher find TODO number of traffic, it will start to send it to the buffer inside this die&lt;&#x2F;li&gt;
+&lt;li&gt;then the die buffer find TODO number of traffic for some destination, it will start to send it to the remote die&lt;&#x2F;li&gt;
+&lt;li&gt;when the remote die recieved enough traffic, it will send a signal of some bank, make the bank to become recieving mode. and send all traffic to the bank.&lt;&#x2F;li&gt;
+&lt;li&gt;before start sending eveything, the subarray, die buffer will need to acuire a lock first to ensure that there will be no deadlock in ring and the buffer will not be full.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-buffer-design&quot;&gt;the buffer design:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;todo: how to partition the buffer, the buffer should be worked as a queue, there are two choice:
+&lt;ul&gt;
+&lt;li&gt;store all traffic in one unified buffer, when the traffic is full, stop recieving traffic, scan the packages and decide which package are going to be send to the remote: problem: if only a part of the traffic will be able to send. how to fix the hole in the queue.&lt;&#x2F;li&gt;
+&lt;li&gt;store the traffic in several buffers, each buffer is a queue for a dedicated destination. problem: how to partition the space. if all traffic is of one channel, then the buffer will be underutilized.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;todo: when to trigger buffer sending. problem: if the buffer of the source die is full, the traffic may not able to be send because there are no enough space in the remote die. two choice: the remote die will send the final update as soon as possible. or there should be a communication mechanism between the source die and the remote die to ensure that the remote die will have enough space to store the traffic.&lt;&#x2F;li&gt;
+&lt;li&gt;todo: how to manage the icnt traffic flow control: &lt;a href=&quot;http:&#x2F;&#x2F;utenti.dieei.unict.it&#x2F;users&#x2F;gascia&#x2F;COURSES&#x2F;sist_emb_14_15&#x2F;download&#x2F;SE22_noc_flow_control.pdf&quot;&gt;link&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-buffer-in-logic-die&quot;&gt;the buffer in logic die:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;partition the buffer:
+&lt;ul&gt;
+&lt;li&gt;the traffic coming from the source die will be forwarded to the target die, target bank, if we should partition the buffer into servral parts&quot;
+&lt;ul&gt;
+&lt;li&gt;per bank&lt;&#x2F;li&gt;
+&lt;li&gt;per die&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;do not partition the buffer, use the unified buffer&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;TODO, how to trigger sending&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-package-sending-design-of-source-subarray&quot;&gt;the package sending design of source subarray:&lt;&#x2F;h3&gt;
+&lt;p&gt;the dispatcher will send the traffic.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;problem&quot;&gt;problem:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;when the dispatcher is recieving traffic, there should be 3 types of traffic:
+&lt;ol&gt;
+&lt;li&gt;same bank&lt;&#x2F;li&gt;
+&lt;li&gt;different bank, same die&lt;&#x2F;li&gt;
+&lt;li&gt;different die&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;when handle the traffic, if simply send all traffic to the buffer. the size of the queue may be too large, because the type 1,2 not need to be there.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;todo-solution&quot;&gt;TODO solution:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO) solution1: when the dispatcher is full, directly send the traffic to the local bank, but send the traffic to the layer buffer for type 2,3&lt;&#x2F;li&gt;
+&lt;li&gt;(TODO) solution2: when the dispatcher is full, scan the packages, send signal to the banks that should receive the traffic, and make the banks ready. directly send type2 to bank, only send type3 to the buffer&lt;&#x2F;li&gt;
+&lt;li&gt;(TOOD) solution3: send all traffic to the buffer. only send the traffic when the buffer is triggered to send.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;the-package-update-design-of-destination-subarray&quot;&gt;the package update design of destination subarray:&lt;&#x2F;h3&gt;
+&lt;p&gt;the subarray will recieve the remote traffic.&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;problem-1&quot;&gt;problem:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;when recieve the traffic, should the bank immediatly update the destination?
+&lt;ul&gt;
+&lt;li&gt;if yes, all subarray should be stoped and the walkers may need to be reset to be ready to write.&lt;&#x2F;li&gt;
+&lt;li&gt;if no, (TODO) seems no benifit because the subarray still need to stop.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4 id=&quot;todo-solution-1&quot;&gt;TODO solution:&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO), because the gearbox paper do not have details of dense write. so we do not know how to do it.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;miscs&quot;&gt;miscs:&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;(TODO) how to handle and when to transfore the dense formate to sparse formate.&lt;&#x2F;li&gt;
+&lt;li&gt;(TODO) When perform the transfomation, the subarray should be stoped, and the walker should be reset to be ready to write.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    rethink-spmspm
+</title>
+          <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/research/rethink-spmspm/</link>
+          <guid>https://blog.thesjq.com/posts/research/rethink-spmspm/</guid>
+          <description>&lt;p&gt;rethink the spmspm in memory, the backgrouds, challenges, and possible solutions.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;background&quot;&gt;background&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;spmspm-workflow&quot;&gt;spmspm workflow&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;gamma&quot;&gt;Gamma:&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gamma performs SpMSpM&#x27;s computation using specialized processing elements with simple high-radix mergers, and performs many merges in parallel to achieve high throughput. Gamma uses a novel on-chip storage structure that combines features of both caches and explicitly managed buffers. Gamma uses simple processing elements (PEs) that linearly combine sparse input rows to produce each output row. Gamma&#x27;s processing elements are organized into a two-level hierarchy, with a small number of high-radix PEs at the top level and a larger number of low-radix PEs at the bottom level. The top-level PEs perform a small number of high-radix merges, while the bottom-level PEs perform many low-radix merges in parallel. Gamma&#x27;s on-chip storage structure is organized into a hierarchy of caches and explicitly managed buffers, with each level of the hierarchy storing a different subset of the input and output matrices (research.nvidia.com)
+(dl.acm.org)
+(people.csail.mit.edu)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h3 id=&quot;row-wise-algorithm&quot;&gt;row wise algorithm&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Gustavson algorithm is a row-wise algorithm for sparse matrix-matrix multiplication. In this algorithm, each nonzero value in a row is multiplied by the nonzero values corresponding to the column index. These values are summed and stored in a temporary row buffer based on their column indices (bing.com)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;gamma-details&quot;&gt;Gamma details&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    chat-tokio
+</title>
+          <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/chat-tokio/</link>
+          <guid>https://blog.thesjq.com/posts/chat-tokio/</guid>
+          <description>&lt;p&gt;go thought the tokio example &lt;code&gt;chat&lt;&#x2F;code&gt; and learn how to use tokio.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-source-code-of-chat&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-source-code-of-chat&quot; aria-label=&quot;Anchor link for: the-source-code-of-chat&quot;&gt;🐼&lt;&#x2F;a&gt;the source code of chat&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#introduction&quot; aria-label=&quot;Anchor link for: introduction&quot;&gt;🐼&lt;&#x2F;a&gt;introduction&lt;&#x2F;h2&gt;
+&lt;p&gt;the code will create a tcp server, and the client can connect to the server and send message to the server. the server will broadcast the message to all the clients.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;code&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#code&quot; aria-label=&quot;Anchor link for: code&quot;&gt;🐼&lt;&#x2F;a&gt;code&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! A chat server that broadcasts a message to all connections.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! This example is explicitly more verbose than it has to be. This is to
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! illustrate more concepts.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! A chat server for telnet clients. After a telnet client connects, the first
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! line should contain the client&amp;#39;s name. After that, all lines sent by a
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! client are broadcasted to all other connected clients.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! Because the client is telnet, lines are delimited by &amp;quot;\r\n&amp;quot;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! You can test this out by running:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!     cargo run --example chat
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! And then in another terminal run:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!     telnet localhost 6142
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! You can run the `telnet` command in any number of additional windows.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! You can run the second command in multiple windows and then chat between the
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! two, seeing the messages from the other client as they&amp;#39;re received. For all
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! connected clients they&amp;#39;ll all join the same room and see everyone else&amp;#39;s
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;! messages.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#![&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;warn&lt;&#x2F;span&gt;&lt;span&gt;(rust_2018_idioms)]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;tokio::net::{TcpListener, TcpStream};
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;tokio::sync::{mpsc, Mutex};
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;tokio_stream::StreamExt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;tokio_util::codec::{Framed, LinesCodec};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;futures::SinkExt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::collections::HashMap;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::env;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::error::Error;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::io;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::net::SocketAddr;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;std::sync::Arc;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tokio&lt;&#x2F;span&gt;&lt;span&gt;::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;async &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;() -&amp;gt; Result&amp;lt;(), Box&amp;lt;dyn Error&amp;gt;&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span&gt;tracing_subscriber::{fmt::format::FmtSpan, EnvFilter};
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Configure a `tracing` subscriber that logs traces emitted by the chat
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; server.
+&lt;&#x2F;span&gt;&lt;span&gt;    tracing_subscriber::fmt()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Filter what traces are displayed based on the RUST_LOG environment
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; variable.
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Traces emitted by the example code will always be displayed. You
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; can set `RUST_LOG=tokio=trace` to enable additional traces emitted by
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Tokio itself.
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;with_env_filter&lt;&#x2F;span&gt;&lt;span&gt;(EnvFilter::from_default_env().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;add_directive&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;chat=info&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;parse&lt;&#x2F;span&gt;&lt;span&gt;()?))
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Log events when `tracing` spans are created, entered, exited, or
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; closed. When Tokio&amp;#39;s internal tracing support is enabled (as
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; described above), this can be used to track the lifecycle of spawned
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; tasks on the Tokio runtime.
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;with_span_events&lt;&#x2F;span&gt;&lt;span&gt;(FmtSpan::&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;FULL&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Set this subscriber as the default, to collect all traces emitted by
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; the program.
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;init&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Create the shared state. This is how all the peers communicate.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; The server task will hold a handle to this. For every new client, the
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; `state` handle is cloned and passed into the task that processes the
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; client connection.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; state = Arc::new(Mutex::new(Shared::new()));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; addr = env::args()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;nth&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;unwrap_or_else&lt;&#x2F;span&gt;&lt;span&gt;(|| &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;127.0.0.1:6142&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;to_string&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Bind a TCP listener to the socket address.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Note that this is the Tokio TcpListener, which is fully async.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; listener = TcpListener::bind(&amp;amp;addr).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    tracing::info!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;server running on {}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, addr);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;loop &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Asynchronously wait for an inbound TcpStream.
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span&gt;(stream, addr) = listener.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;accept&lt;&#x2F;span&gt;&lt;span&gt;().await?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Clone a handle to the `Shared` state for the new connection.
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; state = Arc::clone(&amp;amp;state);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Spawn our handler to be run asynchronously.
+&lt;&#x2F;span&gt;&lt;span&gt;        tokio::spawn(async &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;move &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;            tracing::debug!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;accepted connection&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if let &lt;&#x2F;span&gt;&lt;span&gt;Err(e) = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;process&lt;&#x2F;span&gt;&lt;span&gt;(state, stream, addr).await {
+&lt;&#x2F;span&gt;&lt;span&gt;                tracing::info!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;an error occurred; error = {:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, e);
+&lt;&#x2F;span&gt;&lt;span&gt;            }
+&lt;&#x2F;span&gt;&lt;span&gt;        });
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Shorthand for the transmit half of the message channel.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span&gt;Tx = mpsc::UnboundedSender&amp;lt;String&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Shorthand for the receive half of the message channel.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;type &lt;&#x2F;span&gt;&lt;span&gt;Rx = mpsc::UnboundedReceiver&amp;lt;String&amp;gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Data that is shared between all peers in the chat server.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; This is the set of `Tx` handles for all connected clients. Whenever a
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; message is received from a client, it is broadcasted to all peers by
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; iterating over the `peers` entries and sending a copy of the message on each
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; `Tx`.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;Shared {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;peers&lt;&#x2F;span&gt;&lt;span&gt;: HashMap&amp;lt;SocketAddr, Tx&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; The state for each connected client.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;struct &lt;&#x2F;span&gt;&lt;span&gt;Peer {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; The TCP socket wrapped with the `Lines` codec, defined below.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; This handles sending and receiving data on the socket. When using
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; `Lines`, we can work at the line level instead of having to manage the
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; raw byte operations.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lines&lt;&#x2F;span&gt;&lt;span&gt;: Framed&amp;lt;TcpStream, LinesCodec&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Receive half of the message channel.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; This is used to receive messages from peers. When a message is received
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; off of this `Rx`, it will be written to the socket.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rx&lt;&#x2F;span&gt;&lt;span&gt;: Rx,
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;Shared {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Create a new, empty, instance of `Shared`.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;() -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;Self &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        Shared {
+&lt;&#x2F;span&gt;&lt;span&gt;            peers: HashMap::new(),
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Send a `LineCodec` encoded message to every peer, except
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; for the sender.
+&lt;&#x2F;span&gt;&lt;span&gt;    async &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;broadcast&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sender&lt;&#x2F;span&gt;&lt;span&gt;: SocketAddr, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;message&lt;&#x2F;span&gt;&lt;span&gt;: &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span&gt; peer in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.peers.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;iter_mut&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;*peer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;!= sender {
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span&gt;_ = peer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;send&lt;&#x2F;span&gt;&lt;span&gt;(message.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;into&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;            }
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span&gt;Peer {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Create a new instance of `Peer`.
+&lt;&#x2F;span&gt;&lt;span&gt;    async &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;new&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;state&lt;&#x2F;span&gt;&lt;span&gt;: Arc&amp;lt;Mutex&amp;lt;Shared&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lines&lt;&#x2F;span&gt;&lt;span&gt;: Framed&amp;lt;TcpStream, LinesCodec&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    ) -&amp;gt; io::Result&amp;lt;Peer&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Get the client socket address
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; addr = lines.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;get_ref&lt;&#x2F;span&gt;&lt;span&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;peer_addr&lt;&#x2F;span&gt;&lt;span&gt;()?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Create a channel for this peer
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span&gt;(tx, rx) = mpsc::unbounded_channel();
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Add an entry for this `Peer` in the shared state map.
+&lt;&#x2F;span&gt;&lt;span&gt;        state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lock&lt;&#x2F;span&gt;&lt;span&gt;().await.peers.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;insert&lt;&#x2F;span&gt;&lt;span&gt;(addr, tx);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        Ok(Peer { lines, rx })
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; Process an individual chat client
+&lt;&#x2F;span&gt;&lt;span&gt;async &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;process&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;state&lt;&#x2F;span&gt;&lt;span&gt;: Arc&amp;lt;Mutex&amp;lt;Shared&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;stream&lt;&#x2F;span&gt;&lt;span&gt;: TcpStream,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;addr&lt;&#x2F;span&gt;&lt;span&gt;: SocketAddr,
+&lt;&#x2F;span&gt;&lt;span&gt;) -&amp;gt; Result&amp;lt;(), Box&amp;lt;dyn Error&amp;gt;&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; lines = Framed::new(stream, LinesCodec::new());
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Send a prompt to the client to enter their username.
+&lt;&#x2F;span&gt;&lt;span&gt;    lines.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;send&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Please enter your username:&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Read the first line from the `LineCodec` stream to get the username.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; username = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;match&lt;&#x2F;span&gt;&lt;span&gt; lines.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;next&lt;&#x2F;span&gt;&lt;span&gt;().await {
+&lt;&#x2F;span&gt;&lt;span&gt;        Some(Ok(line)) =&amp;gt; line,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; We didn&amp;#39;t get a line so we return early here.
+&lt;&#x2F;span&gt;&lt;span&gt;        _ =&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;            tracing::error!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Failed to get username from {}. Client disconnected.&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, addr);
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;Ok(());
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    };
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Register our peer with state which internally sets up some channels.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; peer = Peer::new(state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;clone&lt;&#x2F;span&gt;&lt;span&gt;(), lines).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; A client has connected, let&amp;#39;s let everyone know.
+&lt;&#x2F;span&gt;&lt;span&gt;    {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; state = state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lock&lt;&#x2F;span&gt;&lt;span&gt;().await;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; msg = format!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; has joined the chat&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, username);
+&lt;&#x2F;span&gt;&lt;span&gt;        tracing::info!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, msg);
+&lt;&#x2F;span&gt;&lt;span&gt;        state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;broadcast&lt;&#x2F;span&gt;&lt;span&gt;(addr, &amp;amp;msg).await;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Process incoming messages until our stream is exhausted by a disconnect.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;loop &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        tokio::select! {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; A message was received from a peer. Send it to the current user.
+&lt;&#x2F;span&gt;&lt;span&gt;            Some(msg) = peer.rx.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;recv&lt;&#x2F;span&gt;&lt;span&gt;() =&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;                peer.lines.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;send&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;msg).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;            }
+&lt;&#x2F;span&gt;&lt;span&gt;            result = peer.lines.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;next&lt;&#x2F;span&gt;&lt;span&gt;() =&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;match&lt;&#x2F;span&gt;&lt;span&gt; result {
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; A message was received from the current user, we should
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; broadcast this message to the other users.
+&lt;&#x2F;span&gt;&lt;span&gt;                Some(Ok(msg)) =&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; state = state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lock&lt;&#x2F;span&gt;&lt;span&gt;().await;
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; msg = format!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, username, msg);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;                    state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;broadcast&lt;&#x2F;span&gt;&lt;span&gt;(addr, &amp;amp;msg).await;
+&lt;&#x2F;span&gt;&lt;span&gt;                }
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; An error occurred.
+&lt;&#x2F;span&gt;&lt;span&gt;                Some(Err(e)) =&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;                    tracing::error!(
+&lt;&#x2F;span&gt;&lt;span&gt;                        &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;an error occurred while processing messages for {}; error = {:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;,
+&lt;&#x2F;span&gt;&lt;span&gt;                        username,
+&lt;&#x2F;span&gt;&lt;span&gt;                        e
+&lt;&#x2F;span&gt;&lt;span&gt;                    );
+&lt;&#x2F;span&gt;&lt;span&gt;                }
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; The stream has been exhausted.
+&lt;&#x2F;span&gt;&lt;span&gt;                None =&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;break&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            },
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; If this section is reached it means that the client was disconnected!
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Let&amp;#39;s let everyone still connected know about it.
+&lt;&#x2F;span&gt;&lt;span&gt;    {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; state = state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;lock&lt;&#x2F;span&gt;&lt;span&gt;().await;
+&lt;&#x2F;span&gt;&lt;span&gt;        state.peers.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;remove&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;addr);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; msg = format!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; has left the chat&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, username);
+&lt;&#x2F;span&gt;&lt;span&gt;        tracing::info!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, msg);
+&lt;&#x2F;span&gt;&lt;span&gt;        state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;broadcast&lt;&#x2F;span&gt;&lt;span&gt;(addr, &amp;amp;msg).await;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    Ok(())
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;the-framed-type&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-framed-type&quot; aria-label=&quot;Anchor link for: the-framed-type&quot;&gt;🐼&lt;&#x2F;a&gt;the Framed type&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;definition&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#definition&quot; aria-label=&quot;Anchor link for: definition&quot;&gt;🐼&lt;&#x2F;a&gt;definition&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;pin_project! {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; A unified [`Stream`] and [`Sink`] interface to an underlying I&#x2F;O object, using
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; the `Encoder` and `Decoder` traits to encode and decode frames.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; You can create a `Framed` instance by using the [`Decoder::framed`] adapter, or
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; by using the `new` function seen below.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; [`Stream`]: futures_core::Stream
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; [`Sink`]: futures_sink::Sink
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; [`AsyncRead`]: tokio::io::AsyncRead
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; [`Decoder::framed`]: crate::codec::Decoder::framed()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub struct &lt;&#x2F;span&gt;&lt;span&gt;Framed&amp;lt;T, U&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        #[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pin&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;inner&lt;&#x2F;span&gt;&lt;span&gt;: FramedImpl&amp;lt;T, U, RWFrames&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;pin_project:&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    tokio
+</title>
+          <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/tokio/</link>
+          <guid>https://blog.thesjq.com/posts/tokio/</guid>
+          <description>&lt;h1 id=&quot;runtime-parts&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#runtime-parts&quot; aria-label=&quot;Anchor link for: runtime-parts&quot;&gt;🐼&lt;&#x2F;a&gt;runtime parts&lt;&#x2F;h1&gt;
+&lt;p&gt;there are three parts in the runtime.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;scheduler&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#scheduler&quot; aria-label=&quot;Anchor link for: scheduler&quot;&gt;🐼&lt;&#x2F;a&gt;scheduler&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;handle&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#handle&quot; aria-label=&quot;Anchor link for: handle&quot;&gt;🐼&lt;&#x2F;a&gt;handle&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;blocking-pool&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#blocking-pool&quot; aria-label=&quot;Anchor link for: blocking-pool&quot;&gt;🐼&lt;&#x2F;a&gt;blocking_pool&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    russh
+</title>
+          <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/russh/</link>
+          <guid>https://blog.thesjq.com/posts/russh/</guid>
+          <description>&lt;p&gt;Server and client SSH asynchronous library, based on tokio&#x2F;futures.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;the crates.io of russh: &lt;a href=&quot;https:&#x2F;&#x2F;crates.io&#x2F;crates&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the github of russh: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;warp-tech&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;russh-client-example&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#russh-client-example&quot; aria-label=&quot;Anchor link for: russh-client-example&quot;&gt;🐼&lt;&#x2F;a&gt;russh client example&lt;&#x2F;h1&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; connect and exchange the key
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; session = russh::client::connect(config, (&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;10.13.13.23&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;22&lt;&#x2F;span&gt;&lt;span&gt;), sh).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; authenticate the user using the private key
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;authenticate_publickey&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sjq&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, Arc::new(key)).await? {
+&lt;&#x2F;span&gt;&lt;span&gt;        println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;authenticated&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; channel = session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;channel_open_session&lt;&#x2F;span&gt;&lt;span&gt;().await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;request_shell&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exec&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;true&lt;&#x2F;span&gt;&lt;span&gt;, &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;b&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;bin&#x2F;ls&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;[..]).await?;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;while let &lt;&#x2F;span&gt;&lt;span&gt;Some(msg) = channel.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;wait&lt;&#x2F;span&gt;&lt;span&gt;().await {
+&lt;&#x2F;span&gt;&lt;span&gt;            println!(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;{:?}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, msg);
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    Ok(())
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;step-1-connect-and-exchange-the-key&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#step-1-connect-and-exchange-the-key&quot; aria-label=&quot;Anchor link for: step-1-connect-and-exchange-the-key&quot;&gt;🐼&lt;&#x2F;a&gt;step 1: connect and exchange the key&lt;&#x2F;h2&gt;
+&lt;p&gt;first the client will send and receive the ssh-id&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; russh&#x2F;src&#x2F;client&#x2F;mod.rs
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Writing SSH id.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; write_buffer = SSHBuffer::new();
+&lt;&#x2F;span&gt;&lt;span&gt;    write_buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;send_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;config.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;().client_id);
+&lt;&#x2F;span&gt;&lt;span&gt;    stream
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;write_all&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;write_buffer.buffer)
+&lt;&#x2F;span&gt;&lt;span&gt;        .await
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map_err&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;crate&lt;&#x2F;span&gt;&lt;span&gt;::Error::from)?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Reading SSH id and allocating a session if correct.
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; stream = SshRead::new(stream);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; sshid = stream.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;read_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;().await?;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;then the client will build some context for key exchange. first build a session which include the infomation for the key exchange.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub struct &lt;&#x2F;span&gt;&lt;span&gt;Session {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;common&lt;&#x2F;span&gt;&lt;span&gt;: CommonSession&amp;lt;Arc&amp;lt;Config&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;receiver&lt;&#x2F;span&gt;&lt;span&gt;: Receiver&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sender&lt;&#x2F;span&gt;&lt;span&gt;: UnboundedSender&amp;lt;Reply&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;channels&lt;&#x2F;span&gt;&lt;span&gt;: HashMap&amp;lt;ChannelId, UnboundedSender&amp;lt;ChannelMsg&amp;gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;target_window_size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u32&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pending_reads&lt;&#x2F;span&gt;&lt;span&gt;: Vec&amp;lt;CryptoVec&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;pending_len&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u32&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;inbound_channel_sender&lt;&#x2F;span&gt;&lt;span&gt;: Sender&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;inbound_channel_receiver&lt;&#x2F;span&gt;&lt;span&gt;: Receiver&amp;lt;Msg&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; session = Session::new(
+&lt;&#x2F;span&gt;&lt;span&gt;        config.window_size,
+&lt;&#x2F;span&gt;&lt;span&gt;        CommonSession {
+&lt;&#x2F;span&gt;&lt;span&gt;            write_buffer,
+&lt;&#x2F;span&gt;&lt;span&gt;            kex: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_user: String::new(),
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_attempts: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            auth_method: None, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Client only.
+&lt;&#x2F;span&gt;&lt;span&gt;            cipher: CipherPair {
+&lt;&#x2F;span&gt;&lt;span&gt;                local_to_remote: Box::new(clear::Key),
+&lt;&#x2F;span&gt;&lt;span&gt;                remote_to_local: Box::new(clear::Key),
+&lt;&#x2F;span&gt;&lt;span&gt;            },
+&lt;&#x2F;span&gt;&lt;span&gt;            encrypted: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            config,
+&lt;&#x2F;span&gt;&lt;span&gt;            wants_reply: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            disconnected: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            buffer: CryptoVec::new(),
+&lt;&#x2F;span&gt;&lt;span&gt;        },
+&lt;&#x2F;span&gt;&lt;span&gt;        session_receiver,
+&lt;&#x2F;span&gt;&lt;span&gt;        session_sender,
+&lt;&#x2F;span&gt;&lt;span&gt;    );
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;then use &lt;code&gt;read_ssh_id(sshid)&lt;&#x2F;code&gt; to build the key exchange context&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;read_ssh_id&lt;&#x2F;span&gt;&lt;span&gt;(&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sshid&lt;&#x2F;span&gt;&lt;span&gt;: &amp;amp;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;u8&lt;&#x2F;span&gt;&lt;span&gt;]) -&amp;gt; Result&amp;lt;(), crate::Error&amp;gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; self.read_buffer.bytes += sshid.bytes_read + 2;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; exchange = Exchange::new();
+&lt;&#x2F;span&gt;&lt;span&gt;        exchange.server_id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;extend&lt;&#x2F;span&gt;&lt;span&gt;(sshid);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Preparing the response
+&lt;&#x2F;span&gt;&lt;span&gt;        exchange
+&lt;&#x2F;span&gt;&lt;span&gt;            .client_id
+&lt;&#x2F;span&gt;&lt;span&gt;            .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;extend&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.config.client_id.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_kex_hash_bytes&lt;&#x2F;span&gt;&lt;span&gt;());
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let mut&lt;&#x2F;span&gt;&lt;span&gt; kexinit = KexInit {
+&lt;&#x2F;span&gt;&lt;span&gt;            exchange,
+&lt;&#x2F;span&gt;&lt;span&gt;            algo: None,
+&lt;&#x2F;span&gt;&lt;span&gt;            sent: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;false&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;            session_id: None,
+&lt;&#x2F;span&gt;&lt;span&gt;        };
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.write_buffer.buffer.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;clear&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;        kexinit.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;client_write&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.config.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;(),
+&lt;&#x2F;span&gt;&lt;span&gt;            &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.cipher.local_to_remote,
+&lt;&#x2F;span&gt;&lt;span&gt;            &amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;mut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.write_buffer,
+&lt;&#x2F;span&gt;&lt;span&gt;        )?;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;.common.kex = Some(Kex::Init(kexinit));
+&lt;&#x2F;span&gt;&lt;span&gt;        Ok(())
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;in &lt;code&gt;read_ssh_id&lt;&#x2F;code&gt;, &lt;code&gt;client_write&lt;&#x2F;code&gt; will write the key exchange message to the buffer, which include all acceptable algorithms for the key exchange.
+and it will setup the messages to send to the server first for the infomation about key exchange.&lt;&#x2F;p&gt;
+&lt;p&gt;after build the session, the client will spawn a new task for run the session&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; join = tokio::spawn(session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(stream, handler, Some(encrypted_signal)));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;during runing the session, the client will read the server infomation using start_reading:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; reading = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;start_reading&lt;&#x2F;span&gt;&lt;span&gt;(stream_read, buffer, opening_cipher);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;this will read the server infomation about keys and exchange methods, then the client will select one and send the message to the server.
+after then, they start the exchange process and finally get the shared key for the encryption. all later messages will be encrypted.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-2-authenticate-the-user-using-the-private-key&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#step-2-authenticate-the-user-using-the-private-key&quot; aria-label=&quot;Anchor link for: step-2-authenticate-the-user-using-the-private-key&quot;&gt;🐼&lt;&#x2F;a&gt;step 2: authenticate the user using the private key&lt;&#x2F;h2&gt;
+&lt;p&gt;after the key exchange, the client will send the message to authenticate the user.
+we can first read the key stored in out home directory:&lt;code&gt;~&#x2F;.ssh&#x2F;id_*&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; use the ssh_key create the parse the stored key
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; pubkeyfile = std::fs::read_to_string(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;Users&#x2F;sjq&#x2F;.ssh&#x2F;id_ed25519.pub&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; prikeyfile = std::fs::read_to_string(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;Users&#x2F;sjq&#x2F;.ssh&#x2F;id_ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; public_key = PublicKey::from_str(&amp;amp;pubkeyfile)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; private_key = PrivateKey::from_str(&amp;amp;prikeyfile)?;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; parse the key as bytes stream
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data_pb = public_key
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;key_data&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ed25519&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ok_or&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;no ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; data_pr = private_key
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;key_data&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ed25519&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ok_or&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;no ed25519&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)?
+&lt;&#x2F;span&gt;&lt;span&gt;        .private
+&lt;&#x2F;span&gt;&lt;span&gt;        .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;as_ref&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; create the keypair
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; public_key = ed25519_dalek::PublicKey::from_bytes(data_pb)?;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; private_key = ed25519_dalek::SecretKey::from_bytes(data_pr)?;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; key = KeyPair::Ed25519(ed25519_dalek::Keypair {
+&lt;&#x2F;span&gt;&lt;span&gt;        secret: private_key,
+&lt;&#x2F;span&gt;&lt;span&gt;        public: public_key,
+&lt;&#x2F;span&gt;&lt;span&gt;    });
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;after build the key, we can use the key to try to authenticate the user.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt; session.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;authenticate_publickey&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;sjq&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, Arc::new(key)).await? 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;now the channel is open, we can use the channel to send the command to the server.&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    ssh-login
+</title>
+          <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/ssh-login/</link>
+          <guid>https://blog.thesjq.com/posts/ssh-login/</guid>
+          <description>&lt;p&gt;understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
+the detailed implementation using rust: &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
+the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-symetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-symetrical-encryption&quot; aria-label=&quot;Anchor link for: the-symetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the symetrical encryption&lt;&#x2F;h1&gt;
+&lt;p&gt;The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.&lt;&#x2F;p&gt;
+&lt;p&gt;Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-asymetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-asymetrical-encryption&quot; aria-label=&quot;Anchor link for: the-asymetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the asymetrical encryption&lt;&#x2F;h1&gt;
+&lt;p&gt;Asymmetric encryption is a type of encryption where two keys are used to encrypt and decrypt messages. One key is used to encrypt messages, and the other key is used to decrypt messages. The two keys are mathematically related to each other, but they are not the same. The public key is used to encrypt messages, and the private key is used to decrypt messages. The private key is kept secret, and the public key is distributed to anyone who needs to send you encrypted messages.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-ssh-login-process&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-ssh-login-process&quot; aria-label=&quot;Anchor link for: the-ssh-login-process&quot;&gt;🐼&lt;&#x2F;a&gt;the ssh login process&lt;&#x2F;h1&gt;
+&lt;p&gt;The ssh login process is as follows:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;stage 1, key exchange: the client and server decide a common shared secret key for further communication.
+The basis of this procedure for classic Diffie-Hellman are:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Both parties agree on a large prime number, which will serve as a seed value.&lt;&#x2F;li&gt;
+&lt;li&gt;Both parties agree on an encryption generator (typically AES), which will be used to manipulate the values in a predefined way.&lt;&#x2F;li&gt;
+&lt;li&gt;Independently, each party comes up with another prime number which is kept secret from the other party. This number is used as the private key for this interaction (different from the private SSH key used for authentication).&lt;&#x2F;li&gt;
+&lt;li&gt;The generated private key, the encryption generator, and the shared prime number are used to generate a public key that is derived from the private key, but which can be shared with the other party.&lt;&#x2F;li&gt;
+&lt;li&gt;Both participants then exchange their generated public keys.&lt;&#x2F;li&gt;
+&lt;li&gt;The receiving entity uses their own private key, the other party’s public key, and the original shared prime number to compute a shared secret key. Although this is independently computed by each party, using opposite private and public keys, it will result in the same shared secret key.&lt;&#x2F;li&gt;
+&lt;li&gt;The shared secret is then used to encrypt all communication that follows.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;stage 2, authentication, all traffic will be encrypted after the key exchange:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;the client sends a public key to the server.&lt;&#x2F;li&gt;
+&lt;li&gt;the server sends a challenge to the client using the public key of the client.&lt;&#x2F;li&gt;
+&lt;li&gt;the client decrypts the challenge using the private key of the client.&lt;&#x2F;li&gt;
+&lt;li&gt;the server compares the decrypted challenge with the challenge it sent to the client. if they are the same, the server can proceed to the next step.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;stage 3, communication:&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;ul&gt;
+&lt;li&gt;the client and the server can send regular message using the shared secret key.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    ssh
+</title>
+          <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/ssh/</link>
+          <guid>https://blog.thesjq.com/posts/ssh/</guid>
+          <description>&lt;p&gt;there are several protocal RFCs for ssh,&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4251&quot;&gt;rfc 4251&lt;&#x2F;a&gt; is the main Architecture for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4252&quot;&gt;rfc 4253&lt;&#x2F;a&gt; is the Transport Layer RFC for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4253&quot;&gt;rfc 4252&lt;&#x2F;a&gt; is the Authentication RFC for ssh.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4254&quot;&gt;rfc 4254&lt;&#x2F;a&gt; is the Connection Protocal&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+      </item>
+      <item>
+          <title>
+    
+    
+    welcome
+</title>
+          <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.thesjq.com/posts/welcome/</link>
+          <guid>https://blog.thesjq.com/posts/welcome/</guid>
+          <description>&lt;p&gt;Welcome! this blog is build with &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt;, a static site generator written in rust.&lt;&#x2F;p&gt;
+&lt;p&gt;Please check the subsections here for more posts!the subsections: &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;&quot;&gt;posts&lt;&#x2F;a&gt; ..&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
