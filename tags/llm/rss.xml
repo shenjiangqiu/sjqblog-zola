@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - llm</title>
-      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
+      <link>https://blog.thesjq.com</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/llm/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://blog.thesjq.com/tags/llm/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Thu, 05 Dec 2024 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</link>
-          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</guid>
+          <link>https://blog.thesjq.com/posts/daily/soft-instinfer/</link>
+          <guid>https://blog.thesjq.com/posts/daily/soft-instinfer/</guid>
           <description>&lt;h2 id=&quot;sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling&quot;&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;sofa.pdf&quot;&gt;SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h3&gt;
 &lt;ol&gt;

@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - pim</title>
-      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
+      <link>https://blog.thesjq.com</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/pim/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://blog.thesjq.com/tags/pim/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Thu, 05 Dec 2024 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</link>
-          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</guid>
+          <link>https://blog.thesjq.com/posts/daily/soft-instinfer/</link>
+          <guid>https://blog.thesjq.com/posts/daily/soft-instinfer/</guid>
           <description>&lt;h2 id=&quot;sofa-a-compute-memory-optimized-sparsity-accelerator-via-cross-stage-coordinated-tiling&quot;&gt;&lt;a href=&quot;&#x2F;pdf&#x2F;sofa.pdf&quot;&gt;SOFA: A Compute-Memory Optimized Sparsity Accelerator via Cross-Stage Coordinated Tiling&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
 &lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h3&gt;
 &lt;ol&gt;
@@ -57,8 +57,8 @@
 </title>
           <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gearbox-walk/</link>
-          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gearbox-walk/</guid>
+          <link>https://blog.thesjq.com/posts/research/gearbox-walk/</link>
+          <guid>https://blog.thesjq.com/posts/research/gearbox-walk/</guid>
           <description>&lt;p&gt;the post illustrate the gearbox instructions of $$C[A[i]] += B[i]$$,&lt;&#x2F;p&gt;
 &lt;p&gt;the related papers:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -68,7 +68,7 @@
 &lt;&#x2F;ul&gt;
 &lt;p&gt;the related posts:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;research&#x2F;pim-design&#x2F;&quot;&gt;pim-design&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h1 id=&quot;walkthrough-of-inderect-c-a-b&quot;&gt;walkthrough of inderect c,a,b&lt;&#x2F;h1&gt;
 &lt;ul&gt;
@@ -100,8 +100,8 @@
 </title>
           <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/pim-design/</link>
-          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/pim-design/</guid>
+          <link>https://blog.thesjq.com/posts/research/pim-design/</link>
+          <guid>https://blog.thesjq.com/posts/research/pim-design/</guid>
           <description>&lt;p&gt;the post illustrate the current design of Fulcrum and gearbox, and show the challenges of SPMSPM design.&lt;&#x2F;p&gt;
 &lt;p&gt;the related papers:&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -390,8 +390,8 @@ which is explained in Section 2.&lt;&#x2F;p&gt;
 </title>
           <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/rethink-spmspm/</link>
-          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/rethink-spmspm/</guid>
+          <link>https://blog.thesjq.com/posts/research/rethink-spmspm/</link>
+          <guid>https://blog.thesjq.com/posts/research/rethink-spmspm/</guid>
           <description>&lt;p&gt;rethink the spmspm in memory, the backgrouds, challenges, and possible solutions.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;background&quot;&gt;background&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;spmspm-workflow&quot;&gt;spmspm workflow&lt;&#x2F;h2&gt;
