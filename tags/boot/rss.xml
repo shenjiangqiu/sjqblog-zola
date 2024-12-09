@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - boot</title>
-      <link>.</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="./tags/boot/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/boot/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Wed, 07 Jun 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Wed, 07 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/linux-boot/</link>
-          <guid>./posts/linux-boot/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/linux-boot/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/linux-boot/</guid>
           <description>&lt;h1 id=&quot;archlinux-boot-process&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#archlinux-boot-process&quot; aria-label=&quot;Anchor link for: archlinux-boot-process&quot;&gt;🐼&lt;&#x2F;a&gt;Archlinux boot process&lt;&#x2F;h1&gt;
 &lt;ul&gt;
 &lt;li&gt;referece: &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;title&#x2F;Arch_boot_process&quot;&gt;Archlinux boot process&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;

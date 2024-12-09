@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - ssh</title>
-      <link>.</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="./tags/ssh/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/ssh/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Fri, 11 Nov 2022 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,15 +16,15 @@
 </title>
           <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/russh/</link>
-          <guid>./posts/russh/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/russh/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/russh/</guid>
           <description>&lt;p&gt;Server and client SSH asynchronous library, based on tokio&#x2F;futures.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;the crates.io of russh: &lt;a href=&quot;https:&#x2F;&#x2F;crates.io&#x2F;crates&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;li&gt;the github of russh: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;warp-tech&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;the technical details can be found at:&lt;a href=&quot;.&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;.&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;russh-client-example&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#russh-client-example&quot; aria-label=&quot;Anchor link for: russh-client-example&quot;&gt;🐼&lt;&#x2F;a&gt;russh client example&lt;&#x2F;h1&gt;
 &lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; connect and exchange the key
@@ -172,11 +172,11 @@ we can first read the key stored in out home directory:&lt;code&gt;~&#x2F;.ssh&#
 </title>
           <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/ssh-login/</link>
-          <guid>./posts/ssh-login/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh-login/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh-login/</guid>
           <description>&lt;p&gt;understand the ssh login process, the symmetric encryption and asymmetric encryption and hashes.
-the detailed implementation using rust: &lt;a href=&quot;.&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
-the technical details can be found at:&lt;a href=&quot;.&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+the detailed implementation using rust: &lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;russh&#x2F;&quot;&gt;russh&lt;&#x2F;a&gt;.
+the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;shenjiangqiu.github.io&#x2F;sjqblog-zola&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-symetrical-encryption&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-symetrical-encryption&quot; aria-label=&quot;Anchor link for: the-symetrical-encryption&quot;&gt;🐼&lt;&#x2F;a&gt;the symetrical encryption&lt;&#x2F;h1&gt;
 &lt;p&gt;The relationship of the components that encrypt and decrypt data determines whether an encryption scheme is symmetrical or asymmetrical.&lt;&#x2F;p&gt;
 &lt;p&gt;Symmetrical encryption is a type of encryption where one key can be used to encrypt messages to the opposite party, and also to decrypt the messages received from the other participant. This means that anyone who holds the key can encrypt and decrypt messages to anyone else holding the key.&lt;&#x2F;p&gt;
@@ -222,8 +222,8 @@ The basis of this procedure for classic Diffie-Hellman are:&lt;&#x2F;li&gt;
 </title>
           <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/ssh/</link>
-          <guid>./posts/ssh/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh/</guid>
           <description>&lt;p&gt;there are several protocal RFCs for ssh,&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tools.ietf.org&#x2F;html&#x2F;rfc4251&quot;&gt;rfc 4251&lt;&#x2F;a&gt; is the main Architecture for ssh.&lt;&#x2F;li&gt;

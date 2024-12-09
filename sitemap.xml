@@ -1,206 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>./</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/</loc>
     </url>
     <url>
-        <loc>./about/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/about/</loc>
     </url>
     <url>
-        <loc>./authors/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/authors/</loc>
     </url>
     <url>
-        <loc>./authors/jiangqiu-shen/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/authors/jiangqiu-shen/</loc>
     </url>
     <url>
-        <loc>./posts/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/</loc>
     </url>
     <url>
-        <loc>./posts/async-rust/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/async-rust/</loc>
         <lastmod>2023-06-06</lastmod>
     </url>
     <url>
-        <loc>./posts/books/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/</loc>
     </url>
     <url>
-        <loc>./posts/books/intro-algo/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/books/intro-algo/</loc>
         <lastmod>2023-06-13</lastmod>
     </url>
     <url>
-        <loc>./posts/chat-tokio/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/chat-tokio/</loc>
         <lastmod>2022-12-12</lastmod>
     </url>
     <url>
-        <loc>./posts/daily/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/</loc>
     </url>
     <url>
-        <loc>./posts/daily/prefill-generation/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/prefill-generation/</loc>
         <lastmod>2024-12-06</lastmod>
     </url>
     <url>
-        <loc>./posts/daily/soft-instinfer/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/daily/soft-instinfer/</loc>
         <lastmod>2024-12-05</lastmod>
     </url>
     <url>
-        <loc>./posts/interesting-lifetime-problems/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/interesting-lifetime-problems/</loc>
         <lastmod>2023-05-21</lastmod>
     </url>
     <url>
-        <loc>./posts/life/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/</loc>
     </url>
     <url>
-        <loc>./posts/life/cmd-tools/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/cmd-tools/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/life/github-action/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/github-action/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/life/the-good-websites/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/life/the-good-websites/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/linux-boot/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/linux-boot/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/openroad-flow/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/openroad-flow/</loc>
         <lastmod>2023-08-02</lastmod>
     </url>
     <url>
-        <loc>./posts/research/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/</loc>
     </url>
     <url>
-        <loc>./posts/research/gearbox-walk/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gearbox-walk/</loc>
         <lastmod>2023-03-12</lastmod>
     </url>
     <url>
-        <loc>./posts/research/generative-accelerators/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/generative-accelerators/</loc>
         <lastmod>2023-08-14</lastmod>
     </url>
     <url>
-        <loc>./posts/research/gpt-todo/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gpt-todo/</loc>
         <lastmod>2023-09-16</lastmod>
     </url>
     <url>
-        <loc>./posts/research/hetero-graph/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/hetero-graph/</loc>
         <lastmod>2023-06-13</lastmod>
     </url>
     <url>
-        <loc>./posts/research/path/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/path/</loc>
         <lastmod>2023-06-08</lastmod>
     </url>
     <url>
-        <loc>./posts/research/pim-design/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/pim-design/</loc>
         <lastmod>2023-03-10</lastmod>
     </url>
     <url>
-        <loc>./posts/research/rethink-spmspm/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/rethink-spmspm/</loc>
         <lastmod>2023-03-10</lastmod>
     </url>
     <url>
-        <loc>./posts/research/roofline-model/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/roofline-model/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/research/thinking-in-hgnn/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/thinking-in-hgnn/</loc>
         <lastmod>2023-06-07</lastmod>
     </url>
     <url>
-        <loc>./posts/russh/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/russh/</loc>
         <lastmod>2022-11-11</lastmod>
     </url>
     <url>
-        <loc>./posts/rust-tips/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/rust-tips/</loc>
         <lastmod>2023-06-09</lastmod>
     </url>
     <url>
-        <loc>./posts/ssh-login/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh-login/</loc>
         <lastmod>2022-11-10</lastmod>
     </url>
     <url>
-        <loc>./posts/ssh/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/ssh/</loc>
         <lastmod>2022-11-09</lastmod>
     </url>
     <url>
-        <loc>./posts/tokio/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/tokio/</loc>
         <lastmod>2022-12-10</lastmod>
     </url>
     <url>
-        <loc>./posts/welcome/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/posts/welcome/</loc>
         <lastmod>2020-10-01</lastmod>
     </url>
     <url>
-        <loc>./tags/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/</loc>
     </url>
     <url>
-        <loc>./tags/accelerator/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/accelerator/</loc>
     </url>
     <url>
-        <loc>./tags/accelerators/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/accelerators/</loc>
     </url>
     <url>
-        <loc>./tags/archlinux/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/archlinux/</loc>
     </url>
     <url>
-        <loc>./tags/async/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/async/</loc>
     </url>
     <url>
-        <loc>./tags/boot/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/boot/</loc>
     </url>
     <url>
-        <loc>./tags/fulcrum/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/fulcrum/</loc>
     </url>
     <url>
-        <loc>./tags/gearbox/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/gearbox/</loc>
     </url>
     <url>
-        <loc>./tags/gnn/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/gnn/</loc>
     </url>
     <url>
-        <loc>./tags/gpt/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/gpt/</loc>
     </url>
     <url>
-        <loc>./tags/graph/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/graph/</loc>
     </url>
     <url>
-        <loc>./tags/hgnn/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/hgnn/</loc>
     </url>
     <url>
-        <loc>./tags/lifetime/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/lifetime/</loc>
     </url>
     <url>
-        <loc>./tags/linux/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/linux/</loc>
     </url>
     <url>
-        <loc>./tags/llm/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/llm/</loc>
     </url>
     <url>
-        <loc>./tags/machine-learning/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/machine-learning/</loc>
     </url>
     <url>
-        <loc>./tags/openroad/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/openroad/</loc>
     </url>
     <url>
-        <loc>./tags/pim/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/pim/</loc>
     </url>
     <url>
-        <loc>./tags/research/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/research/</loc>
     </url>
     <url>
-        <loc>./tags/rust/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/rust/</loc>
     </url>
     <url>
-        <loc>./tags/spmv/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/spmv/</loc>
     </url>
     <url>
-        <loc>./tags/ssh/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/ssh/</loc>
     </url>
     <url>
-        <loc>./tags/tokio/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/tokio/</loc>
     </url>
     <url>
-        <loc>./tags/transformers/</loc>
+        <loc>https://shenjiangqiu.github.io/sjqblog-zola/tags/transformers/</loc>
     </url>
 </urlset>

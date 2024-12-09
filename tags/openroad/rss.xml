@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - openroad</title>
-      <link>.</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="./tags/openroad/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/openroad/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/openroad-flow/</link>
-          <guid>./posts/openroad-flow/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/openroad-flow/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/openroad-flow/</guid>
           <description>&lt;p&gt;this post contains the installation and usage tips of OpenRoad flow.&lt;&#x2F;p&gt;
 </description>
       </item>

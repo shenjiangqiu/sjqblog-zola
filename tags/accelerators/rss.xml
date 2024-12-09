@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - accelerators</title>
-      <link>.</link>
+      <link>https://shenjiangqiu.github.io/sjqblog-zola/</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="./tags/accelerators/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://shenjiangqiu.github.io/sjqblog-zola/tags/accelerators/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Sat, 16 Sep 2023 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Sat, 16 Sep 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/research/gpt-todo/</link>
-          <guid>./posts/research/gpt-todo/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gpt-todo/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/gpt-todo/</guid>
           <description>&lt;p&gt;this post shows some todo list of research&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -29,8 +29,8 @@
 </title>
           <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>./posts/research/generative-accelerators/</link>
-          <guid>./posts/research/generative-accelerators/</guid>
+          <link>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/generative-accelerators/</link>
+          <guid>https://shenjiangqiu.github.io/sjqblog-zola/posts/research/generative-accelerators/</guid>
           <description>&lt;p&gt;this post summarizes the recent progress of GPT-3 and its accelerators.&lt;&#x2F;p&gt;
 </description>
       </item>
