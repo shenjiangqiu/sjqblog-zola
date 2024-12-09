@@ -2,11 +2,11 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - rust</title>
-      <link>https://blog.thesjq.com</link>
+      <link>.</link>
       <description></description>
       <generator>Zola</generator>
       <language>en</language>
-      <atom:link href="https://blog.thesjq.com/tags/rust/rss.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="./tags/rust/rss.xml" rel="self" type="application/rss+xml"/>
       <lastBuildDate>Fri, 06 Dec 2024 00:00:00 +0000</lastBuildDate>
       <item>
           <title>
@@ -16,8 +16,8 @@
 </title>
           <pubDate>Fri, 06 Dec 2024 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/daily/prefill-generation/</link>
-          <guid>https://blog.thesjq.com/posts/daily/prefill-generation/</guid>
+          <link>./posts/daily/prefill-generation/</link>
+          <guid>./posts/daily/prefill-generation/</guid>
           <description>&lt;p&gt;This post shows how to simulate prefill and generation stage in NeuPIMs.&lt;&#x2F;p&gt;
 &lt;p&gt;current NeuPIMs only support generate 1 token.&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -35,8 +35,8 @@
 </title>
           <pubDate>Fri, 09 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/rust-tips/</link>
-          <guid>https://blog.thesjq.com/posts/rust-tips/</guid>
+          <link>./posts/rust-tips/</link>
+          <guid>./posts/rust-tips/</guid>
           <description>&lt;p&gt;this post contains some tips that I found useful when I was learning Rust.&lt;&#x2F;p&gt;
 </description>
       </item>
@@ -48,8 +48,8 @@
 </title>
           <pubDate>Tue, 06 Jun 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/async-rust/</link>
-          <guid>https://blog.thesjq.com/posts/async-rust/</guid>
+          <link>./posts/async-rust/</link>
+          <guid>./posts/async-rust/</guid>
           <description>&lt;p&gt;async in rust.
 A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io&#x2F;async-book&#x2F;&quot;&gt;the async book&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;this post shares my understanding of async in Rust.&lt;&#x2F;p&gt;
@@ -63,8 +63,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/interesting-lifetime-problems/</link>
-          <guid>https://blog.thesjq.com/posts/interesting-lifetime-problems/</guid>
+          <link>./posts/interesting-lifetime-problems/</link>
+          <guid>./posts/interesting-lifetime-problems/</guid>
           <description>&lt;p&gt;the lifetime checker of rust is very strict, and it is not easy to handle complicate lifetime problems&lt;&#x2F;p&gt;
 &lt;p&gt;in this post, I will collect some interesting lifetime problems I encountered as long as my solutions.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-lifetime-of-when-capturing-a-variable-in-a-closure&quot; aria-label=&quot;Anchor link for: the-lifetime-of-when-capturing-a-variable-in-a-closure&quot;&gt;🐼&lt;&#x2F;a&gt;the lifetime of when capturing a variable in a closure&lt;&#x2F;h1&gt;
@@ -78,8 +78,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/chat-tokio/</link>
-          <guid>https://blog.thesjq.com/posts/chat-tokio/</guid>
+          <link>./posts/chat-tokio/</link>
+          <guid>./posts/chat-tokio/</guid>
           <description>&lt;p&gt;go thought the tokio example &lt;code&gt;chat&lt;&#x2F;code&gt; and learn how to use tokio.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;the-source-code-of-chat&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-source-code-of-chat&quot; aria-label=&quot;Anchor link for: the-source-code-of-chat&quot;&gt;🐼&lt;&#x2F;a&gt;the source code of chat&lt;&#x2F;h1&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#introduction&quot; aria-label=&quot;Anchor link for: introduction&quot;&gt;🐼&lt;&#x2F;a&gt;introduction&lt;&#x2F;h2&gt;
@@ -360,8 +360,8 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/tokio/</link>
-          <guid>https://blog.thesjq.com/posts/tokio/</guid>
+          <link>./posts/tokio/</link>
+          <guid>./posts/tokio/</guid>
           <description>&lt;h1 id=&quot;runtime-parts&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#runtime-parts&quot; aria-label=&quot;Anchor link for: runtime-parts&quot;&gt;🐼&lt;&#x2F;a&gt;runtime parts&lt;&#x2F;h1&gt;
 &lt;p&gt;there are three parts in the runtime.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;scheduler&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#scheduler&quot; aria-label=&quot;Anchor link for: scheduler&quot;&gt;🐼&lt;&#x2F;a&gt;scheduler&lt;&#x2F;h2&gt;
@@ -377,15 +377,15 @@ A good resource to learn: &lt;a href=&quot;https:&#x2F;&#x2F;rust-lang.github.io
 </title>
           <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
           <author>Unknown</author>
-          <link>https://blog.thesjq.com/posts/russh/</link>
-          <guid>https://blog.thesjq.com/posts/russh/</guid>
+          <link>./posts/russh/</link>
+          <guid>./posts/russh/</guid>
           <description>&lt;p&gt;Server and client SSH asynchronous library, based on tokio&#x2F;futures.&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;the crates.io of russh: &lt;a href=&quot;https:&#x2F;&#x2F;crates.io&#x2F;crates&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;li&gt;the github of russh: &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;warp-tech&#x2F;russh&quot;&gt;russh&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;the technical details can be found at:&lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;the technical details can be found at:&lt;a href=&quot;.&#x2F;posts&#x2F;ssh&#x2F;&quot;&gt;protocal&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;https:&#x2F;&#x2F;blog.thesjq.com&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;for ssh connection protocol, see &lt;a href=&quot;.&#x2F;posts&#x2F;ssh-login&#x2F;&quot;&gt;the ssh login&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;russh-client-example&quot;&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#russh-client-example&quot; aria-label=&quot;Anchor link for: russh-client-example&quot;&gt;🐼&lt;&#x2F;a&gt;russh client example&lt;&#x2F;h1&gt;
 &lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;(){
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F;&#x2F; connect and exchange the key

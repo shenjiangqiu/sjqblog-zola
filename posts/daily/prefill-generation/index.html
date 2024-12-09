@@ -8,13 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="referrer" content="no-referrer">
 
-        <link rel="stylesheet" href="https://blog.thesjq.com/fonts.css">
-        <link rel="stylesheet" href="https://blog.thesjq.com/style.css">
+        <link rel="stylesheet" href="./fonts.css">
+        <link rel="stylesheet" href="./style.css">
 
         <title>Jiangqiu Shen's blog</title>
         
         
-            <link rel="alternate" type="application/rss+xml" title="RSS" href="https://blog.thesjq.com/rss.xml">
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="./rss.xml">
         
         
 
@@ -41,38 +41,38 @@
         
         
             
-                &#183; 250 words
+                &#183; 412 words
             
         
         
             
             
-                &#183; 2 min
+                &#183; 3 min
             
         
         <div class = "parent">
             Path :&nbsp;
-                <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+                <a href=".">
                     Home
                 </a>
             
                 
-                <a href="https://blog.thesjq.com/">
+                <a href="./">
                     /
                 </a>
             
                 
-                <a href="https://blog.thesjq.com/posts/">
+                <a href="./posts/">
                     posts/
                 </a>
             
                 
-                <a href="https://blog.thesjq.com/posts/daily/">
+                <a href="./posts/daily/">
                     daily/
                 </a>
             
             
-            <a href="https://blog.thesjq.com/posts/daily/prefill-generation/">
+            <a href="./posts/daily/prefill-generation/">
                 prefill-generation
             </a>
         </div>
@@ -81,13 +81,13 @@
                 Tags :&nbsp;
                 
                     <span class="tag">
-                        <a href="https://blog.thesjq.com/tags/rust/">
+                        <a href="./tags/rust/">
                             rust
                         </a>
                     </span>
                 
                     <span class="tag">
-                        <a href="https://blog.thesjq.com/tags/tokio/">
+                        <a href="./tags/tokio/">
                             tokio
                         </a>
                     </span>
@@ -100,7 +100,7 @@
                 Authors :&nbsp;
                 
                     <span class="tag">
-                        <a href="https://blog.thesjq.com/authors/jiangqiu-shen/">
+                        <a href="./authors/jiangqiu-shen/">
                             Jiangqiu Shen
                         </a>
                     </span>
@@ -114,16 +114,20 @@
         <ul>
         
             <li>
-                <a href="https://blog.thesjq.com/posts/daily/prefill-generation/#implement-prefill-generation-stage-in-newpims">implement Prefill + generation stage in NewPIMs.</a>
+                <a href="./posts/daily/prefill-generation/#implement-prefill-generation-stage-in-newpims">implement Prefill + generation stage in NewPIMs.</a>
                 
                     <ul>
                         
                             <li>
-                                <a href="https://blog.thesjq.com/posts/daily/prefill-generation/#modification-of-the-main-function">modification of the main function</a>
+                                <a href="./posts/daily/prefill-generation/#modification-of-the-main-function">modification of the main function</a>
                             </li>
                         
                             <li>
-                                <a href="https://blog.thesjq.com/posts/daily/prefill-generation/#prefill-stage">Prefill stage</a>
+                                <a href="./posts/daily/prefill-generation/#prefill-stage">Prefill stage</a>
+                            </li>
+                        
+                            <li>
+                                <a href="./posts/daily/prefill-generation/#analysis-sharegpt-tracefile">Analysis ShareGPT tracefile</a>
                             </li>
                         
                     </ul>
@@ -157,7 +161,12 @@
 <h3 id="modifications">modifications</h3>
 <ul>
 <li><input disabled="" type="checkbox" checked=""/>
-change the tracefile format. it should generated from real tracefile.</li>
+change the tracefile format. it should generated from real tracefile.
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+analyze the tracefile: ShareGPT</li>
+</ul>
+</li>
 <li><input disabled="" type="checkbox"/>
 in main function, generate the inital prefill task and an initial generation task.</li>
 <li><input disabled="" type="checkbox"/>
@@ -188,6 +197,60 @@ support Projection.</li>
 </ul>
 </li>
 </ul>
+<h2 id="analysis-sharegpt-tracefile">Analysis ShareGPT tracefile</h2>
+<ul>
+<li>
+<p>Total tasks: 723670</p>
+</li>
+<li>
+<p>Average generation history: 6735</p>
+</li>
+<li>
+<p>Average prefill history: 6725</p>
+</li>
+<li>
+<p>Average generation history weighted: 7353</p>
+</li>
+<li>
+<p>Average prefill history weighted: 9048</p>
+</li>
+<li>
+<p>Average generation size: 222</p>
+</li>
+<li>
+<p>Average prefill size: 59</p>
+</li>
+<li>
+<p>the average generation size is 222, the batch size is 512, so for each iteration, there might be 2 prifill task come in.</p>
+</li>
+<li>
+<p>the average prefill size is 59, the average perfill history is 9048.</p>
+</li>
+<li>
+<p>the average generation size is 222, the average generation history is 7353.</p>
+</li>
+<li>
+<p>for each iteration, the the batch size is 512, the history is 7353, so the total computation is QKVGEN + 2 * MHA + 2 *FFN. =</p>
+</li>
+<li>
+<p>512 * 4096 * 4096 * 3 + 7353<em>4096</em>512*2 + 512 * 4096 * 4 * 4096 *2</p>
+</li>
+<li>
+<p>= 125329997824</p>
+</li>
+<li>
+<p>for each prefill task, the computation is QKVGEN + MHA + FFN =</p>
+</li>
+<li>
+<p>59 * 4096 * 4096 * 3 + 59 * 4096 * 9048*2 + 59 * 4096 * 4 * 4096 * 2</p>
+</li>
+<li>
+<p>= 15261564928</p>
+</li>
+<li>
+<p>the prefill time is much smaller than the generation time. so the prefill time can be ignored.</p>
+</li>
+</ul>
 
 
         </div>
@@ -197,23 +260,23 @@ support Projection.</li>
         <p>
             
                 
-                    <a href="&#x2F;posts">posts</a>
+                    <a href=".&#x2F;posts">posts</a>
                     &#183;
                 
-                    <a href="&#x2F;tags">tags</a>
+                    <a href=".&#x2F;tags">tags</a>
                     &#183;
                 
-                    <a href="&#x2F;about">about</a>
+                    <a href=".&#x2F;about">about</a>
                     &#183;
                 
-                    <a href="&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
+                    <a href=".&#x2F;authors&#x2F;jiangqiu-shen">all my posts</a>
                     &#183;
                 
                     <a href="https:&#x2F;&#x2F;github.com&#x2F;shenjiangqiu">github</a>
                     &#183;
                 
             
-            <a href="https:&#x2F;&#x2F;blog.thesjq.com">
+            <a href=".">
                 home
             </a>
         </p>
