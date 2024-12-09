@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://blog.thesjq.com"
+base_url = "."
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -21,10 +21,10 @@ highlight_code = true
 [extra]
 # Put all your custom variables here
 sam_menu = [
-    {text="posts", link = "/posts"},
-    {text="tags", link = "/tags"},
-    {text="about", link = "/about"},
-    {text="all my posts", link = "/authors/jiangqiu-shen"},
+    {text="posts", link = "./posts"},
+    {text="tags", link = "./tags"},
+    {text="about", link = "./about"},
+    {text="all my posts", link = "./authors/jiangqiu-shen"},
     {text="github", link = "https://github.com/shenjiangqiu"},
 ]
 
