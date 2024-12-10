@@ -24,12 +24,12 @@ SOFA addresses the above challenges using a cross-stage compute-memory optimized
 
 ### flashattention
 
-![flashattention](/img/flashatt.png)
-![flashattention2](/img/falshatt_paper.png)
+![flashattention](@/img/flashatt.png)
+![flashattention2](@/img/falshatt_paper.png)
 - in line5, it update the max of the scores of m_i
 - in line7, 
 
 ### analysis
 
 
-## [instinfer](/pdf/instinfer.pdf)
+## [instinfer](@/pdf/instinfer.pdf)
